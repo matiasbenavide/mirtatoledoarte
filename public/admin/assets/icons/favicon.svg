@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="16" height="16"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="0.75" y="4.5" width="3" height="7" fill="#F36D2A"></rect>
+<circle cx="7.75" cy="8" r="3" fill="#52BA65"></circle>
+<path d="M15.25 8C15.25 6.067 13.683 4.5 11.75 4.5L11.75 11.5C13.683 11.5 15.25 9.933 15.25 8Z" fill="#FFCD05"></path>
+</svg><style>@media (prefers-color-scheme: light) { :root { filter: none; } }
+</style></svg>

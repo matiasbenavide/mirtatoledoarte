@@ -1,0 +1,21 @@
+.logo
+{
+    justify-self: center;
+    padding-left: 15px;
+}
+
+.bg-sidebar
+{
+    background-color: #154193;
+}
+
+.task
+{
+    color: #FDF9F5;
+}
+
+.sign-out
+{
+    text-decoration-line: none;
+    color: #FF6252;
+}

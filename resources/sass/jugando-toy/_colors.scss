@@ -1,0 +1,28 @@
+// Table header
+$table-bg-color:#00a9ce;
+$table-bg-color-darker-color: #1791be;
+
+// Navbar and switch color
+$bg:#FF9800;
+$bg-darker: #FF7722;
+
+// Organization Colors
+$org-primary: #FF9800;
+$org-secondary: #5C3E6E;
+$org-tertiary: #FFFFFF;
+$org-quaternary: #FFFFFF;
+$org-quinary: #FFFFFF;
+
+$org-primary-light: #ffc876;
+$org-secondary-light: #c6b1d3;
+$org-tertiary-light: #FFFFFF;
+$org-quaternary-light: #FFFFFF;
+// $org-quaternary-light: #FFFFFF;
+
+// Gradient in administration order: $org-secondary -> $org-tertiary -> $org-primary
+
+// Logo
+.principal-logo, .logo-nav, .principal-logo-login {
+    background-color: #FF9800;
+}
+
