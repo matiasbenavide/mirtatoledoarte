@@ -14,6 +14,8 @@
 /**
  * Node packages
  */
+
+// window.sweetalert2 = require('sweetalert2');
 window.$ = require('jquery');
 window.jQuery = require('jquery');
 window.blockUI = require('jquery-blockui');
@@ -23,3 +25,12 @@ window.axios = require('axios');
 window.JSONEditor = require('jsoneditor');
 // window.Ajv = require("ajv");
 // window.localize_es = require('ajv-i18n/localize/es');
+
+// import * as sweetAlert from './module/sweetAlert';
+// const pluginSweetAlert = {
+//     install () {
+//         Vue.sweetAlert = sweetAlert
+//         Vue.prototype.$sweetAlert = sweetAlert
+//     }
+// }
+// Vue.use(pluginSweetAlert);

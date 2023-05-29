@@ -3,8 +3,8 @@
 <head>
     @include('includes.adminHead')
 </head>
-<body class="default-bg">
-    @yield('content')
+<body class="app default-bg">
+    @yield('admin-content')
 </body>
 <footer>
     {{-- @include('components.footer') --}}

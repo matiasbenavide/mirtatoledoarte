@@ -1,17 +1,63 @@
+@font-face {
+    font-family: 'Don José';
+    src: url('../fonts/DonJose_Black.woff');
+}
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 *
 {
-    background-color: #F5F5F5;
     box-sizing: border-box;
     font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: #404040;
+}
+
+.default-bg
+{
+    background-color: #F5F5F5;
+}
+
+.title
+{
+    font-family: 'Don José';
+    font-size: 48px;
+    color: #154193;
+}
+
+.sub-title
+{
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.label
+{
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.8px;
+    color: #404040;
 }
 
 .form-input
 {
     width: 100%;
-    padding: 5px;
+    padding: 5px 12px;
+    background-color: #FFFFFF;
+    color: #154193;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.2px;
     border: 2px solid #154193;
     border-radius: 5px;
+}
+
+::placeholder
+{
+    color: rgba(21, 65, 147, 0.5) ;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
 }
 
 .button
@@ -45,4 +91,34 @@
     border: 2px solid #FFBE06;
     border-radius: 8px;
     box-shadow: 1.6px 2px 2px rgba(0, 0, 0, 0.7);
+}
+
+.button-filter
+{
+    padding: 10px;
+    background-color: #FDF9F5;
+    color: #154193;
+    font-weight: bold;
+    border: 2px solid #154193;
+    border-radius: 8px;
+}
+
+.button-filter:hover
+{
+    padding: 10px;
+    background-color: #154193;
+    color: #FDF9F5;
+    font-weight: bold;
+    border: 2px solid #154193;
+    border-radius: 8px;
+}
+
+.button-filter:focus
+{
+    padding: 10px;
+    background-color: #FFBE06;
+    color: #FDF9F5;
+    font-weight: bold;
+    border: 2px solid #FFBE06;
+    border-radius: 8px;
 }

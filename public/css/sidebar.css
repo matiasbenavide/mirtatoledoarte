@@ -9,12 +9,74 @@
     background-color: #154193;
 }
 
+.sidebar-icon
+{
+    height: 20px;
+    width: 20px;
+}
+
+.selected-task
+{
+    color: #FFBE06 !important;
+}
+
 .task
 {
     color: #FDF9F5;
 }
 
+.task-div
+{
+    margin-top: 0.5rem !important;
+    padding-left: 15px !important;
+}
+
+.task-div:hover
+{
+    background-color: #154193 !important;
+}
+
+/* .task-div:hover > span > i
+{
+    color: #FFBE06;
+}
+
+.task-div:hover > span > p
+{
+    color: #FFBE06;
+} */
+
 .sign-out
+{
+    font-weight: 700;
+    text-decoration-line: none;
+    color: #FF6252;
+}
+
+.sign-out:hover
+{
+    font-weight: 700;
+    text-decoration-line: none;
+    color: #FF6252;
+}
+
+.sign-out-div
+{
+    margin-top: 0.5rem !important;
+    padding-left: 15px !important;
+}
+
+.sign-out-div:hover
+{
+    background-color: #154193 !important;
+}
+
+.sign-out-div:hover > span > img
+{
+    color: #FF6252;
+}
+
+.sign-out-div:hover > span > p
 {
     text-decoration-line: none;
     color: #FF6252;

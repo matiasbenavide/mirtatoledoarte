@@ -8,7 +8,7 @@
 <div class="login-form">
     <div class="login">
         <div class="welcome">
-            <h1>INICIAR SESIÓN</h1>
+            <h1 class="title">INICIAR SESIÓN</h1>
             <P>¡Te damos la Bienvenida!</P>
         </div>
 
@@ -19,7 +19,7 @@
                 <div>
                     <label for="email" class="label">Email</label>
 
-                    <div class="">
+                    <div>
                         <input id="email" type="email" class="form-input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                         @error('email')
@@ -33,7 +33,7 @@
                 <div class="mt-4">
                     <label for="password" class="label">Contraseña</label>
 
-                    <div class="">
+                    <div>
                         <input id="password" type="password" class="form-input @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                         @error('password')

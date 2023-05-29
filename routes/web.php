@@ -15,9 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome']);
 
 Auth::routes();
 
@@ -28,9 +26,15 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
         Route::get('/', function () {
             return redirect()->route('admin.home');
         });
-        Route::get('/home', function() { return view('adminHome'); })->name('admin.home');
-        Route::get('productos/listado-edicion', [App\Http\Controllers\Admin\ProductsController::class, 'showProducts']);
-        Route::get('productos/creacion', [App\Http\Controllers\Admin\ProductsController::class, 'createProduct']);
+        // Route::get('/home', function() { return view('adminHome'); })->name('admin.home');
+        // PRODUCT
+        Route::get('/productos/listado', [App\Http\Controllers\Admin\ProductsController::class, 'showProducts'])->name('admin.home');
+        Route::get('/productos/crear-editar/{id}', [App\Http\Controllers\Admin\ProductsController::class, 'showProductCreation']);
+        Route::post('/productos/creacion-edicion', [App\Http\Controllers\Admin\ProductsController::class, 'saveData']);
+
+        Route::get('/ventas', [App\Http\Controllers\Admin\SellsController::class, 'showSells']);
+        Route::get('/vacaciones', [App\Http\Controllers\Admin\VacationsController::class, 'showVacations']);
+        Route::get('/configuracion', [App\Http\Controllers\Admin\ConfigurationController::class, 'showConfiguration']);
     });
 });
 

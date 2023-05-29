@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -21,7 +23,22 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+
+    public function welcome(Request $request)
+    {
+        $isAdmin = false;
+
+        if($request->user()->role_as && $request->user()->role_as == 1)
+        {
+            $isAdmin = true;
+        }
+
+        return view('welcome')->with([
+            'isAdmin' => $isAdmin
+        ]);
+    }
+
+     public function index()
     {
         return view('home');
     }

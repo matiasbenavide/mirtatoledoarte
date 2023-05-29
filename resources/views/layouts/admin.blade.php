@@ -1,4 +1,5 @@
 @extends('layouts.adminDefault')
+@section('admin-content')
 <div id="main">
     <div>
         @include('includes.sidebar')
@@ -13,4 +14,6 @@
         </div>
         @yield('content')
     </div>
+    @include('includes.responseMessageAlert')
 </div>
+@endsection

@@ -5375,6 +5375,17 @@ var app = new Vue({
   el: '#app'
 });
 
+// window.sweetalert2 = require('sweetalert2');
+
+// import * as sweetAlert from './module/sweetAlert';
+// const pluginSweetAlert = {
+//     install () {
+//         Vue.sweetAlert = sweetAlert
+//         Vue.prototype.$sweetAlert = sweetAlert
+//     }
+// }
+// Vue.use(pluginSweetAlert);
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":

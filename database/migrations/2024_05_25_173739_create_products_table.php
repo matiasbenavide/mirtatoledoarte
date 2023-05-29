@@ -26,14 +26,14 @@ class CreateProductsTable extends Migration
 
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
-            $table->unsignedBigInteger('color');
-            $table->foreign('color')->references('id')->on('colors');
-            $table->unsignedBigInteger('images');
-            $table->foreign('images')->references('id')->on('products_images');
+            $table->unsignedBigInteger('color_id');
+            $table->foreign('color_id')->references('id')->on('colors');
+            $table->unsignedBigInteger('image_id')->nullable();
+            $table->foreign('image_id')->references('id')->on('products_images');
 
 
             $table->timestamp('created_at')->useCurrent();
-            $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('created_by')->default(1);
             $table->foreign('created_by')->references('id')->on('users');
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->unsignedBigInteger('updated_by')->nullable();

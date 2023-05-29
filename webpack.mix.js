@@ -20,3 +20,7 @@ mix.js('resources/js/app.js', 'public/js').vue()
     .js('resources/js/bootstrap.js', 'public/js');
 
 mix.sass('resources/sass/app.scss', 'public/css');
+
+mix.copy('resources/js/js/admin/*.js', 'public/js/admin')
+mix.copy('resources/js/components/*.js', 'public/js/components');
+mix.copy('resources/js/module', 'public/js/module');

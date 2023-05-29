@@ -15426,6 +15426,8 @@ var __webpack_exports__ = {};
 /**
  * Node packages
  */
+
+// window.sweetalert2 = require('sweetalert2');
 window.$ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 window.blockUI = __webpack_require__(/*! jquery-blockui */ "./node_modules/jquery-blockui/jquery.blockUI.js");
@@ -15434,6 +15436,15 @@ window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")
 window.JSONEditor = __webpack_require__(/*! jsoneditor */ "./node_modules/jsoneditor/dist/jsoneditor.min.js");
 // window.Ajv = require("ajv");
 // window.localize_es = require('ajv-i18n/localize/es');
+
+// import * as sweetAlert from './module/sweetAlert';
+// const pluginSweetAlert = {
+//     install () {
+//         Vue.sweetAlert = sweetAlert
+//         Vue.prototype.$sweetAlert = sweetAlert
+//     }
+// }
+// Vue.use(pluginSweetAlert);
 })();
 
 /******/ })()
