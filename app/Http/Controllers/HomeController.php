@@ -37,9 +37,4 @@ class HomeController extends Controller
             'isAdmin' => $isAdmin
         ]);
     }
-
-     public function index()
-    {
-        return view('home');
-    }
 }

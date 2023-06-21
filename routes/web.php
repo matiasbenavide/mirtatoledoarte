@@ -19,7 +19,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome']);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'welcome'])->name('home');
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::prefix('/administracion')->group(function () {
@@ -37,11 +37,3 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
         Route::get('/configuracion', [App\Http\Controllers\Admin\ConfigurationController::class, 'showConfiguration']);
     });
 });
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

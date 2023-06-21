@@ -1,4 +1,6 @@
 export async function main(options) {
+
+    //***** FORM & INPUTS *****//
     let category_id = $('#category_id');
     let name = $('#name');
     let price = $('#price');
@@ -8,13 +10,16 @@ export async function main(options) {
     let max_weight = $('#max_weight');
     let color_id = $('#color_id');
 
+    //***** PRODUCT *****//
     let product;
 
     initProduct(options)
 
     function initProduct(options) {
         product = options.product;
-        insertDataInInputs(product);
+        if (product) {
+            insertDataInInputs(product);
+        }
     }
 
     function insertDataInInputs(product) {

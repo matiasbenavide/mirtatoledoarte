@@ -9,7 +9,7 @@
     <div class="login">
         <div class="welcome">
             <h1 class="title">INICIAR SESIÓN</h1>
-            <P>¡Te damos la Bienvenida!</P>
+            <P class="sub-title">¡Te damos la Bienvenida!</P>
         </div>
 
         <div>
@@ -19,9 +19,11 @@
                 <div>
                     <label for="email" class="label">Email</label>
 
-                    <div>
+                    <div class="input-div">
                         <input id="email" type="email" class="form-input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
+                        <span class="input-icon">
+                            <img src="{{ asset('admin/assets/icons/default_user.svg') }}" alt="">
+                        </span>
                         @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -30,12 +32,14 @@
                     </div>
                 </div>
 
-                <div class="mt-4">
+                <div class="div mt-4">
                     <label for="password" class="label">Contraseña</label>
 
-                    <div>
+                    <div class="input-div">
                         <input id="password" type="password" class="form-input @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
+                        <span class="input-icon">
+                            <img src="{{ asset('admin/assets/icons/password_eye.svg') }}" alt="">
+                        </span>
                         @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

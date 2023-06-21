@@ -8,12 +8,10 @@
     align-items: center;
 }
 
-@media (min-width:1200px) {
-    .login
-    {
-        width: 35%;
-        position: relative;
-    }
+.login
+{
+    max-width: 500px;
+    position: relative;
 }
 
 .welcome {
@@ -22,13 +20,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.label
-{
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 16px;
 }
 
 .login-button-div
@@ -41,4 +32,21 @@
 
 .login-button{
     width: 100%;
+}
+
+.input-div
+{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-icon
+{
+    position: absolute;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
