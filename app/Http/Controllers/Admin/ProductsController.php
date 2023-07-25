@@ -3,14 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Models\Admin\Constants;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Validation\ValidationException;
+use App\Models\Admin\Constants;
 use App\Http\Controllers\Controller;
+use App\Repositories\Admin\ColorsRepository;
 use App\Repositories\Admin\ProductsRepository;
 use App\Repositories\Admin\CategoriesRepository;
-use App\Repositories\Admin\ColorsRepository;
-use Illuminate\Validation\ValidationException;
+use App\Repositories\Admin\ProductImagesRepository;
 
 class ProductsController extends Controller
 {
@@ -19,6 +21,11 @@ class ProductsController extends Controller
      * @var ProductsRepository
      */
     protected $productsRepository;
+
+    /**
+     * @var ProductImagesRepository
+     */
+    protected $productImagesRepository;
 
     /**
      * @var CategoriesRepository
@@ -37,6 +44,7 @@ class ProductsController extends Controller
      */
     public function __construct(
         ProductsRepository $productsRepository,
+        ProductImagesRepository $productImagesRepository,
         CategoriesRepository $categoriesRepository,
         ColorsRepository $colorsRepository
     )
@@ -44,6 +52,7 @@ class ProductsController extends Controller
         $this->middleware('auth');
         $this->middleware('isAdmin');
         $this->productsRepository = $productsRepository;
+        $this->productImagesRepository = $productImagesRepository;
         $this->categoriesRepository = $categoriesRepository;
         $this->colorsRepository = $colorsRepository;
     }
@@ -53,16 +62,16 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function showProducts()
+    public function showProducts(Request $request)
     {
         $task = 'products';
-        $products = $this->productsRepository->allProducts();
+        $products = $this->productsRepository->allProducts($request->searchData);
 
         $total = $products->count();
         $totalProducts = $products->where('category_id', 1)->count();
         $totalCombos = $products->where('category_id', 2)->count();
 
-        return view('pages.products-list')->with([
+        return view('pages.admin.products-list')->with([
             'task' => $task,
             'products' => $products,
             'total' => $total,
@@ -77,10 +86,27 @@ class ProductsController extends Controller
         $product = $this->productsRepository->findOrNull($productId);
         $categories = $this->categoriesRepository->all();
         $colors = $this->colorsRepository->all();
+        $formUrl = url('/administracion/productos/creacion-edicion');
 
-        return view('pages.product-creation')->with([
+        $images = new Collection();
+
+        if ($product) {
+            $productImages = $this->productImagesRepository->getProductImages($product->id);
+
+            foreach ($productImages as $image) {
+                $images[] = [
+                    'title' => $image->title,
+                    'mime' => $image->mime,
+                    'image' => base64_encode($image->image),
+                ];
+            }
+        }
+
+        return view('pages.admin.product-creation')->with([
             'task' => $task,
+            'formUrl' => $formUrl,
             'product' => $product,
+            'productImages' => $images,
             'categories' => $categories,
             'colors' => $colors,
         ]);
@@ -98,10 +124,40 @@ class ProductsController extends Controller
                 'max_weight' => 'required|numeric',
                 'category_id' => 'required|numeric',
                 'color_id' => 'required|numeric',
+                'images' => 'nullable|array',
+                'images.*' => 'file|mimes:png,jpg,jpeg',
             ]);
         } catch (ValidationException $e) {
             Log::error($e->getMessage(), $e->errors());
             return redirect()->back()->with('error', Constants::ERROR);
+        }
+
+        $newImages = collect();
+        $requestImages = $request->file('images') ?? [];
+
+        foreach ($requestImages as $image) {
+            $newImages[] = [
+                "title" => $image->getClientOriginalName(),
+                "mime" => $image->getMimeType(),
+                "image" => $image->get(),
+            ];
+        }
+
+        if ($request->productId) {
+            $actualImages = $this->productImagesRepository->getProductImages($request->productId);
+
+            if ($actualImages) {
+                $actualImages = $actualImages->keyBy('id');
+            }
+
+            foreach ($newImages as $key => $image) {
+                $inDB = $actualImages->firstWhere('image', $image["image"]);
+
+                if ($inDB) {
+                    $actualImages->forget($inDB->id);
+                    $newImages->forget($key);
+                }
+            }
         }
 
         try {
@@ -109,9 +165,22 @@ class ProductsController extends Controller
             if ( $request->productId != 0 ){
 
                 $this->productsRepository->update($this->mapData($request),$request->productId);
-            }else{
 
-                $this->productsRepository->create($this->mapData($request));
+                foreach ($actualImages as $image) {
+                    $this->productImagesRepository->delete($image->id);
+                }
+
+                foreach ($newImages as $image) {
+                    $this->productImagesRepository->create($this->mapDataForImages($request->productId, $image));
+                }
+            }
+            else
+            {
+                $product = $this->productsRepository->create($this->mapData($request));
+
+                foreach ($newImages as $image) {
+                    $this->productImagesRepository->create($this->mapDataForImages($product->id, $image));
+                }
             }
             DB::commit();
         } catch (\Exception $e) {
@@ -144,7 +213,8 @@ class ProductsController extends Controller
     //     return redirect()->back()->with('success', Constants::PRODUCT_SUCCESS);
     // }
 
-    private function mapData(Request $request){
+    private function mapData(Request $request)
+    {
         $dataMapped = [
             'name' => $request->name,
             'price' => $request->price,
@@ -156,5 +226,18 @@ class ProductsController extends Controller
             'color_id' => $request->color_id,
         ];
         return $dataMapped;
+    }
+
+    private function mapDataForImages($productId, $image)
+    {
+        $imagesDataMapped = [
+            'product_id' => $productId,
+            'title' => $image['title'],
+            'mime' => $image['mime'],
+            'image' => $image['image'],
+        ];
+        // dd($imagesDataMapped);
+
+        return $imagesDataMapped;
     }
 }

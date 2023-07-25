@@ -1,0 +1,272 @@
+*
+{
+    color: #FDF9F5;
+}
+
+.nav-bar
+{
+    position: fixed;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 100;
+}
+
+.nav
+{
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 15px;
+    margin-bottom: 0px;
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #1747A0;
+    border-radius: 72px;
+    position:relative;
+}
+
+.logo
+{
+    width: 70px;
+    height: 40px;
+}
+
+.nav-toggle-icon
+{
+    width: 35px;
+    height: 35px;
+}
+
+.nav-icon
+{
+    width: 25px;
+    height: 25px;
+}
+
+.active
+{
+    display: none !important;
+}
+
+.search-section
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: -35px;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding-top: 50px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.16)),
+linear-gradient(0deg, #1747A0, #1747A0);
+    border-radius: 15px;
+}
+
+.search-divs
+{
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.input-div
+{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-consult-search
+{
+    width: 100%;
+    padding: 5px;
+    background: #FDF9F5;
+    border: 3px solid rgba(21, 65, 147, 0.24);
+    border-radius: 10px;
+    color: #1747A0;
+}
+
+.form-consult-search:focus
+{
+    outline: 2px solid #154193;
+}
+
+.input-icon
+{
+    position: absolute;
+    right: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-title
+{
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 1px;
+}
+
+.products
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-bar-link
+{
+    font-family: 'Don José';
+    font-size: 24px;
+    line-height: 28px;
+}
+
+.recommended-products-title
+{
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    color: #FFBE06;
+}
+
+.recommended-products-text
+{
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+a
+{
+    text-decoration: none;
+}
+
+p
+{
+    margin:0;
+}
+
+hr
+{
+    width: 100%;
+}
+
+@media(min-width: 768px)
+{
+    .nav
+    {
+        height: 80px;
+    }
+
+    .logo
+    {
+        width: 96px !important;
+        height: 56px !important;
+    }
+
+    .nav-toggle-icon
+    {
+        width: 40px;
+        height: 40px;
+    }
+
+    .nav-icon
+    {
+        width: 30px;
+        height: 30px;
+    }
+
+    .form-consult-search {
+        height: 48px;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0.2px;
+    }
+
+    .input-img
+    {
+        width: 19px;
+        height: 19px;
+    }
+
+    .nav-title
+    {
+        font-size: 16px;
+    }
+
+    .nav-bar-link
+    {
+        font-size: 26px;
+        line-height: 31px;
+    }
+
+    .recommended-products-title
+    {
+        font-size: 20px;
+        line-height: 22px;
+    }
+
+    .recommended-products-text
+    {
+        font-size: 18px;
+        line-height: 20px;
+    }
+}
+
+@media(min-width: 1025px)
+{
+    .nav
+    {
+        height: 72px;
+    }
+
+    .logo
+    {
+        width: 96px !important;
+        height: 56px !important;
+    }
+
+    .form-consult-search {
+        height: 48px;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0.2px;
+    }
+
+    .input-img
+    {
+        width: 19px;
+        height: 19px;
+    }
+
+    .nav-title
+    {
+        font-size: 16px;
+    }
+
+    .nav-bar-link
+    {
+        font-size: 26px;
+        line-height: 31px;
+    }
+
+    .recommended-products-title
+    {
+        font-size: 20px;
+        line-height: 22px;
+    }
+
+    .recommended-products-text
+    {
+        font-size: 18px;
+        line-height: 20px;
+    }
+}

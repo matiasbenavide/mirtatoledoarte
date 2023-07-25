@@ -1,0 +1,991 @@
+.home {
+    background-color: #FDF9F5;
+}
+
+.new-product {
+    background-color: #154193;
+    padding-top: 6rem;
+}
+
+.home-rocket
+{
+    width: 57px;
+    height: 54px;
+    top: 10%;
+    left: -4%;
+}
+
+.new-product-image-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+}
+
+.new-product-image {
+    width: 387px;
+    height: 272px;
+}
+
+.new-product-text-div
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.new-product-title {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 1px;
+    text-align: center;
+    color: #FFBE06;
+}
+
+.new-product-name {
+    font-family: 'Don José';
+    font-size: 48px;
+    line-height: 52px;
+    text-align: center;
+}
+
+.new-product-button {
+    margin-top: 15px;
+}
+
+.images-overlap {
+    position: relative;
+    display: flex;
+}
+
+.image-to-overlap {
+    position: absolute;
+    display: flex;
+}
+
+.boat-and-line {
+    margin-top: 3rem;
+}
+
+.image-width {
+    width: 100%;
+}
+
+.home-boat {
+    left: 2rem;
+    bottom: 30%;
+}
+
+.home-wave
+{
+    margin-bottom: -1px;
+}
+
+.home-sun {
+    top: 110%;
+    right: 0;
+}
+
+.container {
+    max-width: 100%;
+    margin-top: 50px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.categories-plaza-div {
+    justify-content: end;
+    align-items: start;
+    margin-bottom: 15px;
+    width: 310px;
+    height: 195px;
+    border: 5px solid #FD8B7C;
+    background-color: #fff;
+    border-radius: 15px;
+}
+
+.categories-singles-div {
+    justify-content: center;
+    align-items: start;
+    margin-top: 15px;
+    width: 310px;
+    height: 195px;
+    background-color: #fff;
+    border: 5px solid #EDAF00;
+    ;
+    border-radius: 15px;
+}
+
+.plaza-image {
+    width: 100%;
+}
+
+.singles-image {
+    width: 100%;
+}
+
+.categories-name {
+    bottom: 22%;
+    left: 4%;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 38px;
+}
+
+.categories-button {
+    width: 160px !important;
+    padding: 5px;
+    bottom: 0.25rem;
+    left: 15px;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.anchor {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.title {
+    margin-bottom: 30px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 48px;
+}
+
+.main-text {
+    color: #154193;
+}
+
+.flyer-container {
+    height: 64px;
+    position: relative;
+    top: 50%;
+    /* animation: scroll 20s linear infinite;
+    transform: translate(0, -50%); */
+    overflow-x: hidden !important;
+}
+
+.flyer-div {
+    /* width: 200%; */
+    display: flex;
+    position: absolute;
+    left: 0;
+}
+
+.flyer {
+    /* width: 100%; */
+    display: flex;
+    justify-content: space-around;
+}
+
+@keyframes scroll {
+    0% {
+        /* transform: translateX(0px); */
+        left: 0;
+    }
+
+    100% {
+        /* transform: translateX(calc(-490px * 2)); */
+        left: -100%;
+    }
+}
+
+.title-div {
+    display: flex;
+    align-items: center;
+}
+
+.shine {
+    margin-bottom: 2rem;
+    width: 13.5px;
+    height: 16px;
+}
+
+.product {
+    height: 145px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+.noted-products-div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.noted-products {
+    width: 50%;
+    padding: 15px;
+}
+
+.noted {
+    top: 2%;
+    right: 2%;
+    margin: 0 !important;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 2px solid #FF8141;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0.4px;
+    text-align: center;
+}
+
+.with-color {
+    background-color: #FF8141;
+}
+
+.without-color {
+    color: #FF8141;
+}
+
+.noted-image {
+    width: 100%;
+}
+
+.cart-bag-div {
+    bottom: 2%;
+    right: 2%;
+    padding: 5px;
+    background-color: #154193;
+    border-radius: 50%;
+}
+
+.cart-bag
+{
+    width: 14px;
+    height: 14px;
+}
+
+.product-name {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.4px;
+    color: #404040;
+}
+
+.product-price {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 20px;
+    letter-spacing: 0.4px;
+    color: #154193;
+}
+
+.know-what-section {
+    padding: 0;
+}
+
+.know-what-div {
+    margin: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #2488D5;
+    padding-bottom: 2rem;
+}
+
+.img-width {
+    width: 100%;
+    margin-bottom: -1px;
+}
+
+.know-what-img
+{
+    width: 100%;
+}
+
+.know-what-title
+{
+    font-family: 'Don José';
+    font-size: 36px;
+    line-height: 53px;
+}
+
+.text {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.know-what-text-div
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.know-what-text {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.about-us-section {
+    padding-bottom: 2rem;
+}
+
+.about-us-text-div
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-us-text {
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-bottom: 2rem;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #404040;
+    text-align: justify;
+}
+
+.about-us-button
+{
+    width: 150px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+}
+
+.blue-bg {
+    background-color: #154193;
+}
+.light-blue-bg {
+    background-color: #2488D5;
+}
+
+.opinions-title {
+    margin-top: 2rem;
+    font-family: 'Don José';
+    font-size: 29px;
+    line-height: 36px;
+    text-align: center;
+}
+
+.opinions-images {
+    width: 313px;
+    height: 247px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.opinions-fish {
+    width: 34px;
+    height: 24px;
+    top: 15%;
+    left: -3%;
+}
+
+.opinions-fish-bubbles {
+    width: 55px;
+    height: 40px;
+    bottom: 30%;
+    right: 0;
+}
+
+.footer {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.footer-drop-down {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-div {
+    display: flex;
+    justify-content: center;
+}
+
+.logo {
+    width: 70px;
+    height: 40px;
+}
+
+.drop-down-title {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: 0.4px;
+}
+
+.drop-down-cross {
+    font-weight: 300;
+    font-size: 48px;
+    letter-spacing: 0.4px;
+}
+
+.contact-btn {
+    width: 140px;
+    height: 50px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+}
+
+.questions-div {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.general-questions {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 1px;
+    color: #FDF9F5A6;
+}
+
+.footer-copyright {
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.copyright-text {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0.4px;
+    color: #FDF9F5BF;
+}
+
+@media(min-width: 768px)
+{
+    .new-product
+    {
+        padding-top: 10rem;
+    }
+
+    .home-rocket
+    {
+        width: 95px;
+        height: 90px;
+        top: 14%;
+        left: 8%;
+    }
+
+    .new-product-image-div
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .new-product-image
+    {
+        width: 580px;
+        height: 436px;
+    }
+
+    .new-product-title
+    {
+        font-size: 16px;
+    }
+
+    .new-product-name
+    {
+        font-size: 72px;
+        line-height: 80px;
+    }
+
+    .title
+    {
+        font-size: 40px;
+        line-height: 48px;
+    }
+
+    .categories-plaza-div
+    {
+        width: 442px;
+        height: 280px;
+    }
+
+    .categories-singles-div
+    {
+        width: 442px;
+        height: 280px;
+    }
+
+    .categories-name {
+        font-size: 30px;
+    }
+
+    .categories-button {
+        height: 50px;
+        padding: 5px;
+        bottom: 2%;
+        left: 4%;
+        font-size: 18px;
+        line-height: 25px;
+    }
+
+    .product
+    {
+        height: 260px;
+    }
+
+    .noted
+    {
+        font-size: 14px;
+    }
+
+    .cart-bag
+    {
+        width: 16px;
+        height: 16px;
+    }
+
+    .product-name
+    {
+        font-size: 18px;
+    }
+
+    .product-price
+    {
+        font-size: 24px;
+    }
+
+    .know-what-div {
+        padding-left: 17%;
+        padding-right: 17%;
+    }
+
+    .know-what-title
+    {
+        font-size: 48px;
+        line-height: 72px;
+    }
+
+    .text
+    {
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    .about-us-section
+    {
+        padding-left: 15%;
+        padding-right: 15%;
+    }
+
+    .about-us-text
+    {
+        padding: 0;
+    }
+
+    .about-us-button
+    {
+        max-width: 340px;
+        width: 340px;
+    }
+
+    .opinions-title
+    {
+        font-size: 48px;
+        line-height: 56px;
+    }
+
+    .opinions-fish
+    {
+        width: 45px;
+        height: 32px;
+        top: 23%;
+        left: 22%;
+    }
+
+    .opinions-fish-bubbles
+    {
+        width: 75px;
+        height: 45px;
+        bottom: 40%;
+        right: 18%;
+    }
+
+    .opinions-images
+    {
+        width: 335px;
+        height: 210px;
+    }
+
+    #homeOpinion1
+    {
+        margin-left: 50%;
+    }
+
+    #homeOpinion2
+    {
+        width: 430px;
+        height: 270px;
+        margin-right: 40%;
+    }
+
+    #homeOpinion3
+    {
+        margin-left: 50%;
+    }
+
+    .contact-btn
+    {
+        max-width: 340px;
+        width: 340px;
+    }
+
+    .footer-copyright
+    {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media(min-width: 1025px)
+{
+    .home-rocket
+    {
+        width: 50px;
+        height: 50px;
+        top: 20%;
+        left: 45%;
+    }
+
+    .home-boat
+    {
+        bottom: 22%;
+        left: 15%;
+    }
+
+    .home-sun
+    {
+        top: 80%;
+    }
+
+    .container
+    {
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+
+    .new-product-image-div
+    {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .new-product-image
+    {
+        width: 580px;
+        height: 436px;
+    }
+
+    .new-product-text-div
+    {
+        margin-left: 10%;
+        align-items: start;
+    }
+
+    .new-product-title
+    {
+        font-size: 16px;
+    }
+
+    .new-product-name
+    {
+        font-size: 72px;
+        line-height: 80px;
+        text-align: start;
+    }
+
+    .title
+    {
+        margin-bottom: 15px;
+        font-size: 28px;
+    }
+
+    .categories-container
+    {
+        align-items: start;
+        margin-bottom: 50px;
+    }
+
+    .categories-title-div
+    {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .categories-div
+    {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .categories-plaza-div
+    {
+        width: 385px;
+        height: 225px;
+        margin: 0;
+    }
+
+    .categories-singles-div
+    {
+        width: 385px;
+        height: 225px;
+        margin: 0;
+    }
+
+    .plaza-image
+    {
+        width: 90%;
+    }
+
+    .singles-image
+    {
+        width: 90%;
+    }
+
+    .categories-name {
+        bottom: 27%;
+        font-size: 24px;
+        line-height: 30px;
+        letter-spacing: 0.4px;
+    }
+
+    .categories-button {
+        height: 40px;
+        bottom: 5%;
+        font-size: 15px;
+        line-height: 20px;
+    }
+
+    #categoriesAnchorDesktop
+    {
+        display: block !important;
+    }
+
+    #categoriesAnchorMobile
+    {
+        display: none;
+    }
+
+    .shine {
+        margin-bottom: 4%;
+    }
+
+    .noted-products
+    {
+        width: 25%;
+    }
+
+    .product
+    {
+        width: 170px;
+        height: 170px;
+    }
+
+    .noted
+    {
+        font-size: 12px;
+    }
+
+    .cart-bag
+    {
+        width: 16px;
+        height: 16px;
+    }
+
+    .product-name
+    {
+        font-size: 16px;
+    }
+
+    .product-price
+    {
+        font-size: 20px;
+    }
+
+    .know-what-section
+    {
+        padding: 0;
+    }
+
+    .know-what-div {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+    .know-what-img
+    {
+        width: 434px;
+        height: 253px;
+    }
+
+    .know-what-title
+    {
+        font-size: 32px;
+        line-height: 64px;
+    }
+
+    .text
+    {
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    .know-what-text-div
+    {
+        align-items: start;
+    }
+
+    .know-what-text
+    {
+        margin-top: 1rem;
+        font-size: 16px;
+        line-height: 24px;
+        text-align: start;
+    }
+
+    .about-us-section
+    {
+        display: flex;
+        flex-direction: row-reverse;
+        padding-right: 5%;
+    }
+
+    .about-us-img
+    {
+        width: 426px;
+        height: 308px;
+    }
+
+    .about-us-text-div
+    {
+        align-items: start;
+    }
+
+    .about-us-text
+    {
+        padding: 0;
+        font-size: 14px;
+        line-height: 22px;
+        text-align: start;
+    }
+
+    .about-us-button
+    {
+        width: 140px;
+        height: 45px;
+    }
+
+    .opinions-title
+    {
+        font-size: 32px;
+        line-height: 64px;
+    }
+
+    .opinions-fish
+    {
+        width: 68px;
+        height: 48px;
+        top: 23%;
+        left: 0;
+    }
+
+    .opinions-fish-bubbles
+    {
+        width: 34px;
+        height: 24px;
+        bottom: 62%;
+        right: 5%;
+    }
+
+    .opinions-images
+    {
+        width: 335px;
+        height: 210px;
+    }
+
+    #homeOpinion1
+    {
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-left: 50%;
+    }
+
+    #homeOpinion2
+    {
+        width: 430px;
+        height: 270px;
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-right: 40%;
+    }
+
+    #homeOpinion3
+    {
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-left: 50%;
+    }
+
+    #footerMobile
+    {
+        display: none;
+    }
+
+    #footerDesktop
+    {
+        display: block !important;
+    }
+
+    .footer
+    {
+        
+    }
+
+    .contact-btn
+    {
+        max-width: 340px;
+        width: 340px;
+    }
+
+    .footer-copyright
+    {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+}

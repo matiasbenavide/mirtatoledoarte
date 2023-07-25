@@ -20,23 +20,19 @@ class ProductsRepository extends BaseRepository
         return 'App\\Models\\Admin\\Product';
     }
 
-    public function allProducts()
+    public function allProducts($searchData)
     {
         return $this->select('products.*', 'categories.name as category', 'colors.color as color')
             ->leftJoin('categories', 'products.category_id', 'categories.id')
             ->leftJoin('colors', 'products.color_id', 'colors.id')
-            // ->where(function ($query) use ($searchData) {
-            //     if ($searchData) {
-            //         $query->where('agreements.number', $searchData);
-            //         $query->orWhere('agreements.signatory_parties', 'LIKE', '%' . $searchData . '%');
-            //         $query->orWhere('agreements.signature_year', $searchData);
-            //         $query->orWhereHas('updated_user', function (Builder $query) use ($searchData) {
-            //             $query->where('username', 'LIKE', '%' . $searchData . '%');
-            //         });
-            //     }
-            // })
+            ->where(function ($query) use ($searchData) {
+                if ($searchData) {
+                    $query->where('products.id', $searchData);
+                    $query->orWhere('products.name', 'LIKE', '%' . $searchData . '%');
+                    $query->orWhere('products.price', $searchData);
+                }
+            })
             ->orderBy('updated_at', 'DESC')
-            // ->paginate($pagination);
             ->get();
     }
 
@@ -49,6 +45,18 @@ class ProductsRepository extends BaseRepository
         } catch(ModelNotFoundException $e) {
             return null;
         }
+    }
+
+    public function getNoted()
+    {
+        return $this->select('products.*', 'categories.name as category', 'colors.color as color')
+            ->leftJoin('categories', 'products.category_id', 'categories.id')
+            ->leftJoin('colors', 'products.color_id', 'colors.id')
+            ->where('products.id', 1)
+            ->orWhere('products.id', 2)
+            ->orWhere('products.id', 3)
+            ->orWhere('products.id', 4)
+            ->get();
     }
 
 }

@@ -26,7 +26,7 @@ class VacationsController extends Controller
     public function showVacations()
     {
         $task = 'vacations';
-        return view('pages.vacations')->with([
+        return view('pages.admin.vacations')->with([
             'task' => $task
         ]);
     }

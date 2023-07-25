@@ -1,6 +1,7 @@
 export async function main(options) {
 
     //***** FORM & INPUTS *****//
+    let formData = $('#productForm');
     let category_id = $('#category_id');
     let name = $('#name');
     let price = $('#price');
@@ -10,16 +11,27 @@ export async function main(options) {
     let max_weight = $('#max_weight');
     let color_id = $('#color_id');
 
+    let images = [];
+
     //***** PRODUCT *****//
+    let formUrl;
     let product;
+    let productImages;
 
     initProduct(options)
 
     function initProduct(options) {
+        formUrl = options.formUrl;
         product = options.product;
+        productImages = options.productImages;
+
         if (product) {
             insertDataInInputs(product);
         }
+
+        // if (productImages) {
+        //     sendImagesToForm();
+        // }
     }
 
     function insertDataInInputs(product) {
@@ -31,5 +43,21 @@ export async function main(options) {
         size.val(product.size);
         max_weight.val(product.max_weight);
         color_id.val(product.color_id);
+    }
+
+    function sendImagesToForm()
+    {
+        const dataTransfer = new DataTransfer();
+        for (let i = 0; i < productImages.length; i++) {
+
+            let imageFile = new File([productImages[i].image], productImages[i].title, { type: productImages[i].mime });
+            dataTransfer.items.add(imageFile);
+            images.push(dataTransfer.files);
+            formData[0].append('images[]', images);
+        }
+
+        let req = new XMLHttpRequest();
+        req.open('post', formUrl);
+        req.send(formData);
     }
 }

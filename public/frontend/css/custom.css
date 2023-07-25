@@ -98,6 +98,59 @@
     box-shadow: 1px 1px 1px #FFBE06;
 }
 
+.button-2
+{
+    max-width: 174.750px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FDF9F5;
+    color: #154193;
+    font-weight: bold;
+    border: 2px solid #154193;
+    border-radius: 8px;
+}
+
+.button-2:hover
+{
+    background-color: #154193;
+    color: #FDF9F5;
+}
+
+.button-2:focus
+{
+    background-color: #FFBE06;
+    color: #FDF9F5;
+    border: 1px solid #FFBE06;
+    border-radius: 8px;
+    outline: 1px solid #FFBE06 !important;
+    box-shadow: 1px 1px 1px #FFBE06;
+}
+
+.anchor {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.2px;
+    text-decoration: underline #154193;
+    color: #154193;
+}
+
+.anchor:active {
+    text-decoration: underline #FDF9F5;
+    color: #FDF9F5;
+}
+
+.anchor:visited {
+    text-decoration: underline #FFBE06;
+    color: #FFBE06;
+}
+
+hr {
+    height: 2px !important;
+}
+
 @media (max-width: 1279px)
 {
     *

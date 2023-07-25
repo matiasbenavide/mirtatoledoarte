@@ -26,7 +26,7 @@ class ConfigurationController extends Controller
     public function showConfiguration()
     {
         $task = 'configuration';
-        return view('pages.configuration')->with([
+        return view('pages.admin.configuration')->with([
             'task' => $task
         ]);
     }

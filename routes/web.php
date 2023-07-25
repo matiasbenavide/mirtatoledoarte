@@ -15,18 +15,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome']);
+Route::get('/', function() {
+    return redirect()->route('home');
+});
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'welcome'])->name('home');
+Route::get('/productos/detalle/{id}', [App\Http\Controllers\ProductClientController::class, 'productDetail']);
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::prefix('/administracion')->group(function () {
         Route::get('/', function () {
             return redirect()->route('admin.home');
         });
-        // Route::get('/home', function() { return view('adminHome'); })->name('admin.home');
         // PRODUCT
         Route::get('/productos/listado', [App\Http\Controllers\Admin\ProductsController::class, 'showProducts'])->name('admin.home');
         Route::get('/productos/crear-editar/{id}', [App\Http\Controllers\Admin\ProductsController::class, 'showProductCreation']);

@@ -26,7 +26,7 @@ class SellsController extends Controller
     public function showSells()
     {
         $task = 'sells';
-        return view('pages.sells')->with([
+        return view('pages.admin.sells')->with([
             'task' => $task
         ]);
     }
