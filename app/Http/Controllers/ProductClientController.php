@@ -34,9 +34,8 @@ class ProductClientController extends Controller
     public function productDetail(Request $request)
     {
         $product = $this->productsRepository->find($request->id);
-        dd($product);
 
-        return view('product-detail')->with([
+        return view('pages.product-detail')->with([
             'product' => $product
         ]);
     }

@@ -2,6 +2,7 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
 @endsection
 @section('mainContent')
 <div class="home relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
@@ -24,7 +25,7 @@
         @endauth
     </div> --}}
 
-    <div class="new-product">
+    <div class="navbar-distance new-product">
         <div class="new-product-image-div">
             <img class="image-to-overlap home-rocket" src="{{ asset('admin/assets/images/HomeRocket.svg') }}" alt="">
             <img class="new-product-image" src="{{ asset('admin/assets/images/HomeNewProduct.svg') }}" alt="">

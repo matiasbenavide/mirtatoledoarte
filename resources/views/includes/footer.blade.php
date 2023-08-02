@@ -1,5 +1,5 @@
-<div>
-    <div id="footerMobile" class="footer blue-bg">
+<div class="footer">
+    <div id="footerMobile" class="footer-container blue-bg">
         <div class="footer-div">
             <img class="logo" src="{{asset('admin/assets/icons/logo.svg')}}" alt="">
         </div>
@@ -52,7 +52,7 @@
         </div>
     </div>
 
-    <div id="footerDesktop" class="footer blue-bg" style="display: none;">
+    <div id="footerDesktop" class="footer-container blue-bg" style="display: none;">
         <div class="footer-div">
             <img class="logo" src="{{asset('admin/assets/icons/logo.svg')}}" alt="">
         </div>

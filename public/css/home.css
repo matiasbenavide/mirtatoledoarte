@@ -340,6 +340,11 @@
     padding-bottom: 2rem;
 }
 
+.about-us-img
+{
+    width: 100%;
+}
+
 .about-us-text-div
 {
     display: flex;
@@ -365,13 +370,6 @@
     font-weight: 700;
     font-size: 18px;
     line-height: 25px;
-}
-
-.blue-bg {
-    background-color: #154193;
-}
-.light-blue-bg {
-    background-color: #2488D5;
 }
 
 .opinions-title {
@@ -403,79 +401,9 @@
     right: 0;
 }
 
-.footer {
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.footer-drop-down {
-    display: flex;
-    justify-content: space-between;
-}
-
-.footer-div {
-    display: flex;
-    justify-content: center;
-}
-
 .logo {
     width: 70px;
     height: 40px;
-}
-
-.drop-down-title {
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 28px;
-    letter-spacing: 0.4px;
-}
-
-.drop-down-cross {
-    font-weight: 300;
-    font-size: 48px;
-    letter-spacing: 0.4px;
-}
-
-.contact-btn {
-    width: 140px;
-    height: 50px;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 25px;
-}
-
-.questions-div {
-    flex-direction: column;
-    align-items: center;
-    margin-top: 15px;
-}
-
-.general-questions {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 24px;
-    letter-spacing: 1px;
-    color: #FDF9F5A6;
-}
-
-.footer-copyright {
-    padding: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.copyright-text {
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 20px;
-    letter-spacing: 0.4px;
-    color: #FDF9F5BF;
 }
 
 @media(min-width: 768px)
@@ -652,19 +580,6 @@
     #homeOpinion3
     {
         margin-left: 50%;
-    }
-
-    .contact-btn
-    {
-        max-width: 340px;
-        width: 340px;
-    }
-
-    .footer-copyright
-    {
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
     }
 }
 
@@ -959,33 +874,5 @@
         margin-top: 0;
         margin-bottom: 0;
         margin-left: 50%;
-    }
-
-    #footerMobile
-    {
-        display: none;
-    }
-
-    #footerDesktop
-    {
-        display: block !important;
-    }
-
-    .footer
-    {
-        
-    }
-
-    .contact-btn
-    {
-        max-width: 340px;
-        width: 340px;
-    }
-
-    .footer-copyright
-    {
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
     }
 }

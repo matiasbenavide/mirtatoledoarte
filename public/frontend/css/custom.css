@@ -17,6 +17,29 @@
     background-color: #F5F5F5;
 }
 
+.light-bg
+{
+    background-color: #FDF9F5;
+}
+
+.light-beige-bg
+{
+    background-color: #FCF5E6;
+}
+
+.blue-bg {
+    background-color: #154193;
+}
+
+.light-blue-bg {
+    background-color: #2488D5;
+}
+
+.navbar-distance
+{
+    padding-top: 6rem;
+}
+
 .title
 {
     font-family: 'Don José';

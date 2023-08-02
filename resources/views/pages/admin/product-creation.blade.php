@@ -10,7 +10,6 @@
             <p class="sub-title">Desde acá podés añadir productos nuevos a la tienda</p>
         </div>
         <div class="row col-12">
-
             @isset($product)
                 <div class="col-12">
                     <label class="label" for="productId"></label>
@@ -38,6 +37,16 @@
             <div class="col-2">
                 <label class="label" for="price"></label>
                 <input class="form-input" name="price" id="price" type="number" placeholder="Precio"/>
+            </div>
+
+            <div id="productsSelectDiv" class="col-12" hidden>
+                <label class="label" for="productsSelect"></label>
+                <select class="form-input" name="productsSelect" id="productsSelect" multiple>
+                    <option value="">Selecione un producto</option>
+                    @foreach ($products as $allProduct)
+                        <option value="{{ $allProduct->id }}">{{ $allProduct->name }}</option>
+                    @endforeach
+                </select>
             </div>
 
             <div class="col-12">

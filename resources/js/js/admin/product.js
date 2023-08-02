@@ -5,6 +5,8 @@ export async function main(options) {
     let category_id = $('#category_id');
     let name = $('#name');
     let price = $('#price');
+    let productsSelect = $('#productsSelect');
+    let productsSelectDiv = $('#productsSelectDiv');
     let description = $('#description');
     let material = $('#material');
     let size = $('#size');
@@ -17,6 +19,14 @@ export async function main(options) {
     let formUrl;
     let product;
     let productImages;
+
+    category_id.on('change', function () {
+        showProductsSelect()
+    });
+
+    productsSelect.on('change', function () {
+        productsSelect[0].value
+    });
 
     initProduct(options)
 
@@ -43,6 +53,15 @@ export async function main(options) {
         size.val(product.size);
         max_weight.val(product.max_weight);
         color_id.val(product.color_id);
+    }
+
+    function showProductsSelect() {
+        if (category_id.val() == 2) {
+            productsSelectDiv[0].hidden = false;
+        }
+        else {
+            productsSelectDiv[0].hidden = true;
+        }
     }
 
     function sendImagesToForm()

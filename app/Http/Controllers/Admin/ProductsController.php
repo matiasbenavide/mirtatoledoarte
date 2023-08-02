@@ -84,6 +84,7 @@ class ProductsController extends Controller
     {
         $task = 'product-create';
         $product = $this->productsRepository->findOrNull($productId);
+        $products = $this->productsRepository->all();
         $categories = $this->categoriesRepository->all();
         $colors = $this->colorsRepository->all();
         $formUrl = url('/administracion/productos/creacion-edicion');
@@ -107,6 +108,7 @@ class ProductsController extends Controller
             'formUrl' => $formUrl,
             'product' => $product,
             'productImages' => $images,
+            'products' => $products,
             'categories' => $categories,
             'colors' => $colors,
         ]);
@@ -124,63 +126,75 @@ class ProductsController extends Controller
                 'max_weight' => 'required|numeric',
                 'category_id' => 'required|numeric',
                 'color_id' => 'required|numeric',
-                'images' => 'nullable|array',
-                'images.*' => 'file|mimes:png,jpg,jpeg',
+                // 'images' => 'nullable|array',
+                // 'images.*' => 'file|mimes:png,jpg,jpeg',
             ]);
         } catch (ValidationException $e) {
             Log::error($e->getMessage(), $e->errors());
             return redirect()->back()->with('error', Constants::ERROR);
         }
 
-        $newImages = collect();
-        $requestImages = $request->file('images') ?? [];
+        // $newImages = collect();
+        // $requestImages = $request->file('images') ?? [];
 
-        foreach ($requestImages as $image) {
-            $newImages[] = [
-                "title" => $image->getClientOriginalName(),
-                "mime" => $image->getMimeType(),
-                "image" => $image->get(),
-            ];
-        }
+        // foreach ($requestImages as $image) {
+        //     $newImages[] = [
+        //         "title" => $image->getClientOriginalName(),
+        //         "mime" => $image->getMimeType(),
+        //         "image" => $image->get(),
+        //     ];
+        // }
 
-        if ($request->productId) {
-            $actualImages = $this->productImagesRepository->getProductImages($request->productId);
+        // if ($request->productId) {
+        //     $actualImages = $this->productImagesRepository->getProductImages($request->productId);
 
-            if ($actualImages) {
-                $actualImages = $actualImages->keyBy('id');
-            }
+        //     if ($actualImages) {
+        //         $actualImages = $actualImages->keyBy('id');
+        //     }
 
-            foreach ($newImages as $key => $image) {
-                $inDB = $actualImages->firstWhere('image', $image["image"]);
+        //     foreach ($newImages as $key => $image) {
+        //         $inDB = $actualImages->firstWhere('image', $image["image"]);
 
-                if ($inDB) {
-                    $actualImages->forget($inDB->id);
-                    $newImages->forget($key);
-                }
-            }
-        }
+        //         if ($inDB) {
+        //             $actualImages->forget($inDB->id);
+        //             $newImages->forget($key);
+        //         }
+        //     }
+        // }
 
         try {
             DB::beginTransaction();
-            if ( $request->productId != 0 ){
-
-                $this->productsRepository->update($this->mapData($request),$request->productId);
-
-                foreach ($actualImages as $image) {
-                    $this->productImagesRepository->delete($image->id);
+            if ($request->productId != 0){
+                if ($request->category_id == 1)
+                {
+                    $product = $this->productsRepository->update($this->mapDataForProduct($request),$request->productId);
+                }
+                else
+                {
+                    $product = $this->productsRepository->update($this->mapDataForCombo($request),$request->productId);
                 }
 
-                foreach ($newImages as $image) {
-                    $this->productImagesRepository->create($this->mapDataForImages($request->productId, $image));
-                }
+                // foreach ($actualImages as $image) {
+                //     $this->productImagesRepository->delete($image->id);
+                // }
+
+                // foreach ($newImages as $image) {
+                //     $this->productImagesRepository->create($this->mapDataForImages($request->productId, $image));
+                // }
             }
             else
             {
-                $product = $this->productsRepository->create($this->mapData($request));
-
-                foreach ($newImages as $image) {
-                    $this->productImagesRepository->create($this->mapDataForImages($product->id, $image));
+                if ($request->category_id == 1) {
+                    $product = $this->productsRepository->create($this->mapDataForProduct($request));
                 }
+                else
+                {
+                    $product = $this->productsRepository->create($this->mapDataForCombo($request));
+                }
+
+                // foreach ($newImages as $image) {
+                //     $this->productImagesRepository->create($this->mapDataForImages($product->id, $image));
+                // }
             }
             DB::commit();
         } catch (\Exception $e) {
@@ -213,7 +227,22 @@ class ProductsController extends Controller
     //     return redirect()->back()->with('success', Constants::PRODUCT_SUCCESS);
     // }
 
-    private function mapData(Request $request)
+    private function mapDataForProduct(Request $request)
+    {
+        $dataMapped = [
+            'name' => $request->name,
+            'price' => $request->price,
+            'description' => $request->description,
+            'material' => $request->material,
+            'size' => $request->size,
+            'max_weight' => $request->max_weight,
+            'category_id' => $request->category_id,
+            'color_id' => $request->color_id,
+        ];
+        return $dataMapped;
+    }
+
+    private function mapDataForCombo(Request $request)
     {
         $dataMapped = [
             'name' => $request->name,
@@ -236,7 +265,6 @@ class ProductsController extends Controller
             'mime' => $image['mime'],
             'image' => $image['image'],
         ];
-        // dd($imagesDataMapped);
 
         return $imagesDataMapped;
     }
