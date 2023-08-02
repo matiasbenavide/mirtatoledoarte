@@ -3,14 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Models\Admin\Category;
+use App\Models\Admin\Constants;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Validation\ValidationException;
-use App\Models\Admin\Constants;
 use App\Http\Controllers\Controller;
 use App\Repositories\Admin\ColorsRepository;
+use App\Repositories\Admin\CombosRepository;
+use Illuminate\Database\Eloquent\Collection;
 use App\Repositories\Admin\ProductsRepository;
+use Illuminate\Validation\ValidationException;
 use App\Repositories\Admin\CategoriesRepository;
 use App\Repositories\Admin\ProductImagesRepository;
 
@@ -21,6 +23,11 @@ class ProductsController extends Controller
      * @var ProductsRepository
      */
     protected $productsRepository;
+
+    /**
+     * @var CombosRepository
+     */
+    protected $combosRepository;
 
     /**
      * @var ProductImagesRepository
@@ -44,6 +51,7 @@ class ProductsController extends Controller
      */
     public function __construct(
         ProductsRepository $productsRepository,
+        CombosRepository $combosRepository,
         ProductImagesRepository $productImagesRepository,
         CategoriesRepository $categoriesRepository,
         ColorsRepository $colorsRepository
@@ -52,6 +60,7 @@ class ProductsController extends Controller
         $this->middleware('auth');
         $this->middleware('isAdmin');
         $this->productsRepository = $productsRepository;
+        $this->combosRepository = $combosRepository;
         $this->productImagesRepository = $productImagesRepository;
         $this->categoriesRepository = $categoriesRepository;
         $this->colorsRepository = $colorsRepository;
@@ -66,24 +75,34 @@ class ProductsController extends Controller
     {
         $task = 'products';
         $products = $this->productsRepository->allProducts($request->searchData);
+        $combos = $this->combosRepository->allCombos($request->searchData);
+        // $combosWithProducts = $this->combosRepository->allCombosWithProducts($request->searchData);
 
         $total = $products->count();
-        $totalProducts = $products->where('category_id', 1)->count();
-        $totalCombos = $products->where('category_id', 2)->count();
+        $totalProducts = $products->count();
+        $totalCombos = $combos->count();
 
         return view('pages.admin.products-list')->with([
             'task' => $task,
             'products' => $products,
+            'combos' => $combos,
             'total' => $total,
             'totalProducts' => $totalProducts,
             'totalCombos' => $totalCombos
         ]);
     }
 
-    public function showProductCreation($productId)
+    public function showProductCreation($categoryId, $productId)
     {
         $task = 'product-create';
-        $product = $this->productsRepository->findOrNull($productId);
+        if ($categoryId == Category::INDIVIDUAL) {
+            $product = $this->productsRepository->findOrNull($productId);
+        }
+        else
+        {
+            $product = $this->combosRepository->findOrNull($productId);
+            $product->products = json_decode($product->products);
+        }
         $products = $this->productsRepository->all();
         $categories = $this->categoriesRepository->all();
         $colors = $this->colorsRepository->all();
@@ -116,23 +135,49 @@ class ProductsController extends Controller
 
     public function saveData(Request $request)
     {
-        try {
-            $this->validate($request, [
-                'name' => 'required|string',
-                'price' => 'required|numeric',
-                'description' => 'required|string',
-                'material' => 'required|string',
-                'size' => 'required|string',
-                'max_weight' => 'required|numeric',
-                'category_id' => 'required|numeric',
-                'color_id' => 'required|numeric',
-                // 'images' => 'nullable|array',
-                // 'images.*' => 'file|mimes:png,jpg,jpeg',
-            ]);
-        } catch (ValidationException $e) {
-            Log::error($e->getMessage(), $e->errors());
-            return redirect()->back()->with('error', Constants::ERROR);
+        if ($request->category_id == Category::INDIVIDUAL) {
+            try {
+                $this->validate($request, [
+                    'name' => 'required|string',
+                    'price' => 'required|numeric',
+                    'description' => 'required|string',
+                    'material' => 'required|string',
+                    'size' => 'required|string',
+                    'max_weight' => 'required|numeric',
+                    'category_id' => 'required|numeric',
+                    'color_id' => 'required|numeric',
+                    // 'images' => 'nullable|array',
+                    // 'images.*' => 'file|mimes:png,jpg,jpeg',
+                ]);
+            } catch (ValidationException $e) {
+                Log::error($e->getMessage(), $e->errors());
+                return redirect()->back()->with('error', Constants::ERROR);
+            }
         }
+        else
+        {
+            try {
+                $this->validate($request, [
+                    'name' => 'required|string',
+                    'price' => 'required|numeric',
+                    'productsSelect' => 'required|array',
+                    'productsSelect.*' => 'required|numeric',
+                    'description' => 'required|string',
+                    'material' => 'required|string',
+                    'size' => 'required|string',
+                    'max_weight' => 'required|numeric',
+                    'category_id' => 'required|numeric',
+                    'color_id' => 'required|numeric',
+                    // 'images' => 'nullable|array',
+                    // 'images.*' => 'file|mimes:png,jpg,jpeg',
+                ]);
+            } catch (ValidationException $e) {
+                Log::error($e->getMessage(), $e->errors());
+                return redirect()->back()->with('error', Constants::ERROR);
+            }
+        }
+
+        // dd($request->all());
 
         // $newImages = collect();
         // $requestImages = $request->file('images') ?? [];
@@ -165,13 +210,13 @@ class ProductsController extends Controller
         try {
             DB::beginTransaction();
             if ($request->productId != 0){
-                if ($request->category_id == 1)
+                if ($request->category_id == Category::INDIVIDUAL)
                 {
                     $product = $this->productsRepository->update($this->mapDataForProduct($request),$request->productId);
                 }
                 else
                 {
-                    $product = $this->productsRepository->update($this->mapDataForCombo($request),$request->productId);
+                    $product = $this->combosRepository->update($this->mapDataForCombo($request),$request->productId);
                 }
 
                 // foreach ($actualImages as $image) {
@@ -184,12 +229,12 @@ class ProductsController extends Controller
             }
             else
             {
-                if ($request->category_id == 1) {
+                if ($request->category_id == Category::INDIVIDUAL) {
                     $product = $this->productsRepository->create($this->mapDataForProduct($request));
                 }
                 else
                 {
-                    $product = $this->productsRepository->create($this->mapDataForCombo($request));
+                    $product = $this->combosRepository->create($this->mapDataForCombo($request));
                 }
 
                 // foreach ($newImages as $image) {
@@ -247,6 +292,7 @@ class ProductsController extends Controller
         $dataMapped = [
             'name' => $request->name,
             'price' => $request->price,
+            'products' => json_encode($request->productsSelect),
             'description' => $request->description,
             'material' => $request->material,
             'size' => $request->size,
@@ -257,15 +303,15 @@ class ProductsController extends Controller
         return $dataMapped;
     }
 
-    private function mapDataForImages($productId, $image)
-    {
-        $imagesDataMapped = [
-            'product_id' => $productId,
-            'title' => $image['title'],
-            'mime' => $image['mime'],
-            'image' => $image['image'],
-        ];
+    // private function mapDataForImages($productId, $image)
+    // {
+    //     $imagesDataMapped = [
+    //         'product_id' => $productId,
+    //         'title' => $image['title'],
+    //         'mime' => $image['mime'],
+    //         'image' => $image['image'],
+    //     ];
 
-        return $imagesDataMapped;
-    }
+    //     return $imagesDataMapped;
+    // }
 }

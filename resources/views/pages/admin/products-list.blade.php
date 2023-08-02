@@ -40,6 +40,7 @@
                         </div>
                     </div>
                 </form>
+                <h1>INDIVIDUALES</h1>
                 <table class="products-table">
                     <t-head>
                         <tr>
@@ -54,7 +55,7 @@
                         @foreach ($products as $product)
                             <tr class="products-table-item">
                                 <td class="table-content"><p class="table-product-info">{{ $product->name }}</p></td>
-                                <td class="table-content"><p class="table-product-info @if($product->category_id == 1) ind-color @else combo-color @endif">{{ $product->category }}</p></td>
+                                <td class="table-content"><p class="table-product-info @if($product->category_id == App\Models\Admin\Category::INDIVIDUAL) ind-color @else combo-color @endif">{{ $product->category }}</p></td>
                                 <td class="table-content">
                                     <p>
                                         @if ($product->color_id == 1)
@@ -77,7 +78,54 @@
                                 <td class="table-content"><p class="table-product-info" id="status">Habilitado</p></td>
                                 <td class="table-content">
                                     <p class="table-product-info">
-                                        <a href="{{ url('/administracion/productos/crear-editar/' . $product->id) }}">Editar</a>
+                                        <a href="{{ url('/administracion/productos/crear-editar/' . $product->category_id . '/' . $product->id) }}">Editar</a>
+                                    </p>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </t-body>
+                </table>
+
+
+                <h1>COMBOS</h1>
+                <table class="products-table">
+                    <t-head>
+                        <tr>
+                            <td class="table-content"><p class="table-title">Producto</p></td>
+                            <td class="table-content"><p class="table-title">Tipo</p></td>
+                            <td class="table-content"><p class="table-title">Color</p></td>
+                            <td class="table-content"><p class="table-title">Precio</p></td>
+                            <td class="table-content"><p class="table-title">Estado</p></td>
+                        </tr>
+                    </t-head>
+                    <t-body>
+                        @foreach ($combos as $combo)
+                            <tr class="products-table-item">
+                                <td class="table-content"><p class="table-product-info">{{ $combo->name }}</p></td>
+                                <td class="table-content"><p class="table-product-info @if($combo->category_id == App\Models\Admin\Category::INDIVIDUAL) ind-color @else combo-color @endif">{{ $combo->category }}</p></td>
+                                <td class="table-content">
+                                    <p>
+                                        @if ($combo->color_id == 1)
+                                            <p class="table-product-info mb-2 py-0">
+                                                <img class="table-colors" src="{{ asset('admin/assets/colors/red.svg') }}" alt="">
+                                                <img class="table-colors" src="{{ asset('admin/assets/colors/yellow.svg') }}" alt="">
+                                                <img class="table-colors" src="{{ asset('admin/assets/colors/green.svg') }}" alt="">
+                                                <img class="table-colors" src="{{ asset('admin/assets/colors/blue.svg') }}" alt="">
+                                            </p>
+                                            <p class="table-product-info color-text mt-0 py-0">Arcoíris</p>
+                                        @else
+                                            <p class="table-product-info mb-2 py-0">
+                                                <img class="table-colors" src="{{ asset('admin/assets/colors/no_color.svg') }}" alt="">
+                                            </p>
+                                            <p class="table-product-info color-text mt-0 py-0">Sin pintar</p>
+                                        @endif
+                                    </p>
+                                </td class="table-content">
+                                <td class="table-content"><p class="table-product-info">$ {{ $combo->price }}</p></td>
+                                <td class="table-content"><p class="table-product-info" id="status">Habilitado</p></td>
+                                <td class="table-content">
+                                    <p class="table-product-info">
+                                        <a href="{{ url('/administracion/productos/crear-editar/' . $combo->category_id . '/' . $combo->id) }}">Editar</a>
                                     </p>
                                 </td>
                             </tr>

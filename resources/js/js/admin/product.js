@@ -18,14 +18,15 @@ export async function main(options) {
     //***** PRODUCT *****//
     let formUrl;
     let product;
+    let comboCategory;
     let productImages;
 
     category_id.on('change', function () {
-        showProductsSelect()
+        showProductsSelect();
     });
 
     productsSelect.on('change', function () {
-        productsSelect[0].value
+        productsSelect[0].value;
     });
 
     initProduct(options)
@@ -33,6 +34,7 @@ export async function main(options) {
     function initProduct(options) {
         formUrl = options.formUrl;
         product = options.product;
+        comboCategory = options.comboCategory;
         productImages = options.productImages;
 
         if (product) {
@@ -53,6 +55,20 @@ export async function main(options) {
         size.val(product.size);
         max_weight.val(product.max_weight);
         color_id.val(product.color_id);
+
+
+        if (category_id.val() == comboCategory) {
+            let productSelectOptions = productsSelect[0].options;
+            showProductsSelect();
+
+            for (let i = 0; i < productSelectOptions.length; i++) {
+                product.products.forEach(product => {
+                    if (productSelectOptions[i].value == product) {
+                        productSelectOptions[i].selected = true;
+                    }
+                });
+            }
+        }
     }
 
     function showProductsSelect() {

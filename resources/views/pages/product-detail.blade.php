@@ -60,7 +60,10 @@
 
     <div class="about light-beige-bg">
         <p class="about-title">Sobre el producto</p>
-        <img class="main-img" src="{{ asset('admin/assets/images/product-detail/ProductTest.svg') }}" alt="">
+        <div class="about-img-container">
+            {{-- <img class="about-img-bg" src="{{ asset('admin/assets/images/product-detail/ProductImgBG.png') }}" alt=""> --}}
+            <img class="main-img about-img" src="{{ asset('admin/assets/images/product-detail/ProductTest.svg') }}" alt="">
+        </div>
         <p class="about-description">{{ $product->description }}</p>
     </div>
 

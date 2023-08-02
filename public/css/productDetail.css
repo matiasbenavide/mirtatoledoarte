@@ -438,6 +438,28 @@
         line-height: 48px;
     }
 
+    .about-img-container
+    {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* .about-img-bg
+    {
+        width: 100%;
+        position: relative;
+        left: 50%;
+        top: 10%;
+    }
+
+    .about-img
+    {
+        width: 60%;
+        position: relative;
+        right: 50%;
+    } */
+
     .about-description
     {
         font-size: 18px;

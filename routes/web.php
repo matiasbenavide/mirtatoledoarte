@@ -31,7 +31,7 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
         });
         // PRODUCT
         Route::get('/productos/listado', [App\Http\Controllers\Admin\ProductsController::class, 'showProducts'])->name('admin.home');
-        Route::get('/productos/crear-editar/{id}', [App\Http\Controllers\Admin\ProductsController::class, 'showProductCreation']);
+        Route::get('/productos/crear-editar/{category_id}/{id}', [App\Http\Controllers\Admin\ProductsController::class, 'showProductCreation']);
         Route::post('/productos/creacion-edicion', [App\Http\Controllers\Admin\ProductsController::class, 'saveData']);
 
         Route::get('/ventas', [App\Http\Controllers\Admin\SellsController::class, 'showSells']);

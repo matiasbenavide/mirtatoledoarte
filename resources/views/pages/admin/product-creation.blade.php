@@ -30,18 +30,18 @@
             </div>
 
             <div class="col-5">
-                <label class="label" for="name"></label>
+                <label class="label" for="name">Nombre</label>
                 <input class="form-input" name="name" id="name" type="text" placeholder="Nombre"/>
             </div>
 
             <div class="col-2">
-                <label class="label" for="price"></label>
+                <label class="label" for="price">Precio</label>
                 <input class="form-input" name="price" id="price" type="number" placeholder="Precio"/>
             </div>
 
-            <div id="productsSelectDiv" class="col-12" hidden>
-                <label class="label" for="productsSelect"></label>
-                <select class="form-input" name="productsSelect" id="productsSelect" multiple>
+            <div id="productsSelectDiv" class="col-12 mt-2" hidden>
+                <label class="label" for="productsSelect">Productos</label>
+                <select class="form-input combo-product-select" name="productsSelect[]" id="productsSelect" multiple="multiple">
                     <option value="">Selecione un producto</option>
                     @foreach ($products as $allProduct)
                         <option value="{{ $allProduct->id }}">{{ $allProduct->name }}</option>
@@ -49,8 +49,8 @@
                 </select>
             </div>
 
-            <div class="col-12">
-                <label class="label" for="description"></label>
+            <div class="col-12 mt-2">
+                <label class="label" for="description">Decripción</label>
                 <textarea class="form-textarea" name="description" id="description" rows="5" placeholder="Descripción"></textarea>
             </div>
 
@@ -119,6 +119,7 @@
     <script type="module">
         let formUrl = {!! json_encode($formUrl) !!};
         let product = {!! json_encode($product) !!};
+        let comboCategory = {!! json_encode(App\Models\Admin\Category::COMBO) !!};
         let productImages = {!! json_encode($productImages) !!};
 
         import { main } from "{{ asset(mix('js/admin/product.js')) }}"
@@ -127,6 +128,7 @@
             main({
                 formUrl: formUrl,
                 product: product,
+                comboCategory: comboCategory,
                 productImages: productImages,
             })
         }
