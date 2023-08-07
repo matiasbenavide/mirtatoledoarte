@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
     <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
 @endsection
+
 @section('mainContent')
 <div class="home relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
     {{-- <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
@@ -45,7 +46,7 @@
     <div class="container categories-container">
         <div class="categories-title-div">
             <p class="title main-text">Categorías</p>
-            <a href="#" class="anchor" id="categoriesAnchorDesktop" style="display: none;">Ver todos los productos</a>
+            <a href="{{ url('/productos') }}" class="anchor" id="categoriesAnchorDesktop" style="display: none;">Ver todos los productos</a>
         </div>
         <div class="categories-div">
             <div class="images-overlap categories-plaza-div">
@@ -59,7 +60,7 @@
                 <button id="singlesCategory" class="image-to-overlap categories-button button-2 w-100">Ver Categoría</button>
             </div>
         </div>
-        <a href="#" class="anchor" id="categoriesAnchorMobile">Ver todos los productos</a>
+        <a href="{{ url('/productos') }}" class="anchor" id="categoriesAnchorMobile">Ver todos los productos</a>
     </div>
 
     <div class="flyer-container">
@@ -98,7 +99,7 @@
                 </a>
             @endforeach
         </div>
-        <a href="#" class="anchor">Ver todos los productos</a>
+        <a href="{{ url('/productos') }}" class="anchor">Ver todos los productos</a>
     </div>
 
     <div class="container know-what-section">

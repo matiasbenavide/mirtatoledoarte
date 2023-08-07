@@ -22,6 +22,7 @@ Route::get('/', function() {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'welcome'])->name('home');
+Route::get('/productos', [App\Http\Controllers\ProductClientController::class, 'productList']);
 Route::get('/productos/detalle/{id}', [App\Http\Controllers\ProductClientController::class, 'productDetail']);
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {

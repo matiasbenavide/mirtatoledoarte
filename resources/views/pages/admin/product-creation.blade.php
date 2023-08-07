@@ -94,17 +94,14 @@
                     <label class="add-icon-div" for="images">
                         <img class="add-icon" src="{{ asset('admin/assets/icons/plus_blue.svg') }}" alt="">
                     </label>
-                    <form method="POST" action="#" id="imagesForm">
-                        @csrf
-                        <input id="images" name="images[]" type="file" onchange="imageSelect()" multiple hidden>
-                    </form>
+                    <input id="images" name="images[]" type="file" onchange="imageSelect()" multiple hidden>
                 </div>
                 <div id="displayImage" class="images-div">
                     @isset($productImages)
                         <label class="col-12 label" style="margin-top: 4px; margin-bottom: 4px;" for="">:</label>
                         @foreach ($productImages as $image)
                             <div class="img-div d-flex justify-content-center position-relative" style="max-width: 100%;">
-                                <img id="img" class="form-image" src="{{'data:image/JPG;base64,'.$image['image']}}" onclick="deleteImage(allImages.indexOf(self))" alt="image">
+                                <img id="img-{{$image->id}}" class="form-image" src="../../../../images/products-images/{{$image->image}}" alt="image">
                             </div>
                         @endforeach
                     @endisset
@@ -133,8 +130,8 @@
             })
         }
     </script>
-    <script type="text/javascript">
 
+    <script>
         let images = document.getElementById('images');
         let imagesDiv = document.getElementById('displayImage');
         let allImages = [];

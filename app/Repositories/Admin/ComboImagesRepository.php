@@ -3,11 +3,10 @@
 
 namespace App\Repositories\Admin;
 
-use App\Models\Admin\ProductsImages;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class ProductImagesRepository extends BaseRepository
+class ComboImagesRepository extends BaseRepository
 {
 
     /**
@@ -17,13 +16,13 @@ class ProductImagesRepository extends BaseRepository
      */
     public function model()
     {
-        return 'App\\Models\\Admin\\Image';
+        return 'App\\Models\\Admin\\ComboImage';
     }
 
-    public function getProductImages($productId)
+    public function getComboImages($comboId)
     {
-        return $this->select('products_images.*')
-            ->where('products_images.product_id', $productId)
+        return $this->select('combos_images.*')
+            ->where('combos_images.combo_id', $comboId)
             ->get();
     }
 

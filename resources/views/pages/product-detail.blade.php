@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="{{ asset('css/productDetail.css') }}">
     <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
 @endsection
+
 @section('mainContent')
     <div class="light-bg navbar-distance main-div">
         <p class="product-type-title">JUEGOS INDIVIDUALES > {{$product->name}}</p>

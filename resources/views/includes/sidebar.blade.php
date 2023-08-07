@@ -59,7 +59,7 @@
                     </a>
                 </li>
                 <li class="nav-item nav-item-div">
-                    <a class="nav-link task-div" href="{{ url('/administracion/productos/crear-editar/0') }}" id="perfil" role="link">
+                    <a class="nav-link task-div" href="{{ url('/administracion/productos/crear-editar/0/0') }}" id="perfil" role="link">
                         <span class="icon-holder" data-feather="home">
                             @if (isset($task) && $task === 'product-create')
                                 <img class="sidebar-icon task" src="{{ asset('admin/assets/icons/plus_selected.svg') }}" alt="">

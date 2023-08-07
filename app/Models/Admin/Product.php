@@ -2,8 +2,9 @@
 
 namespace App\Models\Admin;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Admin\Image;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
@@ -19,4 +20,9 @@ class Product extends Model
         'created_by',
         'updated_by',
     ];
+
+    public function images()
+    {
+        return $this->belongsToMany(Image::class);
+    }
 }

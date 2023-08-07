@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProductsImagesTable extends Migration
+class CreateCombosImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,9 @@ class CreateProductsImagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('products_images', function (Blueprint $table) {
+        Schema::create('combos_images', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
+            $table->foreignId('combo_id')->constrained('combos')->onDelete('cascade');
             $table->string('image');
 
             $table->timestamp('created_at')->useCurrent();
@@ -35,6 +35,6 @@ class CreateProductsImagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products_images');
+        Schema::dropIfExists('combos_images');
     }
 }

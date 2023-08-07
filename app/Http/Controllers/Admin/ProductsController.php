@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Collection;
 use App\Repositories\Admin\ProductsRepository;
 use Illuminate\Validation\ValidationException;
 use App\Repositories\Admin\CategoriesRepository;
+use App\Repositories\Admin\ComboImagesRepository;
 use App\Repositories\Admin\ProductImagesRepository;
 
 class ProductsController extends Controller
@@ -35,6 +36,11 @@ class ProductsController extends Controller
     protected $productImagesRepository;
 
     /**
+     * @var ComboImagesRepository
+     */
+    protected $comboImagesRepository;
+
+    /**
      * @var CategoriesRepository
      */
     protected $categoriesRepository;
@@ -53,6 +59,7 @@ class ProductsController extends Controller
         ProductsRepository $productsRepository,
         CombosRepository $combosRepository,
         ProductImagesRepository $productImagesRepository,
+        ComboImagesRepository $comboImagesRepository,
         CategoriesRepository $categoriesRepository,
         ColorsRepository $colorsRepository
     )
@@ -62,6 +69,7 @@ class ProductsController extends Controller
         $this->productsRepository = $productsRepository;
         $this->combosRepository = $combosRepository;
         $this->productImagesRepository = $productImagesRepository;
+        $this->comboImagesRepository = $comboImagesRepository;
         $this->categoriesRepository = $categoriesRepository;
         $this->colorsRepository = $colorsRepository;
     }
@@ -76,7 +84,6 @@ class ProductsController extends Controller
         $task = 'products';
         $products = $this->productsRepository->allProducts($request->searchData);
         $combos = $this->combosRepository->allCombos($request->searchData);
-        // $combosWithProducts = $this->combosRepository->allCombosWithProducts($request->searchData);
 
         $total = $products->count();
         $totalProducts = $products->count();
@@ -95,38 +102,30 @@ class ProductsController extends Controller
     public function showProductCreation($categoryId, $productId)
     {
         $task = 'product-create';
+
         if ($categoryId == Category::INDIVIDUAL) {
             $product = $this->productsRepository->findOrNull($productId);
+            $productImages = $this->productImagesRepository->getProductImages($product->id);
         }
         else
         {
             $product = $this->combosRepository->findOrNull($productId);
-            $product->products = json_decode($product->products);
+            $productImages = $this->comboImagesRepository->getComboImages($productId);
+            if ($product) {
+                $product->products = json_decode($product->products);
+            }
         }
+
         $products = $this->productsRepository->all();
         $categories = $this->categoriesRepository->all();
         $colors = $this->colorsRepository->all();
         $formUrl = url('/administracion/productos/creacion-edicion');
 
-        $images = new Collection();
-
-        if ($product) {
-            $productImages = $this->productImagesRepository->getProductImages($product->id);
-
-            foreach ($productImages as $image) {
-                $images[] = [
-                    'title' => $image->title,
-                    'mime' => $image->mime,
-                    'image' => base64_encode($image->image),
-                ];
-            }
-        }
-
         return view('pages.admin.product-creation')->with([
             'task' => $task,
             'formUrl' => $formUrl,
             'product' => $product,
-            'productImages' => $images,
+            'productImages' => $productImages,
             'products' => $products,
             'categories' => $categories,
             'colors' => $colors,
@@ -146,8 +145,8 @@ class ProductsController extends Controller
                     'max_weight' => 'required|numeric',
                     'category_id' => 'required|numeric',
                     'color_id' => 'required|numeric',
-                    // 'images' => 'nullable|array',
-                    // 'images.*' => 'file|mimes:png,jpg,jpeg',
+                    'images' => 'nullable|array',
+                    'images.*' => 'file|mimes:png,jpg,jpeg',
                 ]);
             } catch (ValidationException $e) {
                 Log::error($e->getMessage(), $e->errors());
@@ -168,8 +167,8 @@ class ProductsController extends Controller
                     'max_weight' => 'required|numeric',
                     'category_id' => 'required|numeric',
                     'color_id' => 'required|numeric',
-                    // 'images' => 'nullable|array',
-                    // 'images.*' => 'file|mimes:png,jpg,jpeg',
+                    'images' => 'nullable|array',
+                    'images.*' => 'file|mimes:png,jpg,jpeg',
                 ]);
             } catch (ValidationException $e) {
                 Log::error($e->getMessage(), $e->errors());
@@ -177,35 +176,17 @@ class ProductsController extends Controller
             }
         }
 
-        // dd($request->all());
+        if ($request->hasFile('images')) {
+            $files = $request->file('images');
+        }
+        else {
+            $files = null;
+        }
 
-        // $newImages = collect();
-        // $requestImages = $request->file('images') ?? [];
-
-        // foreach ($requestImages as $image) {
-        //     $newImages[] = [
-        //         "title" => $image->getClientOriginalName(),
-        //         "mime" => $image->getMimeType(),
-        //         "image" => $image->get(),
-        //     ];
-        // }
-
-        // if ($request->productId) {
-        //     $actualImages = $this->productImagesRepository->getProductImages($request->productId);
-
-        //     if ($actualImages) {
-        //         $actualImages = $actualImages->keyBy('id');
-        //     }
-
-        //     foreach ($newImages as $key => $image) {
-        //         $inDB = $actualImages->firstWhere('image', $image["image"]);
-
-        //         if ($inDB) {
-        //             $actualImages->forget($inDB->id);
-        //             $newImages->forget($key);
-        //         }
-        //     }
-        // }
+        if ($request->productId) {
+            $productImages = $this->productImagesRepository->getProductImages($request->productId);
+            $comboImages = $this->productImagesRepository->getProductImages($request->productId);
+        }
 
         try {
             DB::beginTransaction();
@@ -213,33 +194,45 @@ class ProductsController extends Controller
                 if ($request->category_id == Category::INDIVIDUAL)
                 {
                     $product = $this->productsRepository->update($this->mapDataForProduct($request),$request->productId);
+
+                    if ($files) {
+                        foreach ($files as $file) {
+                            $this->productImagesRepository->create($this->mapDataForImages($file, $product->id, false));
+                        }
+                    }
                 }
                 else
                 {
-                    $product = $this->combosRepository->update($this->mapDataForCombo($request),$request->productId);
+                    $combo = $this->combosRepository->update($this->mapDataForCombo($request),$request->productId);
+
+                    if ($files) {
+                        foreach ($files as $file) {
+                            $this->productImagesRepository->create($this->mapDataForImages($file, $combo->id, true));
+                        }
+                    }
                 }
-
-                // foreach ($actualImages as $image) {
-                //     $this->productImagesRepository->delete($image->id);
-                // }
-
-                // foreach ($newImages as $image) {
-                //     $this->productImagesRepository->create($this->mapDataForImages($request->productId, $image));
-                // }
             }
             else
             {
                 if ($request->category_id == Category::INDIVIDUAL) {
                     $product = $this->productsRepository->create($this->mapDataForProduct($request));
+
+                    if ($files) {
+                        foreach ($files as $file) {
+                            $this->productImagesRepository->create($this->mapDataForImages($file, $product->id, false));
+                        }
+                    }
                 }
                 else
                 {
-                    $product = $this->combosRepository->create($this->mapDataForCombo($request));
-                }
+                    $combo = $this->combosRepository->create($this->mapDataForCombo($request));
 
-                // foreach ($newImages as $image) {
-                //     $this->productImagesRepository->create($this->mapDataForImages($product->id, $image));
-                // }
+                    if ($files) {
+                        foreach ($files as $file) {
+                            $this->comboImagesRepository->create($this->mapDataForImages($file, $combo->id, true));
+                        }
+                    }
+                }
             }
             DB::commit();
         } catch (\Exception $e) {
@@ -303,15 +296,25 @@ class ProductsController extends Controller
         return $dataMapped;
     }
 
-    // private function mapDataForImages($productId, $image)
-    // {
-    //     $imagesDataMapped = [
-    //         'product_id' => $productId,
-    //         'title' => $image['title'],
-    //         'mime' => $image['mime'],
-    //         'image' => $image['image'],
-    //     ];
+    private function mapDataForImages($image, $productId, $isCombo)
+    {
+        if ($isCombo)
+        {
+            $imagesDataMapped = [
+                'combo_id' => $productId,
+                'image' => time(). '_' . $image->getClientOriginalName(),
+            ];
+        }
+        else
+        {
+            $imagesDataMapped = [
+                'product_id' => $productId,
+                'image' => time(). '_' . $image->getClientOriginalName(),
+            ];
+        }
 
-    //     return $imagesDataMapped;
-    // }
+        $image->move(\public_path("images/products-images/"), $imagesDataMapped['image']);
+
+        return $imagesDataMapped;
+    }
 }

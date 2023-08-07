@@ -1,7 +1,7 @@
 @extends('layouts.default')
 @section('content')
 <div id="main">
-    @include('includes.mainNavbar')
+    @include('includes.navbar')
     @yield('mainContent')
     @include('includes.footer')
     @include('includes.responseMessageAlert')
