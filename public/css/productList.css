@@ -1,0 +1,317 @@
+.main
+{
+    background-color: #154193;
+    padding: 1.5rem;
+    padding-top: 10rem;
+}
+
+.title
+{
+    font-family: 'Don José';
+    font-size: 48px;
+    line-height: 52px;
+    color: #FDF9F5;
+    text-align: center;
+}
+
+.title-description
+{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+}
+
+.list-container
+{
+    padding: 5%;
+}
+
+.list-title
+{
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 48px;
+    text-align: center;
+    color: #154193;
+}
+
+.filter-buttons-container
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.filter-button
+{
+    width: 148px;
+    max-width: 148px;
+    height: 38px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.filter-forms-container
+{
+    margin-top: 15%;
+    display: none;
+}
+
+.filter-form
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.price-inputs-container
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.filter-title
+{
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 24px;
+    letter-spacing: 0.2px;
+    text-align: center;
+    color: #154193;
+}
+
+.filter-divs
+{
+    margin-top: 5%;
+}
+
+.filters-sub-title
+{
+    margin-bottom: 1%;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.2px;
+    color: #154193;
+}
+
+.price-input
+{
+    max-width: 137px;
+}
+
+.price-separation
+{
+    margin: 0;
+    font-size: 16px;
+}
+
+.colors-checkbox-container
+{
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.checkbox-container
+{
+    display: flex;
+}
+
+.colors-checkbox
+{
+    width: 1rem;
+}
+
+.colors-text
+{
+    width: 100%;
+    margin-left: 0.5rem;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.2px;
+    color: #404040;
+}
+
+.main-filter-btn
+{
+    align-self: center;
+    max-width: 100%;
+    width: 100%;
+}
+
+.images-overlap {
+    position: relative;
+    display: flex;
+}
+
+.image-to-overlap {
+    position: absolute;
+    display: flex;
+}
+
+.products-container {
+    margin-top: 15%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.product {
+    width: 10.6rem;
+    height: 10.6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+.noted-products {
+    flex-basis: 33.3%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.noted {
+    top: 3%;
+    right: 3%;
+    margin: 0 !important;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 2px solid #FF8141;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0.4px;
+    text-align: center;
+}
+
+.with-color {
+    background-color: #FF8141;
+}
+
+.without-color {
+    color: #FF8141;
+}
+
+.noted-image {
+    width: 6.5rem;
+    height: 6.5rem;
+}
+
+.cart-bag-div {
+    bottom: 3%;
+    right: 3%;
+    padding: 5px;
+    background-color: #154193;
+    border-radius: 50%;
+}
+
+.cart-bag
+{
+    width: 1rem;
+    height: 1rem;
+}
+
+.product-name {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.4px;
+    color: #404040;
+}
+
+.product-price {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 20px;
+    letter-spacing: 0.4px;
+    color: #154193;
+}
+
+.paginator-container
+{
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
+
+@media (min-width: 768px)
+{
+    .main
+    {
+        padding-top: 20%;
+    }
+
+    .title
+    {
+        font-size: 64px;
+        line-height: 72px;
+    }
+
+    .title-description
+    {
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    .list-title
+    {
+        font-size: 40px;
+        line-height: 48px;
+    }
+
+    .filter-forms-container
+    {
+        margin-top: 5%;
+    }
+
+    .price-input
+    {
+        min-width: 330px;
+    }
+
+    .filter-title
+    {
+        font-size: 32px;
+        line-height: 44px;
+    }
+
+    .filters-sub-title
+    {
+        font-size: 24px;
+    }
+
+    .colors-checkbox-container
+    {
+        margin-bottom: 10%;
+    }
+
+    .colors-checkbox
+    {
+        width: 2.5%;
+        height: 20px;
+    }
+
+    .colors-text
+    {
+        font-size: 20px;
+    }
+
+    .main-filter-btn
+    {
+        font-size: 18px;
+    }
+}

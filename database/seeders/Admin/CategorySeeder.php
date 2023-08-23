@@ -22,7 +22,7 @@ class CategorySeeder extends Seeder
             ],
             [
                 'id' => 2,
-                'name' => 'Combos',
+                'name' => 'Plazas y Combos',
             ]
         ];
 

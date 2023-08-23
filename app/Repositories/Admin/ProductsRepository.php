@@ -26,13 +26,6 @@ class ProductsRepository extends BaseRepository
             return $this->select('products.*', 'categories.name as category', 'colors.color as color')
                 ->leftJoin('categories', 'products.category_id', 'categories.id')
                 ->leftJoin('colors', 'products.color_id', 'colors.id')
-                ->where(function ($query) use ($searchData) {
-                    if ($searchData) {
-                        $query->where('products.id', $searchData);
-                        $query->orWhere('products.name', 'LIKE', '%' . $searchData . '%');
-                        $query->orWhere('products.price', $searchData);
-                    }
-                })
                 ->orderBy('updated_at', 'DESC')
                 ->get();
         } catch(ModelNotFoundException $e) {

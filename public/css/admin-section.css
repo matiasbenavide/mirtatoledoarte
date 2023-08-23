@@ -71,7 +71,15 @@
 
 .products-table-item
 {
+    height: 3.9rem;
     border-bottom: 1px solid rgba(21, 65, 147, 0.25);
+}
+
+.paginator-container
+{
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
 }
 
 #status
@@ -268,6 +276,12 @@
         line-height: 16px;
     }
 
+    .table-product-detail
+    {
+        background-color: rgba(255, 190, 6, 0.16);
+        border-radius: 8px;
+    }
+
     .input-icon img
     {
         width: 16px;
@@ -371,6 +385,11 @@
     {
         width: 64px;
         height: 64px;
+    }
+
+    .create-button-div
+    {
+        margin-bottom: 3%;
     }
 }
 

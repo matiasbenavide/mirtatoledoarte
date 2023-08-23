@@ -13,6 +13,7 @@ class Combo extends Model
         'price',
         'products',
         'description',
+        'main_image',
         'material',
         'size',
         'max_weight',

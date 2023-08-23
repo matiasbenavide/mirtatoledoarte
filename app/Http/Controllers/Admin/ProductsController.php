@@ -84,15 +84,15 @@ class ProductsController extends Controller
         $task = 'products';
         $products = $this->productsRepository->allProducts($request->searchData);
         $combos = $this->combosRepository->allCombos($request->searchData);
+        $combosAndProducts = $this->combosRepository->allCombosWithProducts($request)->paginate(10);
 
-        $total = $products->count();
         $totalProducts = $products->count();
         $totalCombos = $combos->count();
+        $total = $totalProducts + $totalCombos;
 
         return view('pages.admin.products-list')->with([
             'task' => $task,
-            'products' => $products,
-            'combos' => $combos,
+            'combosAndProducts' => $combosAndProducts,
             'total' => $total,
             'totalProducts' => $totalProducts,
             'totalCombos' => $totalCombos
@@ -145,6 +145,7 @@ class ProductsController extends Controller
                     'max_weight' => 'required|numeric',
                     'category_id' => 'required|numeric',
                     'color_id' => 'required|numeric',
+                    'mainImage' => 'nullable|mimes:png,jpg,jpeg',
                     'images' => 'nullable|array',
                     'images.*' => 'file|mimes:png,jpg,jpeg',
                 ]);
@@ -167,6 +168,7 @@ class ProductsController extends Controller
                     'max_weight' => 'required|numeric',
                     'category_id' => 'required|numeric',
                     'color_id' => 'required|numeric',
+                    'mainImage' => 'nullable|mimes:png,jpg,jpeg',
                     'images' => 'nullable|array',
                     'images.*' => 'file|mimes:png,jpg,jpeg',
                 ]);
@@ -200,6 +202,8 @@ class ProductsController extends Controller
                             $this->productImagesRepository->create($this->mapDataForImages($file, $product->id, false));
                         }
                     }
+
+                    $message = Constants::PRODUCT_UPDATE_SUCCESS;
                 }
                 else
                 {
@@ -210,6 +214,8 @@ class ProductsController extends Controller
                             $this->productImagesRepository->create($this->mapDataForImages($file, $combo->id, true));
                         }
                     }
+
+                    $message = Constants::COMBO_UPDATE_SUCCESS;
                 }
             }
             else
@@ -222,6 +228,8 @@ class ProductsController extends Controller
                             $this->productImagesRepository->create($this->mapDataForImages($file, $product->id, false));
                         }
                     }
+
+                    $message = Constants::PRODUCT_SUCCESS;
                 }
                 else
                 {
@@ -232,6 +240,8 @@ class ProductsController extends Controller
                             $this->comboImagesRepository->create($this->mapDataForImages($file, $combo->id, true));
                         }
                     }
+
+                    $message = Constants::COMBO_SUCCESS;
                 }
             }
             DB::commit();
@@ -241,7 +251,7 @@ class ProductsController extends Controller
             return redirect()->back()->with('error', Constants::ERROR);
         }
 
-        return redirect('/administracion/productos/listado')->with('success', Constants::PRODUCT_SUCCESS);
+        return redirect('/administracion/productos/listado')->with('success', $message);
     }
 
     // public function delete($id){
@@ -267,32 +277,48 @@ class ProductsController extends Controller
 
     private function mapDataForProduct(Request $request)
     {
+        $product = $this->productsRepository->findOrNull($request->productId);
+
         $dataMapped = [
             'name' => $request->name,
             'price' => $request->price,
             'description' => $request->description,
+            'main_image' => $request->mainImage ? time() . '_' . $request->mainImage->getClientOriginalName() : $product->main_image,
             'material' => $request->material,
             'size' => $request->size,
             'max_weight' => $request->max_weight,
             'category_id' => $request->category_id,
             'color_id' => $request->color_id,
         ];
+
+        if ($request->mainImage) {
+            $request->mainImage->move(\public_path("images/main-images/"), $dataMapped['main_image']);
+        }
+
         return $dataMapped;
     }
 
     private function mapDataForCombo(Request $request)
     {
+        $combo = $this->combosRepository->findOrNull($request->productId);
+
         $dataMapped = [
             'name' => $request->name,
             'price' => $request->price,
             'products' => json_encode($request->productsSelect),
             'description' => $request->description,
+            'main_image' => $request->mainImage ? time() . '_' . $request->mainImage->getClientOriginalName() : $combo->main_image,
             'material' => $request->material,
             'size' => $request->size,
             'max_weight' => $request->max_weight,
             'category_id' => $request->category_id,
             'color_id' => $request->color_id,
         ];
+
+        if ($request->mainImage) {
+            $request->mainImage->move(\public_path("images/main-images/"), $dataMapped['main_image']);
+        }
+
         return $dataMapped;
     }
 

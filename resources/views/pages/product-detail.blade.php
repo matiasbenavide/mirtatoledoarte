@@ -7,9 +7,27 @@
 
 @section('mainContent')
     <div class="light-bg navbar-distance main-div">
-        <p class="product-type-title">JUEGOS INDIVIDUALES > {{$product->name}}</p>
+        <p class="product-type-title">@if ($product->category_id == App\Models\Admin\Category::INDIVIDUAL) JUEGOS INDIVIDUALES @else PLAZAS Y COMBOS @endif > {{$product->name}}</p>
         <p class="product-name">{{$product->name}}</p>
-        <img class="main-img" src="{{ asset('admin/assets/images/product-detail/ProductTest.svg') }}" alt="">
+        <div class="main-image-container">
+            @if ($product->main_image)
+                <img class="main-img" id="mainImage" src="{{ asset('images/main-images/' . $product->main_image) }}" alt="">
+            @else
+                <img class="main-img not-found" id="mainImage" src="{{ asset('admin/assets/images/ImageNotFound.svg') }}" alt="">
+            @endif
+        </div>
+        <div class="images">
+            @if ($images && $product->main_image)
+                <div class="img-div">
+                    <img class="img-icon" id="mainIcon{{$product->id}}" src="{{ asset('images/main-images/' . $product->main_image) }}" alt="" onclick="changeMainImage('mainIcon{{$product->id}}')">
+                </div>
+            @endif
+            @foreach ($images as $image)
+                <div class="img-div">
+                    <img class="img-icon" id="icon{{$image->id}}" src="{{ asset('images/products-images/' . $image->image) }}" alt="" onclick="changeMainImage('icon{{$image->id}}')">
+                </div>
+            @endforeach
+        </div>
         <div class="product-colors">
             <div class="color-type-div @if ($product->color_id == 2)selected @else not-selected @endif">
                 <img class="without-color" src="{{ asset('admin/assets/images/product-detail/ProductDetailWithoutColor.svg') }}" alt="">
@@ -20,7 +38,7 @@
                 <p class="color-type-text">Arcoíris</p>
             </div>
         </div>
-        <div class="items-to-cart">
+        {{-- <div class="items-to-cart">
             <div id="remove-from-cart" class="add-or-remove">
                 <p class="add-remove-text"> - </p>
             </div>
@@ -28,11 +46,13 @@
             <div id="add-to-cart" class="add-or-remove">
                 <p class="add-remove-text"> + </p>
             </div>
-        </div>
+        </div> --}}
         <p class="price">AR$ {{ $product->price }}</p>
         <a class="anchor" href="">Ver medios de pago y promociones</a>
         <div class="add-to-cart">
-            <button class="button">Agregar al Carrito</button>
+            <a href="{{ url('agregar-carrito/' . $product->category_id . '/' . $product->id) }}">
+                <button class="button">Agregar al Carrito</button>
+            </a>
         </div>
         <div class="basic-info">
             <div class="info-div info-left">
@@ -62,8 +82,11 @@
     <div class="about light-beige-bg">
         <p class="about-title">Sobre el producto</p>
         <div class="about-img-container">
-            {{-- <img class="about-img-bg" src="{{ asset('admin/assets/images/product-detail/ProductImgBG.png') }}" alt=""> --}}
-            <img class="main-img about-img" src="{{ asset('admin/assets/images/product-detail/ProductTest.svg') }}" alt="">
+            @if ($product->main_image)
+                <img class="main-img about-img" src="{{ asset('images/main-images/' . $product->main_image) }}" alt="">
+            @else
+                <img class="main-img about-img not-found" src="{{ asset('admin/assets/images/ImageNotFound.svg') }}" alt="">
+            @endif
         </div>
         <p class="about-description">{{ $product->description }}</p>
     </div>
@@ -94,4 +117,23 @@
         <p class="opinion-title">QUÉ OPINAN NUESTROS CLIENTES</p>
         <img src="{{ asset('admin/assets/images/product-detail/ProductOpinion.svg') }}" alt="">
     </div>
+
+    <script type="module">
+
+        import { mainNavbar } from "{{ asset(mix('js/admin/navBar.js')) }}";
+
+        window.onload = function() {
+            mainNavbar()
+        }
+    </script>
+    <script type="text/javascript">
+        let mainImage = $('#mainImage');
+
+        function changeMainImage(iconId) {
+            let selectedImage = $('#' + iconId);
+
+            // selectedImage[0].classList.add('selected-main-img');
+            mainImage[0].src = selectedImage[0].src;
+        }
+    </script>
 @endsection

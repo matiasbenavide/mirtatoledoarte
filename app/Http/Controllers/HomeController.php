@@ -6,9 +6,15 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Repositories\Admin\ProductsRepository;
+use App\Http\Controllers\ProductClientController;
 
 class HomeController extends Controller
 {
+    /**
+     * @var ProductClientController
+     */
+    protected $productClientController;
+
     /**
      * @var ProductsRepository
      */
@@ -19,9 +25,11 @@ class HomeController extends Controller
      * @return void
      */
     public function __construct(
+        ProductClientController $productClientController,
         ProductsRepository $productsRepository
     )
     {
+        $this->productClientController = $productClientController;
         $this->productsRepository = $productsRepository;
     }
 
@@ -33,6 +41,7 @@ class HomeController extends Controller
 
     public function welcome(Request $request)
     {
+        $newProduct = $this->productClientController->getNewProduct();
         $notedProducts = $this->productsRepository->getNoted();
         $isAdmin = false;
 
@@ -43,6 +52,7 @@ class HomeController extends Controller
 
         return view('welcome')->with([
             'isAdmin' => $isAdmin,
+            'newProduct' => $newProduct,
             'notedProducts' => $notedProducts
         ]);
     }

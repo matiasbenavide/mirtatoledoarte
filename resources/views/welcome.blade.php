@@ -7,33 +7,25 @@
 
 @section('mainContent')
 <div class="home relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
-    {{-- <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+    <div class="navbar-distance new-product">
         @auth
             @if($isAdmin)
-                <a href="{{ url('/administracion') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Administracion</a>
-            @else
-                <form class="" action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    <input type="submit" class="btn" value="Cerrar Sesión">
-                </form>
-            @endif
-        @else
-            <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-
-            @if (Route::has('register'))
-                <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                <div class="fixed top-0 right-0 px-6 py-4 sm:block" style="background-color: #000">
+                    <a href="{{ url('/administracion') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Administracion</a>
+                    <form class="" action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <input type="submit" class="btn" value="Cerrar Sesión">
+                    </form>
+                </div>
             @endif
         @endauth
-    </div> --}}
-
-    <div class="navbar-distance new-product">
         <div class="new-product-image-div">
             <img class="image-to-overlap home-rocket" src="{{ asset('admin/assets/images/HomeRocket.svg') }}" alt="">
-            <img class="new-product-image" src="{{ asset('admin/assets/images/HomeNewProduct.svg') }}" alt="">
+            <img class="new-product-image" src="{{ asset('images/main-images/' . $newProduct->main_image) }}" alt="">
             <div class="new-product-text-div">
-                <p class="new-product-title">ÚLTIMO LANZAMIENTO</p>
-                <p class="new-product-name">TRIÁNGULO PINTADO</p>
-                <button class="button new-product-button w-50">Ver Producto</button>
+                <p class="new-product-title">NOVEDAD</p>
+                <p class="new-product-name">{{ $newProduct->name }}</p>
+                <a href="{{ url('productos/detalle/' . $newProduct->category_id . '/' . $newProduct->id) }}" class="button new-product-button w-50">Ver Producto</a>
             </div>
         </div>
         <div class="images-overlap boat-and-line">
@@ -52,26 +44,19 @@
             <div class="images-overlap categories-plaza-div">
                 <img class="plaza-image" src="{{ asset('admin/assets/images/HomeCategoriesPlaza.svg') }}" alt="">
                 <p class="categories-name main-text image-to-overlap">Plaza</p>
-                <button id="plazaCategory" class="image-to-overlap categories-button button-2 w-100">Ver Categoría</button>
+                <a href="{{ url('/productos?categorySelector=' . App\Models\Admin\Category::COMBO) }}">
+                    <button id="plazaCategory" class="image-to-overlap categories-button button-2 w-100">Ver Categoría</button>
+                </a>
             </div>
             <div class="images-overlap categories-singles-div">
                 <img class="singles-image" src="{{ asset('admin/assets/images/HomeCategoriesSingles.svg') }}" alt="">
                 <p class="categories-name main-text image-to-overlap">Individuales</p>
-                <button id="singlesCategory" class="image-to-overlap categories-button button-2 w-100">Ver Categoría</button>
+                <a href="{{ url('/productos?categorySelector=' . App\Models\Admin\Category::INDIVIDUAL) }}">
+                    <button id="singlesCategory" class="image-to-overlap categories-button button-2 w-100">Ver Categoría</button>
+                </a>
             </div>
         </div>
         <a href="{{ url('/productos') }}" class="anchor" id="categoriesAnchorMobile">Ver todos los productos</a>
-    </div>
-
-    <div class="flyer-container">
-        <div class="flyer-div">
-            <div class="flyer">
-                <img src="{{ asset('admin/assets/images/HomeFlyer.png') }}" alt="">
-            </div>
-            {{-- <div class="flyer">
-                <img src="{{ asset('admin/assets/images/HomeFlyer.png') }}" alt="">
-            </div> --}}
-        </div>
     </div>
 
     <div class="container">
@@ -82,14 +67,18 @@
         </div>
         <div class="noted-products-div">
             @foreach ($notedProducts as $noted)
-                <a href="{{ url('/productos/detalle/' . $noted->id) }}" class="noted-products" style="margin-bottom: 15px">
+                <a href="{{ url('/productos/detalle/' . $noted->category_id . '/' . $noted->id) }}" class="noted-products" style="margin-bottom: 15px">
                     <div class="images-overlap product">
                         @if ($noted->color_id == 1)
                             <p class="image-to-overlap noted with-color">Pintada</p>
                         @else
                             <p class="image-to-overlap noted without-color">Sin Pintar</p>
                         @endif
-                        <img class="image-to-overlap noted-image" src="{{ asset('admin/assets/images/HomeCategoriesSingles.svg') }}" alt="">
+                        @if ($noted->main_image)
+                            <img class="image-to-overlap noted-image" src="{{ asset('images/main-images/' . $noted->main_image) }}" alt="">
+                        @else
+                            <img class="image-to-overlap noted-image-not-found" src="{{ asset('admin/assets/images/ImageNotFound.svg') }}" alt="">
+                        @endif
                         <div class="image-to-overlap cart-bag-div">
                             <img class="cart-bag" src="{{ asset('admin/assets/images/HomeCartBag.svg') }}" alt="">
                         </div>
@@ -118,15 +107,15 @@
         <img class="about-us-img" src="{{ asset('admin/assets/images/HomeAboutImage.svg') }}" alt="">
         <div class="about-us-text-div">
             <p class="title main-text">Sobre Jugando Toy</p>
-            <p class="about-us-text">
-                Bajada descriptiva. El siguiente texto es de relleno para mostrar el tamaño máximo de extensión para el texto “sobre nosotros”: There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure(Tamaño máximo: 7 líneas desktop)
-            </p>
-            <button id="knowMore" class="button-2 about-us-button">Saber más</button>
+            <p class="about-us-text">Somos una familia que desde la formación profesional del diseño y la docencia, crea y fabrica para los más pequeños, elementos inspirados en las pedagogías Pikler / Montessori con el fin de brindarles herramientas para aprender y divertirse.</p>
+            <p class="about-us-text">Con un diseño funcional y con amor por el detalle, nuestros productos potencian la imaginación, el aprendizaje y todos los sentidos del niño a través del juego libre,  donde los niños aprenden a explorar de forma autónoma el entorno al tiempo que desarrollan sus capacidades sensoriales y sus habilidades corporales.</p>
+            <p class="about-us-text">Nuestro compromiso es ofrecer productos de calidad que potencien la ergonomía, la estética y la perdurabilidad en el tiempo. Los acabados redondeados, los elementos metálicos ocultos, la ausencia de astillas y la utilización de materiales cuidadosamente seleccionados,  contribuyen a lograrlo.</p>
+            {{-- <button id="knowMore" class="button-2 about-us-button">Saber más</button> --}}
         </div>
     </div>
 
     <div class="container blue-bg images-overlap w-100" style="padding-left: 0; padding-right: 0;">
-        <img class="w-100" style="margin-top: -2px" src="{{ asset('admin/assets/images/HomeOpinionsCloudsTop.svg') }}" alt="">
+        <img class="w-100" style="margin-top: -5px" src="{{ asset('admin/assets/images/HomeOpinionsCloudsTop.svg') }}" alt="">
         <img class="image-to-overlap opinions-fish" src="{{ asset('admin/assets/images/HomeOpinionsFish.svg') }}" alt="">
         <img class="image-to-overlap opinions-fish-bubbles" src="{{ asset('admin/assets/images/HomeOpinionsFishBubbles.svg') }}" alt="">
         <p class="opinions-title">Qué opinan nuestros compradores</p>
@@ -136,12 +125,22 @@
         <img class="w-100" style="margin-bottom: -5px" src="{{ asset('admin/assets/images/HomeOpinionsCloudsBottom.svg') }}" alt="">
     </div>
 
-    <div class="flyer-container" style="height: 72px">
+    {{-- <div class="flyer-container" style="height: 72px">
         <div class="flyer-div">
             <div class="flyer">
                 <img src="{{ asset('admin/assets/images/HomeSlider.svg') }}" alt="">
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
+
+<script type="module">
+
+    import { showSuccess, showErrors } from "{{ asset(mix('js/module/sweetAlert.js')) }}";
+    import { mainNavbar } from "{{ asset(mix('js/admin/navBar.js')) }}";
+
+    window.onload = function() {
+        mainNavbar()
+    }
+</script>
 @endsection

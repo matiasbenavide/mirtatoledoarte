@@ -9,12 +9,10 @@
                 <p class="drop-down-title">TIENDA</p>
                 <p class="drop-down-cross">+</p>
             </div>
-            <div id="shopList" class="active">
-                <ul>
-                    <li>
-                        <p class=""></p>
-                    </li>
-                </ul>
+            <div id="shopList" style="display: flex; flex-direction: column">
+                <a href="{{ url('productos?categoryId=2') }}">PLAZA</a>
+                <a href="{{ url('productos?categoryId=1') }}">JUEGOS INDIVIDUALES</a>
+                <a href="{{ url('productos') }}">VER TODOS</a>
             </div>
         </div>
         <hr>
@@ -35,10 +33,13 @@
                 <p class="drop-down-title">NUESTRAS REDES</p>
                 <p class="drop-down-cross">+</p>
             </div>
-            <div id="socialMediaList" class="active">
-                <ul>
-                    <li></li>
-                </ul>
+            <div id="socialMediaList">
+                <a href="https://www.instagram.com/decorelieve/?hl=es" target="_blank">
+                    <img src="{{ asset('admin/assets/icons/igIcon.svg') }}" alt="">
+                </a>
+                <a href="https://m.facebook.com/DecoRelieve/" target="_blank">
+                    <img src="{{ asset('admin/assets/icons/fbIcon.svg') }}" alt="">
+                </a>
             </div>
         </div>
         <hr>
@@ -62,12 +63,10 @@
                 <p class="drop-down-title">TIENDA</p>
                 <p class="drop-down-cross">+</p>
             </div>
-            <div id="shopList" class="active">
-                <ul>
-                    <li>
-                        <p class=""></p>
-                    </li>
-                </ul>
+            <div id="shopList" style="display: flex; flex-direction: column">
+                <a href="{{ url('productos?categoryId=2') }}">PLAZA</a>
+                <a href="{{ url('productos?categoryId=1') }}">JUEGOS INDIVIDUALES</a>
+                <a href="{{ url('productos') }}">VER TODOS</a>
             </div>
         </div>
         <hr>
@@ -88,10 +87,13 @@
                 <p class="drop-down-title">NUESTRAS REDES</p>
                 <p class="drop-down-cross">+</p>
             </div>
-            <div id="socialMediaList" class="active">
-                <ul>
-                    <li></li>
-                </ul>
+            <div id="socialMediaList">
+                <a href="https://www.instagram.com/decorelieve/?hl=es" target="_blank">
+                    <img src="{{ asset('admin/assets/icons/igIcon.svg') }}" alt="">
+                </a>
+                <a href="https://m.facebook.com/DecoRelieve/" target="_blank">
+                    <img src="{{ asset('admin/assets/icons/fbIcon.svg') }}" alt="">
+                </a>
             </div>
         </div>
         <hr>

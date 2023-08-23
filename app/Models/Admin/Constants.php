@@ -9,4 +9,11 @@ class Constants extends Model
 {
     const ERROR = 'La operación no pudo ser realizada';
     const PRODUCT_SUCCESS = 'Producto listado con éxito';
+    const COMBO_SUCCESS = 'Combo listado con éxito';
+    const PRODUCT_UPDATE_SUCCESS = 'Producto actualizado con éxito';
+    const COMBO_UPDATE_SUCCESS = 'Combo actualizado con éxito';
+
+    const EMPTY_CART = 'El carrito de compras se encuentra vacío';
+    const SUCCESSFUL_BUY = 'La compra se ha realizado con éxito';
+    const BUY_ERROR = 'No se ha podido completar la compra';
 }

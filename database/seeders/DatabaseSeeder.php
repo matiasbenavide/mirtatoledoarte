@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(Admin\UserSeeder::class);
         $this->call(Admin\CategorySeeder::class);
         $this->call(Admin\ColorSeeder::class);
+        $this->call(Admin\ShippingOptionsSeeder::class);
     }
 }

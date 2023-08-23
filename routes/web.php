@@ -23,7 +23,14 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'welcome'])->name('home');
 Route::get('/productos', [App\Http\Controllers\ProductClientController::class, 'productList']);
-Route::get('/productos/detalle/{id}', [App\Http\Controllers\ProductClientController::class, 'productDetail']);
+Route::get('/productos/detalle/{categoryId}/{id}', [App\Http\Controllers\ProductClientController::class, 'productDetail']);
+Route::get('/agregar-carrito/{categoryId}/{productId}', [App\Http\Controllers\ProductClientController::class, 'addToCart']);
+Route::get('/remover-carrito/{categoryId}/{productId}', [App\Http\Controllers\ProductClientController::class, 'removeFromCart']);
+Route::get('/eliminar-carrito/{categoryId}/{productId}', [App\Http\Controllers\ProductClientController::class, 'deleteFromCart']);
+Route::get('/carrito', [App\Http\Controllers\ProductClientController::class, 'shoppingCart']);
+
+Route::get('/detalle-compra', [App\Http\Controllers\ProductClientController::class, 'buyDetail']);
+Route::post('/guardar-compra', [App\Http\Controllers\ProductClientController::class, 'saveShop']);
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::prefix('/administracion')->group(function () {
@@ -35,7 +42,7 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
         Route::get('/productos/crear-editar/{category_id}/{id}', [App\Http\Controllers\Admin\ProductsController::class, 'showProductCreation']);
         Route::post('/productos/creacion-edicion', [App\Http\Controllers\Admin\ProductsController::class, 'saveData']);
 
-        Route::get('/ventas', [App\Http\Controllers\Admin\SellsController::class, 'showSells']);
+        Route::get('/ventas', [App\Http\Controllers\Admin\SalesController::class, 'showSales']);
         Route::get('/vacaciones', [App\Http\Controllers\Admin\VacationsController::class, 'showVacations']);
         Route::get('/configuracion', [App\Http\Controllers\Admin\ConfigurationController::class, 'showConfiguration']);
     });

@@ -31,7 +31,7 @@ const app = new Vue({
     el: '#app',
 });
 
-// window.sweetalert2 = require('sweetalert2');
+window.sweetalert2 = require('sweetalert2');
 
 // import * as sweetAlert from './module/sweetAlert';
 // const pluginSweetAlert = {

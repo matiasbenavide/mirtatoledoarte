@@ -1,4 +1,4 @@
-export async function main() {
+export async function mainNavbar() {
     let navBarToggle = $('#navBarToggle');
     let searchSection = $('#searchSection');
 

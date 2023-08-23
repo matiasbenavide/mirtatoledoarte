@@ -33,14 +33,14 @@
                 <li class="nav-item nav-item-div">
                     <a class="nav-link task-div" href="{{ url('/administracion/ventas') }}" id="perfil" role="link">
                         <span class="icon-holder" data-feather="home">
-                            @if (isset($task) && $task === 'sells')
+                            @if (isset($task) && $task === 'sales')
                                 <img class="sidebar-icon task" src="{{ asset('admin/assets/icons/dollar_selected.svg') }}" alt="">
                             @else
                                 <img class="sidebar-icon task" src="{{ asset('admin/assets/icons/dollar.svg') }}" alt="">
                             @endif
                         </span>
                         <span>
-                            <p class="task @if(isset($task) && $task === 'sells') selected-task @endif">Ventas</p>
+                            <p class="task @if(isset($task) && $task === 'sales') selected-task @endif">Ventas</p>
                         </span>
                     </a>
                 </li>

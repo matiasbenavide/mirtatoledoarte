@@ -1,0 +1,14 @@
+.products-images
+{
+    width: 100%;
+}
+
+.product-img
+{
+    background-color: transparent;
+}
+
+.product-name
+{
+    margin-top: 2rem;
+}

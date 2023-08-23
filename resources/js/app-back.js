@@ -15,7 +15,7 @@
  * Node packages
  */
 
-// window.sweetalert2 = require('sweetalert2');
+window.sweetalert2 = require('sweetalert2');
 window.$ = require('jquery');
 window.jQuery = require('jquery');
 window.blockUI = require('jquery-blockui');

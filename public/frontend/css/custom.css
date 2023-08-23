@@ -209,7 +209,7 @@ hr {
     .form-input
     {
         max-height: 42px;
-        font-size: 14px;
+        font-size: 16px;
         line-height: 24px;
         padding: 10px 12px !important;
     }
@@ -223,7 +223,7 @@ hr {
 
     ::placeholder
     {
-        font-size: 14px;
+        font-size: 16px;
         line-height: 24px;
     }
 

@@ -88,7 +88,27 @@
                 </select>
             </div>
 
-            <div class="d-flex col-8 mt-2 mb-4">
+            <div class="d-flex col-8 mt-2 mb-4"></div>
+
+            <div class="d-flex col-6 mt-2 mb-4">
+                <div>
+                    <label class="label" for="">Imágen Principal</label>
+                    <label class="add-icon-div" for="images">
+                        <img class="add-icon" src="{{ asset('admin/assets/icons/plus_blue.svg') }}" alt="">
+                    </label>
+                    <input id="images" name="mainImage" type="file" hidden>
+                </div>
+                <div id="displayImage" class="images-div">
+                    @isset($product->main_image)
+                        <label class="col-12 label" style="margin-top: 4px; margin-bottom: 4px;" for="">:</label>
+                            <div class="img-div d-flex justify-content-center position-relative" style="max-width: 100%;">
+                                <img class="form-image" src="{{ asset('images/main-images/' . $product->main_image) }}" alt="image">
+                            </div>
+                    @endisset
+                </div>
+            </div>
+
+            <div class="d-flex col-6 mt-2 mb-4">
                 <div>
                     <label class="label" for="">Imágenes</label>
                     <label class="add-icon-div" for="images">
@@ -101,7 +121,7 @@
                         <label class="col-12 label" style="margin-top: 4px; margin-bottom: 4px;" for="">:</label>
                         @foreach ($productImages as $image)
                             <div class="img-div d-flex justify-content-center position-relative" style="max-width: 100%;">
-                                <img id="img-{{$image->id}}" class="form-image" src="../../../../images/products-images/{{$image->image}}" alt="image">
+                                <img id="img-{{$image->id}}" class="form-image" src="{{ asset('images/products-images/' . $image->image) }}" alt="image">
                             </div>
                         @endforeach
                     @endisset
@@ -119,6 +139,7 @@
         let comboCategory = {!! json_encode(App\Models\Admin\Category::COMBO) !!};
         let productImages = {!! json_encode($productImages) !!};
 
+        import { showSuccess, showErrors } from "{{ asset(mix('js/module/sweetAlert.js')) }}";
         import { main } from "{{ asset(mix('js/admin/product.js')) }}"
 
         window.onload = function() {
