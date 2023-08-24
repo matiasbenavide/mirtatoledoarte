@@ -21,12 +21,14 @@
         @endauth
         <div class="new-product-image-div">
             <img class="image-to-overlap home-rocket" src="{{ asset('admin/assets/images/HomeRocket.svg') }}" alt="">
-            <img class="new-product-image" src="{{ asset('images/main-images/' . $newProduct->main_image) }}" alt="">
-            <div class="new-product-text-div">
-                <p class="new-product-title">NOVEDAD</p>
-                <p class="new-product-name">{{ $newProduct->name }}</p>
-                <a href="{{ url('productos/detalle/' . $newProduct->category_id . '/' . $newProduct->id) }}" class="button new-product-button w-50">Ver Producto</a>
-            </div>
+            @isset($newProduct)
+                <img class="new-product-image" src="{{ asset('images/main-images/' . $newProduct->main_image) }}" alt="">
+                <div class="new-product-text-div">
+                    <p class="new-product-title">NOVEDAD</p>
+                    <p class="new-product-name">{{ $newProduct->name }}</p>
+                    <a href="{{ url('productos/detalle/' . $newProduct->category_id . '/' . $newProduct->id) }}" class="button new-product-button w-50">Ver Producto</a>
+                </div>
+            @endisset
         </div>
         <div class="images-overlap boat-and-line">
             <img class="image-to-overlap home-boat" src="{{ asset('admin/assets/images/HomeBoat.svg') }}" alt="">

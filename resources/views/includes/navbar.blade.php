@@ -47,11 +47,13 @@
         </div>
         <hr/>
         <div class="search-divs products">
-            <a href="{{ url('productos/detalle/' . $newProduct->category_id . '/' . $newProduct->id) }}" class="products-div">
-                <img class="new-product-img" src="{{ asset('images/main-images/' . $newProduct->main_image) }}" alt="">
-                <p class="recommended-products-title">Nuevo</p>
-                <p class="recommended-products-text">{{ $newProduct->name }}</p>
-            </a>
+            @isset($newProduct)
+                <a href="{{ url('productos/detalle/' . $newProduct->category_id . '/' . $newProduct->id) }}" class="products-div">
+                    <img class="new-product-img" src="{{ asset('images/main-images/' . $newProduct->main_image) }}" alt="">
+                    <p class="recommended-products-title">Nuevo</p>
+                    <p class="recommended-products-text">{{ $newProduct->name }}</p>
+                </a>
+            @endisset
             {{-- <div>
                 <img src="" alt="">
                 <p class="recommended-products-title">Más Vendido</p>
