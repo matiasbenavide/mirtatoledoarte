@@ -17,13 +17,13 @@ class UserSeeder extends Seeder
     public function run()
     {
         $users = [
-            // [
-            //     'id' => User::ID_USER_ADMIN,
-            //     'name' => User::NAME_USER_ADMIN,
-            //     'email' => User::EMAIL_USER_ADMIN,
-            //     'password' => Hash::make('password'),
-            //     'role_as' => 1,
-            // ],
+            [
+                'id' => User::ID_USER_ADMIN,
+                'name' => User::NAME_USER_ADMIN,
+                'email' => User::EMAIL_USER_ADMIN,
+                'password' => Hash::make('password'),
+                'role_as' => 1,
+            ],
             [
                 'id' => User::ID_USER_SYSTEM,
                 'name' => User::NAME_USER_SYSTEM,
