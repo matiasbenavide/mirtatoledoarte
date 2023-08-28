@@ -17,6 +17,7 @@
 {
     height: 64px;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     margin: 15px;
@@ -27,6 +28,21 @@
     background-color: #1747A0;
     border-radius: 72px;
     position:relative;
+}
+
+.nav-div
+{
+    flex-basis: 10%;
+}
+
+.nav-toggle-icon
+{
+    display: block;
+}
+
+.nav-links
+{
+    display: none;
 }
 
 .logo
@@ -50,7 +66,7 @@
 .search-cart-container
 {
     display: flex;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
 }
 
@@ -270,10 +286,40 @@ hr
         height: 72px;
     }
 
+    .nav-div
+    {
+        flex-basis: 33%;
+    }
+
+    .nav-toggle-icon
+    {
+        display: none;
+    }
+
+    .nav-links
+    {
+        margin-left: 2rem;
+        display: flex;
+    }
+
+    .nav-link
+    {
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 1px;
+        color: #FDF9F5;
+    }
+
     .logo
     {
         width: 96px !important;
         height: 56px !important;
+    }
+
+    .search-cart-container
+    {
+        margin-right: 2rem;
     }
 
     .form-consult-search {
@@ -312,4 +358,14 @@ hr
         font-size: 18px;
         line-height: 20px;
     }
+}
+
+@media (min-width: 1280px)
+{
+
+}
+
+@media (min-width: 1536px)
+{
+
 }

@@ -1,10 +1,15 @@
 <div class="nav-bar">
     <div class="nav">
-        <img id="navBarToggle" class="nav-toggle-icon" src="{{ asset('admin/assets/icons/bars.svg') }}" alt="">
-        <a href="{{ url('/') }}">
-            <img class="logo" src="{{asset('admin/assets/icons/logo.svg')}}" alt="">
+        <img id="navBarToggle" class="nav-div nav-toggle-icon" src="{{ asset('admin/assets/icons/bars.svg') }}" alt="">
+        <div class="nav-div nav-links">
+            <a href="{{ url('/productos') }}" class="nav-link">Tienda</a>
+            <a href="{{ url('/nosotros') }}" class="nav-link">Nosotros</a>
+            <a href="{{ url('/contacto') }}" class="nav-link">Contacto</a>
+        </div>
+        <a href="{{ url('/home') }}">
+            <img class="nav-div logo" src="{{asset('admin/assets/icons/logo.svg')}}" alt="">
         </a>
-        <div class="search-cart-container">
+        <div class="nav-div search-cart-container">
             <a href="{{ url('productos') }}">
                 <img class="nav-icon" id="searchIcon" style="margin-right: 5px" src="{{ asset('admin/assets/icons/searchWhite.svg') }}" alt="">
             </a>

@@ -26,7 +26,7 @@
                 <div class="new-product-text-div">
                     <p class="new-product-title">NOVEDAD</p>
                     <p class="new-product-name">{{ $newProduct->name }}</p>
-                    <a href="{{ url('productos/detalle/' . $newProduct->category_id . '/' . $newProduct->id) }}" class="button new-product-button w-50">Ver Producto</a>
+                    <a href="{{ url('productos/detalle/' . $newProduct->category_id . '/' . $newProduct->id) }}" class="button new-product-button">Ver Producto</a>
                 </div>
             @endisset
         </div>
@@ -124,16 +124,16 @@
         <img class="opinions-images" id="homeOpinion1" src="{{ asset('admin/assets/images/HomeOpinionsChat1.svg') }}" alt="">
         <img class="opinions-images" id="homeOpinion2" src="{{ asset('admin/assets/images/HomeOpinionsChat2.svg') }}" alt="">
         <img class="opinions-images" id="homeOpinion3" src="{{ asset('admin/assets/images/HomeOpinionsChat3.svg') }}" alt="">
-        <img class="w-100" style="margin-bottom: -5px" src="{{ asset('admin/assets/images/HomeOpinionsCloudsBottom.svg') }}" alt="">
+        <img class="w-100" style="margin-bottom: -7px" src="{{ asset('admin/assets/images/HomeOpinionsCloudsBottom.svg') }}" alt="">
     </div>
 
-    {{-- <div class="flyer-container" style="height: 72px">
+    <div class="flyer-container" style="height: 72px">
         <div class="flyer-div">
             <div class="flyer">
-                <img src="{{ asset('admin/assets/images/HomeSlider.svg') }}" alt="">
+                {{-- <img src="{{ asset('admin/assets/images/HomeSlider.svg') }}" alt=""> --}}
             </div>
         </div>
-    </div> --}}
+    </div>
 </div>
 
 <script type="module">

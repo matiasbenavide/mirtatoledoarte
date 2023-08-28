@@ -280,7 +280,7 @@
 }
 
 .know-what-section {
-    padding: 0;
+    padding: 0 !important;
 }
 
 .know-what-div {
@@ -405,8 +405,8 @@
 
     .home-rocket
     {
-        top: 14%;
-        left: 8%;
+        top: 10rem;
+        left: 3rem;
     }
 
     .new-product-image-div
@@ -415,6 +415,11 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+    }
+
+    .new-product-image {
+        width: 40rem;
+        height: 30rem;
     }
 
     .new-product-title
@@ -426,6 +431,11 @@
     {
         font-size: 72px;
         line-height: 80px;
+    }
+
+    .home-boat {
+        left: 12rem;
+        bottom: 1.7rem;
     }
 
     .title
@@ -466,7 +476,7 @@
 
     .noted-products
     {
-        flex-basis: 25%;
+        flex-basis: 50%;
         font-size: 14px;
     }
 
@@ -476,8 +486,8 @@
     }
 
     .noted-image {
-        width: 100px;
-        height: 100px;
+        width: 20rem;
+        height: 20rem;
         border-radius: 8px;
     }
 
@@ -580,13 +590,13 @@
 {
     .home-rocket
     {
-        top: 18%;
-        left: 45%;
+        top: 10rem;
+        left: 25rem;
     }
 
     .home-boat
     {
-        bottom: 3rem;
+        bottom: 2.2rem;
         left: 15rem;
     }
 
@@ -611,26 +621,29 @@
 
     .new-product-text-div
     {
-        margin-left: 10%;
         align-items: start;
     }
 
     .new-product-title
     {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .new-product-name
     {
-        font-size: 72px;
-        line-height: 80px;
+        font-size: 48px;
+        line-height: 56px;
         text-align: start;
+    }
+
+    .boat-and-line {
+        margin-top: -5rem;
     }
 
     .title
     {
         margin-bottom: 15px;
-        font-size: 28px;
+        font-size: 32px;
     }
 
     .categories-container
@@ -705,15 +718,15 @@
         margin-bottom: 4%;
     }
 
+    .noted-products-div
+    {
+        justify-content: center;
+    }
+
     .noted-products
     {
         width: 25%;
-    }
-
-    .product
-    {
-        width: 170px;
-        height: 170px;
+        flex-basis: 33%;
     }
 
     .noted
@@ -745,12 +758,13 @@
     .know-what-div {
         display: flex;
         flex-direction: row-reverse;
+        padding-bottom: 0;
     }
 
     .know-what-img
     {
-        width: 434px;
-        height: 253px;
+        width: 29rem;
+        height: 18rem;
     }
 
     .know-what-title
@@ -772,7 +786,7 @@
 
     .know-what-text
     {
-        margin-top: 1rem;
+        margin-top: 0;
         font-size: 16px;
         line-height: 24px;
         text-align: start;
@@ -799,6 +813,7 @@
     .about-us-text
     {
         padding: 0;
+        margin-bottom: 0.5rem;
         font-size: 14px;
         line-height: 22px;
         text-align: start;
@@ -821,15 +836,13 @@
         width: 68px;
         height: 48px;
         top: 23%;
-        left: 0;
+        left: -0.7rem;
     }
 
     .opinions-fish-bubbles
     {
-        width: 34px;
-        height: 24px;
-        bottom: 62%;
-        right: 5%;
+        bottom: 55%;
+        right: 1rem;
     }
 
     #homeOpinion1
@@ -853,5 +866,212 @@
         margin-top: 0;
         margin-bottom: 0;
         margin-left: 50%;
+    }
+}
+
+@media (min-width: 1280px)
+{
+    .new-product-title
+    {
+        font-size: 16px;
+    }
+
+    .new-product-name
+    {
+        font-size: 64px;
+        line-height: 72px;
+    }
+
+    .button
+    {
+        width: 60%;
+    }
+
+    .home-rocket
+    {
+        width: 85px;
+        height: 80px;
+    }
+
+    .home-boat
+    {
+        width: 106px;
+        height: 72px;
+        bottom: 2.5rem;
+    }
+
+    .title
+    {
+        font-size: 40px;
+    }
+
+    .categories-plaza-div
+    {
+        width: 442px;
+        height: 280px;
+    }
+
+    .categories-singles-div
+    {
+        width: 442px;
+        height: 280px;
+    }
+
+    .noted-products
+    {
+        flex-basis: 25%;
+    }
+
+    .noted
+    {
+        font-size: 14px;
+    }
+
+    .noted-image
+    {
+        width: 15rem;
+        height: 15rem;
+    }
+
+    .product-name
+    {
+        font-size: 18px;
+    }
+
+    .product-price
+    {
+        font-size: 24px;
+    }
+
+    .know-what-img
+    {
+        width: 100%;
+        height: 100%;
+    }
+
+    .know-what-title
+    {
+        font-size: 48px;
+        line-height: 72px;
+    }
+
+    .know-what-text
+    {
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    .about-us-text
+    {
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .about-us-img
+    {
+        width: 523px;
+        height: 390px;
+    }
+
+    .opinions-title
+    {
+        font-size: 48px;
+        line-height: 72px;
+    }
+}
+
+@media (min-width: 1536px)
+{
+    .container
+    {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+
+    .new-product-title
+    {
+        font-size: 18px;
+    }
+
+    .new-product-name
+    {
+        font-size: 72px;
+    }
+
+    .home-boat
+    {
+        width: 117px;
+        height: 80px;
+        bottom: 2.7rem;
+    }
+
+    .title
+    {
+        font-size: 44px;
+    }
+
+    .anchor
+    {
+        font-size: 20px;
+    }
+
+    .categories-plaza-div
+    {
+        width: 500px;
+        height: 316px;
+    }
+
+    .categories-singles-div
+    {
+        width: 500px;
+        height: 316px;
+    }
+
+    .noted
+    {
+        font-size: 18px;
+    }
+
+    .product-name
+    {
+        font-size: 24px;
+    }
+
+    .product-price
+    {
+        font-size: 28px;
+    }
+
+    .know-what-img
+    {
+        width: 602px;
+        height: 378px;
+    }
+
+    .know-what-title
+    {
+        font-size: 56px;
+    }
+
+    .know-what-text
+    {
+        margin-top: 1rem;
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .about-us-text
+    {
+        font-size: 18px;
+        line-height: 26px;
+    }
+    .about-us-img
+    {
+        width: 681px;
+        height: 455px;
+    }
+
+    .opinions-title
+    {
+        font-size: 56px;
     }
 }
