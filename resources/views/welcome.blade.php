@@ -140,9 +140,11 @@
 
     import { showSuccess, showErrors } from "{{ asset(mix('js/module/sweetAlert.js')) }}";
     import { mainNavbar } from "{{ asset(mix('js/admin/navBar.js')) }}";
+    import { mainFooter } from "{{ asset(mix('js/admin/footer.js')) }}";
 
     window.onload = function() {
         mainNavbar()
+        mainFooter()
     }
 </script>
 @endsection

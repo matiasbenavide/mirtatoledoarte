@@ -90,6 +90,7 @@
         import { showSuccess, showErrors } from "{{ asset(mix('js/module/sweetAlert.js')) }}";
         import { main } from "{{ asset(mix('js/clientProductsList.js')) }}";
         import { mainNavbar } from "{{ asset(mix('js/admin/navBar.js')) }}";
+        import { mainFooter } from "{{ asset(mix('js/admin/footer.js')) }}";
 
         window.onload = function() {
             main({
@@ -100,6 +101,7 @@
                 withoutColor: withoutColor,
             })
             mainNavbar()
+            mainFooter()
         }
     </script>
 @endsection

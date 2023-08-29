@@ -92,12 +92,14 @@
 
         import { main } from "{{ asset(mix('js/shoppingCart.js')) }}";
         import { mainNavbar } from "{{ asset(mix('js/admin/navBar.js')) }}";
+        import { mainFooter } from "{{ asset(mix('js/admin/footer.js')) }}";
 
         window.onload = function() {
             main({
                 products: products,
             })
             mainNavbar()
+            mainFooter()
         }
     </script>
     {{-- SDK MercadoPago.js --}}

@@ -121,9 +121,11 @@
     <script type="module">
 
         import { mainNavbar } from "{{ asset(mix('js/admin/navBar.js')) }}";
+        import { mainFooter } from "{{ asset(mix('js/admin/footer.js')) }}";
 
         window.onload = function() {
             mainNavbar()
+            mainFooter()
         }
     </script>
     <script type="text/javascript">
