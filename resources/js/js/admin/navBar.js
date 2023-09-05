@@ -16,7 +16,7 @@ export async function mainNavbar() {
     // }
 
     navBarToggle.on("click", function() {
-        searchSection[0].classList.toggle('active');
+        searchSection[0].classList.toggle('show');
     });
 
     submitInput.on("click", function() {

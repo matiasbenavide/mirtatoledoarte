@@ -11,12 +11,8 @@
     padding: 10px;
 }
 
-.active-links
-{
-    display: none !important;
-}
-
 .footer-drop-down {
+    padding-right: 1rem;
     display: flex;
     justify-content: space-between;
 }
@@ -32,12 +28,42 @@
     font-weight: 300;
     font-size: 48px;
     letter-spacing: 0.4px;
+    transform: rotate(0deg);
+    transition: transform 0.25s linear;
+}
+
+.open
+{
+
+    transform: rotate(45deg);
+    transition: transform 0.25s linear;
+}
+
+.wrapper
+{
+    display: grid;
+    grid-template-rows: 0fr;
+    overflow: hidden;
+    transition: grid-template-rows 500ms;
+}
+
+.wrapper.show
+{
+    grid-template-rows: 1fr;
 }
 
 .links-vertical
 {
     display: flex;
     flex-direction: column;
+    min-height: 0;
+}
+
+.links-horizontal
+{
+    display: flex;
+    align-items: center;
+    min-height: 0;
 }
 
 .shop-links
@@ -119,6 +145,11 @@
 
 @media(min-width: 1025px)
 {
+    .wrapper
+    {
+        grid-template-rows: 1fr;
+    }
+
     .active-links
     {
         display: flex !important;
@@ -131,6 +162,11 @@
         padding-bottom: 2rem;
         display: flex;
         justify-content: space-between;
+    }
+
+    .footer-div
+    {
+        justify-content: end;
     }
 
     .logo
@@ -181,10 +217,16 @@
 
     .contact-questions
     {
+        width: 30%;
         margin-right: 2rem;
         display: flex;
         flex-direction: column;
         align-items: end;
+    }
+
+    .contact-button-div
+    {
+        width: 70%;
     }
 
     .contact-btn
@@ -201,9 +243,11 @@
 
     .general-questions
     {
+        width: 100%;
         font-size: 10px;
         line-height: 12px;
         letter-spacing: 1px;
+        text-align: end;
     }
 
     .footer-copyright

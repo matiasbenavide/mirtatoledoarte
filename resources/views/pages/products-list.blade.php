@@ -7,12 +7,22 @@
 
 @section('mainContent')
     <div class="main">
-        <p class="title">TIENDA</p>
-        <p class="title-description">Acá vas a poder encontrar todos nuestros productos.</p>
+        <div class="title-description-container">
+            <div class="title-container">
+                <img src="{{ asset('admin/assets/images/HomeShineLeft.svg') }}" class="title-shine" alt="">
+                <p class="title">TIENDA</p>
+            </div>
+            <p class="title-description">Acá vas a poder encontrar todos nuestros productos.</p>
+        </div>
+        <div>
+            <img src="{{ asset('admin/assets/images/shop-list/ShopListCloud.svg') }}" class="image-to-overlap cloud-top" alt="">
+            <img src="{{ asset('admin/assets/images/ListMainImage.svg') }}" class="list-main-img" alt="">
+            <img src="{{ asset('admin/assets/images/shop-list/ShopListCloud.svg') }}" class="image-to-overlap cloud-bottom" alt="">
+        </div>
     </div>
     <div class="list-container">
-        <div class="title-buttons">
-            <p class="list-title">{{ $title }}</p>
+        <p class="list-title" id="mobileTitle">{{ $title }}</p>
+        <div class="filter-products">
             <div class="filter-buttons-container">
                 {{-- <button class="filter-button button-2" id="orderByToggle">
                     <img src="{{ asset('admin/assets/icons/order.svg') }}" alt="">
@@ -28,8 +38,8 @@
                         <div class="filter-divs">
                             <p class="filters-sub-title">Categoría</p>
                             <select class="form-input" name="categorySelector" id="categorySelector" style="max-height: 100%">
-                                <option class="form-input" value="">Seleccione una opción</option>
-                                <option class="form-input" value="{{ App\Models\Admin\Category::INDIVIDUAL }}">Indiuviduales</option>
+                                <option class="form-input" value="">Todos</option>
+                                <option class="form-input" value="{{ App\Models\Admin\Category::INDIVIDUAL }}">Individuales</option>
                                 <option class="form-input" value="{{ App\Models\Admin\Category::COMBO }}">Plazas y combos</option>
                             </select>
                         </div>
@@ -55,29 +65,31 @@
                     </form>
                 </div>
             </div>
-        </div>
-        <div class="products-container">
-            @foreach ($combosAndProducts as $product)
-                <a href="{{ url('/productos/detalle/' . $product->category_id . '/' . $product->id) }}" class="noted-products" style="margin-bottom: 15px">
-                    <div class="images-overlap product">
-                        @if ($product->color_id == App\Models\Admin\Category::INDIVIDUAL)
-                            <p class="image-to-overlap noted with-color">Pintada</p>
-                        @else
-                            <p class="image-to-overlap noted without-color">Sin Pintar</p>
-                        @endif
-                        <img class="image-to-overlap noted-image" @if ($product->main_image) src="{{ asset('images/main-images/' . $product->main_image) }}" @endif alt="">
-                        <div class="image-to-overlap cart-bag-div">
-                            <img class="cart-bag" src="{{ asset('admin/assets/images/HomeCartBag.svg') }}" alt="">
-                        </div>
-                    </div>
-                    <p class="product-name">{{ $product->name }}</p>
-                    <p class="product-price">AR$ {{ $product->price }}</p>
-                </a>
-            @endforeach
-        </div>
-
-        <div class="paginator-container">
-            {{ $combosAndProducts->links() }}
+            <div class="title-products">
+                <p class="list-title" id="desktopTitle">{{ $title }}</p>
+                <div class="products-container">
+                    @foreach ($combosAndProducts as $product)
+                        <a href="{{ url('/productos/detalle/' . $product->category_id . '/' . $product->id) }}" class="noted-products" style="margin-bottom: 15px">
+                            <div class="images-overlap product">
+                                @if ($product->color_id == App\Models\Admin\Category::INDIVIDUAL)
+                                    <p class="image-to-overlap noted with-color">Pintada</p>
+                                @else
+                                    <p class="image-to-overlap noted without-color">Sin Pintar</p>
+                                @endif
+                                <img class="image-to-overlap noted-image" @if ($product->main_image) src="{{ asset('images/main-images/' . $product->main_image) }}" @endif alt="">
+                                <div class="image-to-overlap cart-bag-div">
+                                    <img class="cart-bag" src="{{ asset('admin/assets/images/HomeCartBag.svg') }}" alt="">
+                                </div>
+                            </div>
+                            <p class="product-name">{{ $product->name }}</p>
+                            <p class="product-price">AR$ {{ $product->price }}</p>
+                        </a>
+                    @endforeach
+                </div>
+                <div class="paginator-container">
+                    {{ $combosAndProducts->links() }}
+                </div>
+            </div>
         </div>
     </div>
     <script type="module">

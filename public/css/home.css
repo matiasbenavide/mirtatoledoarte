@@ -220,7 +220,7 @@
     padding-left: 5px;
     padding-right: 5px;
     border: 2px solid #FF8141;
-    border-radius: 8px;
+    border-radius: 4px;
     font-weight: 600;
     font-size: 12px;
     line-height: 20px;
@@ -230,6 +230,7 @@
 
 .with-color {
     background-color: #FF8141;
+    z-index: 1;
 }
 
 .without-color {

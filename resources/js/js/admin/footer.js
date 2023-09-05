@@ -7,13 +7,16 @@ export async function mainFooter() {
     let socialMediaLinks = $('#socialMediaLinks');
 
     shopDropdown.on("click", function() {
-        shopLinks[0].classList.toggle('active-links');
+        shopDropdown[0].classList.toggle('open');
+        shopLinks[0].classList.toggle('show');
     });
     aboutUsDropdown.on("click", function() {
-        aboutUsLinks[0].classList.toggle('active-links');
+        aboutUsDropdown[0].classList.toggle('open');
+        aboutUsLinks[0].classList.toggle('show');
     });
 
     socialMediaDropdown.on("click", function() {
-        socialMediaLinks[0].classList.toggle('active-links');
+        socialMediaDropdown[0].classList.toggle('open');
+        socialMediaLinks[0].classList.toggle('show');
     });
 }

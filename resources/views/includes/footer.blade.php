@@ -10,10 +10,12 @@
                     <p class="drop-down-title">TIENDA</p>
                     <p id="shopDropdown" class="drop-down-cross">+</p>
                 </div>
-                <div id="shopLinks" class="links-container links-vertical active-links">
-                    <a class="shop-links" href="{{ url('productos?categorySelector=' . App\Models\Admin\Category::COMBO) }}">PLAZA</a>
-                    <a class="shop-links" href="{{ url('productos?categorySelector=' . App\Models\Admin\Category::INDIVIDUAL) }}">JUEGOS INDIVIDUALES</a>
-                    <a class="shop-links" href="{{ url('productos') }}">VER TODOS</a>
+                <div id="shopLinks" class="wrapper">
+                    <div class="links-container links-vertical">
+                        <a class="shop-links" href="{{ url('productos?categorySelector=' . App\Models\Admin\Category::COMBO) }}">PLAZA</a>
+                        <a class="shop-links" href="{{ url('productos?categorySelector=' . App\Models\Admin\Category::INDIVIDUAL) }}">JUEGOS INDIVIDUALES</a>
+                        <a class="shop-links" href="{{ url('productos') }}">VER TODOS</a>
+                    </div>
                 </div>
             </div>
             <hr>
@@ -22,9 +24,11 @@
                     <p class="drop-down-title">NOSOTROS</p>
                     <p id="aboutUsDropdown" class="drop-down-cross">+</p>
                 </div>
-                <div id="aboutUsLinks" class="links-container links-vertical active-links">
-                    <a class="shop-links" href="{{ url('about-us') }}">SOBRE JUGANDO TOY</a>
-                    <a class="shop-links" href="{{ url('our-values') }}">NUESTROS VALORES</a>
+                <div id="aboutUsLinks" class="wrapper">
+                    <div class="links-container links-vertical">
+                        <a class="shop-links" href="{{ url('about-us') }}">SOBRE JUGANDO TOY</a>
+                        <a class="shop-links" href="{{ url('our-values') }}">NUESTROS VALORES</a>
+                    </div>
                 </div>
             </div>
             <hr>
@@ -33,19 +37,21 @@
                     <p class="drop-down-title">NUESTRAS REDES</p>
                     <p id="socialMediaDropdown" class="drop-down-cross">+</p>
                 </div>
-                <div id="socialMediaLinks" class="links-container active-links">
-                    <a href="https://www.instagram.com/decorelieve/?hl=es" target="_blank">
-                        <img src="{{ asset('admin/assets/icons/igIcon.svg') }}" alt="">
-                    </a>
-                    <a id="fb-icon" href="https://m.facebook.com/DecoRelieve/" target="_blank">
-                        <img src="{{ asset('admin/assets/icons/fbIcon.svg') }}" alt="">
-                    </a>
+                <div id="socialMediaLinks" class="wrapper">
+                    <div class="links-container links-horizontal">
+                        <a href="https://www.instagram.com/decorelieve/?hl=es" target="_blank">
+                            <img src="{{ asset('admin/assets/icons/igIcon.svg') }}" alt="">
+                        </a>
+                        <a id="fb-icon" href="https://m.facebook.com/DecoRelieve/" target="_blank">
+                            <img src="{{ asset('admin/assets/icons/fbIcon.svg') }}" alt="">
+                        </a>
+                    </div>
                 </div>
             </div>
             <hr>
         </div>
         <div class="contact-questions">
-            <div class="footer-div">
+            <div class="footer-div contact-button-div">
                 <button class="button contact-btn">Contacto</button>
             </div>
             <div class="footer-div questions-div">

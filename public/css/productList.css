@@ -5,6 +5,19 @@
     padding-top: 10rem;
 }
 
+.title-container
+{
+    margin-right: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.title-shine
+{
+    transform: rotate(30deg);
+}
+
 .title
 {
     font-family: 'Don José';
@@ -12,6 +25,11 @@
     line-height: 52px;
     color: #FDF9F5;
     text-align: center;
+}
+
+#desktopTitle
+{
+    display: none;
 }
 
 .title-description
@@ -22,9 +40,26 @@
     text-align: center;
 }
 
+.cloud-top
+{
+    top: 8rem;
+    left: -1rem;
+}
+
+.cloud-bottom
+{
+    right: 0;
+}
+
+.list-main-img
+{
+    display: none;
+}
+
 .list-container
 {
     padding: 5%;
+    background-color: #FDF9F5;
 }
 
 .list-title
@@ -46,8 +81,8 @@
 
 .filter-button
 {
-    width: 148px;
-    max-width: 148px;
+    max-width: 100%;
+    width: 100%;
     height: 38px;
     padding-top: 0;
     padding-bottom: 0;
@@ -119,11 +154,13 @@
 .checkbox-container
 {
     display: flex;
+    align-items: center;
 }
 
 .colors-checkbox
 {
     width: 1rem;
+    accent-color: #154193;
 }
 
 .colors-text
@@ -155,7 +192,7 @@
 }
 
 .products-container {
-    margin-top: 15%;
+    margin-top: 5rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -188,7 +225,7 @@
     padding-left: 5px;
     padding-right: 5px;
     border: 2px solid #FF8141;
-    border-radius: 8px;
+    border-radius: 4px;
     font-weight: 600;
     font-size: 12px;
     line-height: 20px;
@@ -198,15 +235,17 @@
 
 .with-color {
     background-color: #FF8141;
+    z-index: 1;
 }
 
 .without-color {
     color: #FF8141;
+    z-index: 1;
 }
 
 .noted-image {
-    width: 6.5rem;
-    height: 6.5rem;
+    width: 100%;
+    height: 100%;
 }
 
 .cart-bag-div {
@@ -250,10 +289,6 @@
 
 @media (min-width: 768px)
 {
-    .main
-    {
-        padding-top: 20%;
-    }
 
     .title
     {
@@ -267,10 +302,21 @@
         line-height: 28px;
     }
 
+    .cloud-top
+    {
+        width: 5.3rem;
+        left: 1rem;
+    }
+
     .list-title
     {
         font-size: 40px;
         line-height: 48px;
+    }
+
+    .filter-button
+    {
+        width: 50%;
     }
 
     .filter-forms-container
@@ -299,12 +345,6 @@
         margin-bottom: 10%;
     }
 
-    .colors-checkbox
-    {
-        width: 2.5%;
-        height: 20px;
-    }
-
     .colors-text
     {
         font-size: 20px;
@@ -313,5 +353,159 @@
     .main-filter-btn
     {
         font-size: 18px;
+    }
+
+    .product
+    {
+        min-width: 14rem;
+        min-height: 14rem;
+    }
+
+    .product-price {
+        font-size: 22px;
+    }
+}
+
+@media (min-width: 1025px)
+{
+    .main
+    {
+        padding: 5rem;
+        padding-bottom: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #mobileTitle
+    {
+        display: none;
+    }
+
+    #desktopTitle
+    {
+        display: block;
+        text-align: start;
+    }
+
+    .title-description-container
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .title-container
+    {
+        justify-content: flex-start;
+    }
+
+    .title
+    {
+        margin-bottom: 2rem;
+    }
+
+    .cloud-top
+    {
+        display: none;
+    }
+
+    .cloud-bottom
+    {
+        display: none;
+    }
+
+    .list-main-img
+    {
+        display: block;
+    }
+
+    .filter-title
+    {
+        font-size: 24px;
+        line-height: 24px;
+        text-align: left;
+    }
+
+    .filters-sub-title
+    {
+        font-size: 20px;
+    }
+
+    .filter-products
+    {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .filter-button
+    {
+        display: none;
+    }
+
+    .filter-forms-container
+    {
+        display: block;
+        margin-top: 6rem;
+    }
+
+    .filter-buttons-container
+    {
+        display: block;
+        min-width: 25%;
+    }
+
+    .price-inputs-container
+    {
+        flex-direction: column;
+    }
+
+    .price-input
+    {
+        min-width: 0;
+        max-width: none;
+    }
+
+    .products-container
+    {
+        margin-top: 3rem;
+    }
+
+    .filter-divs
+    {
+        margin-top: 2rem;
+    }
+
+    .main-filter-btn
+    {
+        display: block;
+        width: 100%;
+    }
+
+    .title-products
+    {
+        margin-left: 2rem;
+    }
+
+    .noted-products
+    {
+        align-items: flex-start;
+    }
+
+    .with-color
+    {
+        font-size: 13px;
+        line-height: 19px;
+    }
+
+    .without-color
+    {
+        font-size: 13px;
+        line-height: 19px;
+    }
+
+    .colors-text
+    {
+        font-size: 16px;
     }
 }

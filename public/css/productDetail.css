@@ -23,20 +23,29 @@
     color: #154193;
 }
 
+.name-mobile
+{
+    display: block;
+}
+
+.name-desktop
+{
+    display: none;
+}
+
 .main-image-container
 {
     display: flex;
     justify-content: center;
+    border-radius: 8px;
+    background-color: #fff;
 }
 
 .main-img
 {
     margin-top: 3%;
     margin-bottom: 3%;
-    width: 312px;
-    height: 312px;
-    border-radius: 8px;
-    background-color: #fff;
+    width: 100%;
 }
 
 .not-found
@@ -61,6 +70,7 @@
     width: 4rem;
     height: 4rem;
     border-radius: 8px;
+    background-color: #fff;
 }
 
 .selected-main-img
@@ -269,12 +279,27 @@
     padding: 8%;
 }
 
+.desktop-plane
+{
+    display: none;
+}
+
 .about-title
 {
     font-weight: 500;
     font-size: 28px;
     line-height: 32px;
     color: #154193;
+}
+
+.description-mobile
+{
+    display: block;
+}
+
+.description-desktop
+{
+    display: none;
 }
 
 .about-description
@@ -318,6 +343,14 @@
     align-items: center;
 }
 
+.specs-container
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .specs-icon
 {
     width: 52px;
@@ -338,6 +371,11 @@
     letter-spacing: 0.2px;
     text-align: center;
     color: #404040;
+}
+
+.specs-img-container
+{
+    display: none;
 }
 
 .product-opinion
@@ -523,5 +561,223 @@
     .opinion-title
     {
         font-size: 36px;
+    }
+}
+
+@media (min-width: 1025px)
+{
+    .product-type-title
+    {
+        margin-top: 1rem;
+    }
+
+    .name-mobile
+    {
+        display: none;
+    }
+
+    .name-desktop
+    {
+        display: block;
+    }
+
+    .images-color
+    {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .main-img-images
+    {
+        flex-basis: 68%;
+        width: 100%;
+        min-height: 350px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        align-items: flex-start;
+    }
+
+    .main-image-container
+    {
+        flex-basis: 75%;
+        width: 100%;
+        min-height: 480px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .main-img
+    {
+        margin: 0;
+    }
+
+    .images
+    {
+        height: 480px;
+        flex-basis: 25%;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .img-div
+    {
+        flex-basis: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+    }
+
+    .img-icon
+    {
+        min-width: 72px;
+        min-height: 72px;
+    }
+
+    .color-type-text
+    {
+        font-size: 16px;
+    }
+
+    .price
+    {
+        font-size: 32px;
+    }
+
+    .anchor
+    {
+        font-size: 16px;
+    }
+
+    .add-to-cart-link
+    {
+        width: 100%;
+    }
+
+    .colors-details
+    {
+        flex-basis: 30%;
+    }
+
+    .color-type-div
+    {
+        width: 94px;
+    }
+
+    .without-color
+    {
+        width: 14px;
+        height: 14px;
+    }
+
+    .with-color
+    {
+        width: 74px;
+        height: 14px;
+    }
+
+    .basic-info
+    {
+        margin-top: 2rem;
+    }
+
+    .info-div
+    {
+        justify-content: flex-start;
+    }
+
+    .info-img
+    {
+        margin-bottom: 0;
+    }
+
+    .info-title
+    {
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    .info-text
+    {
+        font-size: 14px;
+        line-height: 14px;
+    }
+
+    .about
+    {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+
+    .about-title-description
+    {
+        flex-basis: 60%;
+    }
+
+    .about-img-container
+    {
+        flex-basis: 40%;
+        position: relative;
+    }
+
+    .about-img
+    {
+        position: absolute;
+        top: 12%;
+        left: -43.955%;
+        transform: rotate(-1.4deg);
+        clip-path: inset(0 0 0 50%);
+    }
+
+    .desktop-plane
+    {
+        display: block;
+        position: absolute;
+        z-index: 1;
+        bottom: 0;
+    }
+
+    .description-mobile
+    {
+        display: none;
+    }
+
+    .description-desktop
+    {
+        display: block;
+    }
+
+    .about-description
+    {
+        margin-top: 1rem;
+    }
+
+    .specs
+    {
+        padding-left: 15rem;
+        padding-right: 15rem;
+        padding-bottom: 0;
+    }
+
+    .specs-description
+    {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .specs-img-container
+    {
+        display: block;
+        width: 100%;
     }
 }
