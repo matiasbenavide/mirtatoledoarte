@@ -239,8 +239,8 @@
 }
 
 .noted-image {
-    width: 6.5rem;
-    height: 6.5rem;
+    width: 100%;
+    height: 100%;
     border-radius: 8px;
 }
 
@@ -485,12 +485,6 @@
     .noted
     {
         font-size: 14px;
-    }
-
-    .noted-image {
-        width: 20rem;
-        height: 20rem;
-        border-radius: 8px;
     }
 
     .noted-image-not-found {
@@ -927,12 +921,6 @@
     .noted
     {
         font-size: 14px;
-    }
-
-    .noted-image
-    {
-        width: 15rem;
-        height: 15rem;
     }
 
     .product-name
