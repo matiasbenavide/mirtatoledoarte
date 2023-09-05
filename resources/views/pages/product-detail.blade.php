@@ -87,7 +87,7 @@
     </div>
 
     <div class="about light-beige-bg">
-        <div class="about-title-descripiton">
+        <div class="about-title-description">
             <p class="about-title">Sobre el producto</p>
             <p class="about-description description-desktop">{{ $product->description }}</p>
         </div>
@@ -105,15 +105,13 @@
     </div>
 
     <div class="specs light-bg main-div">
+        <img class="orange-icons left-cloud" src="{{ asset('admin/assets/images/product-detail/DetailOrangeLeftCloud.svg') }}" alt="">
+        <img class="orange-icons right-cloud" src="{{ asset('admin/assets/images/product-detail/DetailOrangeRightCloud.svg') }}" alt="">
+        <img class="orange-icons plane" src="{{ asset('admin/assets/images/product-detail/DetailOrangeRocket.svg') }}" alt="">
         <div class="specs-title-div">
             <img class="shine" src="{{ asset('admin/assets/images/HomeShineLeft.svg') }}" alt="">
             <p class="specs-title">Especificaciones</p>
             <img class="shine" src="{{ asset('admin/assets/images/HomeShineRight.svg') }}" alt="">
-        </div>
-        <div>
-            <img src="{{ asset('admin/assets/images/product-detail/DetailOrangeLeftCloud.svg') }}" alt="">
-            <img src="{{ asset('admin/assets/images/product-detail/DetailOrangeRightCloud.svg') }}" alt="">
-            <img src="{{ asset('admin/assets/images/product-detail/DetailOrangeRocket.svg') }}" alt="">
         </div>
         <div class="specs-description">
             <div class="specs-container">

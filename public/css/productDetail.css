@@ -378,6 +378,11 @@
     display: none;
 }
 
+.orange-icons
+{
+    display: none;
+}
+
 .product-opinion
 {
     padding: 8%;
@@ -740,10 +745,11 @@
 
     .desktop-plane
     {
+        height: 100%;
         display: block;
         position: absolute;
         z-index: 1;
-        bottom: 0;
+        bottom: -14rem;
     }
 
     .description-mobile
@@ -763,6 +769,7 @@
 
     .specs
     {
+        position: relative;
         padding-left: 15rem;
         padding-right: 15rem;
         padding-bottom: 0;
@@ -779,5 +786,29 @@
     {
         display: block;
         width: 100%;
+    }
+
+    .orange-icons
+    {
+        display: block;
+        position: absolute;
+    }
+
+    .right-cloud
+    {
+        top: 15rem;
+        right: -1rem;
+    }
+
+    .left-cloud
+    {
+        left: -1rem;
+        bottom: 5rem;
+    }
+
+    .plane
+    {
+        top: 7rem;
+        left: 8rem;
     }
 }
