@@ -235,6 +235,7 @@
 
 .without-color {
     color: #FF8141;
+    z-index: 1;
 }
 
 .noted-image {
