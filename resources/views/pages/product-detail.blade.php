@@ -94,7 +94,7 @@
         <div class="about-img-container">
             @if ($product->main_image)
                 <img class="main-img about-img" src="{{ asset('images/main-images/' . $product->main_image) }}" alt="">
-                <img class="main-img not-found" src="{{ asset('admin/assets/images/ImageNotFound.svg') }}" alt="">
+                <img class="main-img not-found" src="{{ asset('admin/assets/images/product-detail/AboutBG.svg') }}" alt="">
                 <img class="desktop-plane" src="{{ asset('admin/assets/images/product-detail/DetailPlane.svg') }}" alt="">
             @else
                 <img class="main-img about-img not-found" src="{{ asset('admin/assets/images/ImageNotFound.svg') }}" alt="">

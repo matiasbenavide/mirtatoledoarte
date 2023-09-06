@@ -57,20 +57,23 @@
 {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .img-div
 {
-    padding: 0.5rem;
+    flex-basis: 33%;
+    margin: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background-color: #fff;
 }
 
 .img-icon
 {
-    width: 4rem;
-    height: 4rem;
-    border-radius: 8px;
-    background-color: #fff;
+    width: 100%;
 }
 
 .selected-main-img
@@ -217,7 +220,6 @@
 
 .info-div
 {
-    /* padding: 8%; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -279,6 +281,23 @@
     padding: 8%;
 }
 
+.about-img-container
+{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-img
+{
+    position: absolute;
+    /* top: 12%; */
+    left: -43.955%;
+    transform: rotate(-1.4deg);
+    clip-path: inset(25% 0 25% 50%);
+}
+
 .desktop-plane
 {
     display: none;
@@ -313,6 +332,7 @@
 
 .specs
 {
+    overflow: hidden;
     padding: 8%;
     display: flex;
     flex-direction: column;
@@ -476,6 +496,11 @@
         margin-top: 5%;
     }
 
+    .img-div
+    {
+        flex-basis: 25%;
+    }
+
     .basic-info
     {
         width: 100%;
@@ -518,28 +543,6 @@
         font-size: 40px;
         line-height: 48px;
     }
-
-    .about-img-container
-    {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    /* .about-img-bg
-    {
-        width: 100%;
-        position: relative;
-        left: 50%;
-        top: 10%;
-    }
-
-    .about-img
-    {
-        width: 60%;
-        position: relative;
-        right: 50%;
-    } */
 
     .about-description
     {
@@ -608,7 +611,7 @@
 
     .main-image-container
     {
-        flex-basis: 75%;
+        flex-basis: 73%;
         width: 100%;
         min-height: 480px;
         display: flex;
@@ -623,25 +626,22 @@
     .images
     {
         height: 480px;
-        flex-basis: 25%;
+        flex-basis: auto;
         flex-direction: column;
-        justify-content: flex-start;
         align-items: center;
     }
 
     .img-div
     {
+        width: 5.15rem;
+        max-height: 5.15rem;
         flex-basis: 20%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         padding: 0;
     }
 
     .img-icon
     {
-        min-width: 72px;
-        min-height: 72px;
+        width: 100%;
     }
 
     .color-type-text
@@ -719,6 +719,7 @@
         flex-wrap: wrap;
         justify-content: space-between;
         align-items: flex-start;
+        padding: 2rem;
         padding-left: 3rem;
         padding-right: 3rem;
     }
@@ -731,16 +732,6 @@
     .about-img-container
     {
         flex-basis: 40%;
-        position: relative;
-    }
-
-    .about-img
-    {
-        position: absolute;
-        top: 12%;
-        left: -43.955%;
-        transform: rotate(-1.4deg);
-        clip-path: inset(0 0 0 50%);
     }
 
     .desktop-plane
@@ -749,7 +740,8 @@
         display: block;
         position: absolute;
         z-index: 1;
-        bottom: -14rem;
+        right: -1rem;
+        bottom: -6rem;
     }
 
     .description-mobile
@@ -770,6 +762,7 @@
     .specs
     {
         position: relative;
+        padding: 2rem;
         padding-left: 15rem;
         padding-right: 15rem;
         padding-bottom: 0;
@@ -778,14 +771,23 @@
     .specs-description
     {
         width: 100%;
+        max-width: 588px;
         flex-direction: row;
+        flex-wrap: wrap;
         justify-content: space-around;
+        align-items: flex-start;
+    }
+
+    .specs-container
+    {
+        flex-basis: 33%;
     }
 
     .specs-img-container
     {
         display: block;
         width: 100%;
+        max-width: 588px;
     }
 
     .orange-icons

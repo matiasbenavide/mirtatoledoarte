@@ -24,8 +24,7 @@
 }
 
 .new-product-image {
-    width: 27.7rem;
-    height: 19.5rem;
+    width: 100%;
 }
 
 .new-product-text-div
@@ -54,6 +53,7 @@
 .new-product-button {
     text-align: center;
     margin-top: 15px;
+    z-index: 1;
 }
 
 .images-overlap {
@@ -420,11 +420,6 @@
         justify-content: center;
     }
 
-    .new-product-image {
-        width: 40rem;
-        height: 30rem;
-    }
-
     .new-product-title
     {
         font-size: 16px;
@@ -611,10 +606,18 @@
 
     .new-product-image-div
     {
+        padding-left: 6rem;
+        padding-right: 6rem;
         display: flex;
         flex-direction: row-reverse;
+        justify-content: space-around;
         align-items: center;
-        justify-content: center;
+    }
+
+    .new-product-image
+    {
+        width: 30rem;
+        max-width: 30rem;
     }
 
     .new-product-text-div
@@ -632,6 +635,12 @@
         font-size: 48px;
         line-height: 56px;
         text-align: start;
+    }
+
+    .button
+    {
+        padding-left: 2rem;
+        padding-right: 2rem;
     }
 
     .boat-and-line {
@@ -877,11 +886,6 @@
     {
         font-size: 64px;
         line-height: 72px;
-    }
-
-    .button
-    {
-        width: 60%;
     }
 
     .home-rocket
