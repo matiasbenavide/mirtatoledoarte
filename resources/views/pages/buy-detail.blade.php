@@ -19,21 +19,40 @@
                     <p class="dropdown-price">AR$ {{ $cart->totalPrice }}</p>
                 </div>
                 <div class="products active" id="shoppingDetail">
-                    @foreach ($products as $product)
-                    <div class="product">
-                        <img class="product-img" src="@if ($product['product']->main_image) {{ asset('images/main-images/' . $product['product']->main_image) }} @else {{ asset('admin/assets/images/ImageNotFound.svg') }} @endif" alt="">
-                        <div class="product-detail">
-                            <p class="name">{{ $product['product']->name }}</p>
-                            <div class="quantity-price">
-                                <div class="quantity-div">
-                                    <p class="quantity">{{ $product['quantity'] }} @if ($product['quantity'] > 1) unidades @else unidad @endif</p>
+                    @if ($products)
+                        @foreach ($products as $product)
+                        <div class="product">
+                            <img class="product-img" src="@if ($product['product']->main_image) {{ asset('images/main-images/' . $product['product']->main_image) }} @else {{ asset('admin/assets/images/ImageNotFound.svg') }} @endif" alt="">
+                            <div class="product-detail">
+                                <p class="name">{{ $product['product']->name }}</p>
+                                <div class="quantity-price">
+                                    <div class="quantity-div">
+                                        <p class="quantity">{{ $product['quantity'] }} @if ($product['quantity'] > 1) unidades @else unidad @endif</p>
+                                    </div>
+                                    <p class="price">AR$ {{ $product['product']->price * $product['quantity'] }}</p>
                                 </div>
-                                <p class="price">AR$ {{ $product['product']->price * $product['quantity'] }}</p>
                             </div>
                         </div>
-                    </div>
-                    <hr style="color: rgba(21, 65, 147, 0.25)">
-                    @endforeach
+                        <hr style="color: rgba(21, 65, 147, 0.25)">
+                        @endforeach
+                    @endif
+                    @if ($combos)
+                        @foreach ($combos as $product)
+                        <div class="product">
+                            <img class="product-img" src="@if ($product['product']->main_image) {{ asset('images/main-images/' . $product['product']->main_image) }} @else {{ asset('admin/assets/images/ImageNotFound.svg') }} @endif" alt="">
+                            <div class="product-detail">
+                                <p class="name">{{ $product['product']->name }}</p>
+                                <div class="quantity-price">
+                                    <div class="quantity-div">
+                                        <p class="quantity">{{ $product['quantity'] }} @if ($product['quantity'] > 1) unidades @else unidad @endif</p>
+                                    </div>
+                                    <p class="price">AR$ {{ $product['product']->price * $product['quantity'] }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <hr style="color: rgba(21, 65, 147, 0.25)">
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>
@@ -123,6 +142,7 @@
     </div>
     <script type="module">
         let products = {!! json_encode($products) !!};
+        let combos = {!! json_encode($combos) !!};
 
         let productsInput = $('#products');
 
@@ -134,6 +154,15 @@
                 'product_category_id': products[key].product.category_id,
                 'product_price': products[key].product.price,
                 'product_quantity': products[key].quantity,
+            })
+        }
+
+        for (const key in combos) {
+            productsInfo.push({
+                'product_id': combos[key].product.id,
+                'product_category_id': combos[key].product.category_id,
+                'product_price': combos[key].product.price,
+                'product_quantity': combos[key].quantity,
             })
         }
 

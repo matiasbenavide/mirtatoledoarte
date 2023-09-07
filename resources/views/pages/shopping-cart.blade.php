@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.cartMain')
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/shoppingCart.css') }}">
@@ -33,34 +33,63 @@
         $preference->items = $productsList;
         $preference->save();
     @endphp --}}
-    <div>
+    <div class="main-container">
         <div class="main">
             <p class="title">Carrito</p>
-            @foreach ($products as $product)
-                <div class="product">
-                    <img class="product-img" src="@if ($product['product']->main_image) {{ asset('images/main-images/' . $product['product']->main_image) }} @endif" alt="">
-                    <div class="product-detail">
-                        <p class="name">{{ $product['product']->name }}</p>
-                        <div class="quantity-price">
-                            <div class="" style="width: 100%">
-                                <div class="quantity-div">
-                                    @if ($product['quantity'] > 1)
-                                        <a class="quantity" style="margin-right: 0.5rem" href="{{ url('remover-carrito/' . $product['product']->category_id . '/' . $product['product']->id) }}"> - </a>
-                                    @else
-                                        <p class="quantity" style="margin-right: 0.5rem"> - </p>
-                                    @endif
-                                    <p class="quantity">{{ $product['quantity'] }} @if ($product['quantity'] > 1) unidades @else unidad @endif</p>
-                                    <a class="quantity" style="margin-left: 0.5rem" href="{{ url('agregar-carrito/' . $product['product']->category_id . '/' . $product['product']->id) }}"> + </a>
+            @if ($products)
+                @foreach ($products as $product)
+                    <div class="product">
+                        <img class="product-img" src="@if ($product['product']->main_image) {{ asset('images/main-images/' . $product['product']->main_image) }} @endif" alt="">
+                        <div class="product-detail">
+                            <p class="name">{{ $product['product']->name }}</p>
+                            <div class="quantity-price">
+                                <div class="" style="width: 100%">
+                                    <div class="quantity-div">
+                                        @if ($product['quantity'] > 1)
+                                            <a class="quantity" style="margin-right: 0.5rem" href="{{ url('remover-carrito/' . $product['product']->category_id . '/' . $product['product']->id) }}"> - </a>
+                                        @else
+                                            <p class="quantity" style="margin-right: 0.5rem"> - </p>
+                                        @endif
+                                        <p class="quantity">{{ $product['quantity'] }} @if ($product['quantity'] > 1) unidades @else unidad @endif</p>
+                                        <a class="quantity" style="margin-left: 0.5rem" href="{{ url('agregar-carrito/' . $product['product']->category_id . '/' . $product['product']->id) }}"> + </a>
+                                    </div>
+                                    <p class="quantity">(AR$ {{ $product['product']->price }})</p>
                                 </div>
-                                <p class="quantity">(AR$ {{ $product['product']->price }})</p>
+                                <p class="price">AR$ {{ $product['product']->price * $product['quantity'] }}</p>
                             </div>
-                            <p class="price">AR$ {{ $product['product']->price * $product['quantity'] }}</p>
                         </div>
                     </div>
-                </div>
-                <a class="delete" href="{{ url('eliminar-carrito/' . $product['product']->category_id . '/' . $product['product']->id) }}">Eliminar</a>
-                <hr style="color: rgba(21, 65, 147, 0.25)">
-            @endforeach
+                    <a class="delete" href="{{ url('eliminar-carrito/' . $product['product']->category_id . '/' . $product['product']->id) }}">Eliminar</a>
+                    <hr style="color: rgba(21, 65, 147, 0.25)">
+                @endforeach
+            @endif
+            @if ($combos)
+                @foreach ($combos as $product)
+                    <div class="product">
+                        <img class="product-img" src="@if ($product['product']->main_image) {{ asset('images/main-images/' . $product['product']->main_image) }} @endif" alt="">
+                        <div class="product-detail">
+                            <p class="name">{{ $product['product']->name }}</p>
+                            <div class="quantity-price">
+                                <div class="" style="width: 100%">
+                                    <div class="quantity-div">
+                                        @if ($product['quantity'] > 1)
+                                            <a class="quantity" style="margin-right: 0.5rem" href="{{ url('remover-carrito/' . $product['product']->category_id . '/' . $product['product']->id) }}"> - </a>
+                                        @else
+                                            <p class="quantity" style="margin-right: 0.5rem"> - </p>
+                                        @endif
+                                        <p class="quantity">{{ $product['quantity'] }} @if ($product['quantity'] > 1) unidades @else unidad @endif</p>
+                                        <a class="quantity" style="margin-left: 0.5rem" href="{{ url('agregar-carrito/' . $product['product']->category_id . '/' . $product['product']->id) }}"> + </a>
+                                    </div>
+                                    <p class="quantity">(AR$ {{ $product['product']->price }})</p>
+                                </div>
+                                <p class="price">AR$ {{ $product['product']->price * $product['quantity'] }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="delete" href="{{ url('eliminar-carrito/' . $product['product']->category_id . '/' . $product['product']->id) }}">Eliminar</a>
+                    <hr style="color: rgba(21, 65, 147, 0.25)">
+                @endforeach
+            @endif
         </div>
         <div class="total-pay">
             <div class="total">
@@ -89,6 +118,7 @@
 
     <script type="module">
         let products = {!! json_encode($products) !!};
+        let combos = {!! json_encode($combos) !!};
 
         import { main } from "{{ asset(mix('js/shoppingCart.js')) }}";
         import { mainNavbar } from "{{ asset(mix('js/admin/navBar.js')) }}";
@@ -97,6 +127,7 @@
         window.onload = function() {
             main({
                 products: products,
+                combos: combos,
             })
             mainNavbar()
             mainFooter()

@@ -161,7 +161,14 @@ class ProductClientController extends Controller
 
         $cart = new Cart($oldCart);
 
-        $cart->addProduct($product, $product->id);
+        if ($product->category_id == Category::INDIVIDUAL)
+        {
+            $cart->addProduct($product, $product->id);
+        }
+        else
+        {
+            $cart->addCombo($product, $product->id);
+        }
 
         $request->session()->put('cart', $cart);
 
@@ -183,7 +190,14 @@ class ProductClientController extends Controller
 
         $cart = new Cart($oldCart);
 
-        $cart->removeProduct($product, $product->id);
+        if ($product->category_id == Category::INDIVIDUAL)
+        {
+            $cart->removeProduct($product, $product->id);
+        }
+        else
+        {
+            $cart->removeCombo($product, $product->id);
+        }
 
         $request->session()->put('cart', $cart);
 
@@ -205,7 +219,14 @@ class ProductClientController extends Controller
 
         $cart = new Cart($oldCart);
 
-        $cart->deleteProduct($product->id);
+        if ($product->category_id == Category::INDIVIDUAL)
+        {
+            $cart->deleteProduct($product->id);
+        }
+        else
+        {
+            $cart->deleteCombo($product->id);
+        }
 
         $request->session()->put('cart', $cart);
 
@@ -229,7 +250,7 @@ class ProductClientController extends Controller
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
 
-        return view('pages.shopping-cart', ['products' => $cart->products, 'totalPrice' => $cart->totalPrice])->with([
+        return view('pages.shopping-cart', ['products' => $cart->products, 'combos' => $cart->combos, 'totalPrice' => $cart->totalPrice])->with([
             'newProduct' => $newProduct
         ]);
     }
@@ -241,7 +262,7 @@ class ProductClientController extends Controller
             $shippingOptions = $this->shippingOptionsRepository->all();
             $cart = Session::get('cart');
 
-            return view('pages.buy-detail', ['cart' => $cart, 'products' => $cart->products])->with([
+            return view('pages.buy-detail', ['cart' => $cart, 'products' => $cart->products, 'combos' => $cart->combos])->with([
                 'shippingOptions' => $shippingOptions
             ]);
         }

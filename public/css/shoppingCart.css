@@ -1,3 +1,22 @@
+html, body
+{
+    height: 100%;
+    margin: 0;
+}
+
+#main
+{
+    display: contents;
+}
+
+.main-container
+{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .main
 {
     padding: 1.5rem;
