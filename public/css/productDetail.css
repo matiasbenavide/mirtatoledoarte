@@ -293,9 +293,9 @@
 {
     position: absolute;
     /* top: 12%; */
-    left: -43.5%;
+    left: -33.7%;
     transform: rotate(-1.4deg);
-    clip-path: inset(24% 0 23% 50% round 8px);
+    clip-path: inset(24% 0 23% 40% round 8px);
 }
 
 .desktop-plane
