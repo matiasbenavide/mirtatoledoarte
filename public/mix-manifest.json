@@ -6,6 +6,7 @@
     "/css/app.css": "/css/app.css",
     "/css/adminApp.css": "/css/adminApp.css",
     "/js/admin/footer.js": "/js/admin/footer.js",
+    "/js/admin/multiselect-dropdown.js": "/js/admin/multiselect-dropdown.js",
     "/js/admin/navBar.js": "/js/admin/navBar.js",
     "/js/admin/product.js": "/js/admin/product.js",
     "/js/clientProductsList.js": "/js/clientProductsList.js",

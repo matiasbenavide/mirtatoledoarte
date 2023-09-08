@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('scripts')
+    <script type="text/javascript" src="{{ asset('js/admin/multiselect-dropdown.js') }}"></script>
+@endsection
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/admin-section.css') }}">
 @endsection
@@ -41,30 +44,29 @@
 
             <div id="productsSelectDiv" class="col-12 mt-2" hidden>
                 <label class="label" for="productsSelect">Productos</label>
-                <select class="form-input combo-product-select" name="productsSelect[]" id="productsSelect" multiple="multiple">
-                    <option value="">Selecione un producto</option>
+                <select class="form-input combo-product-select" name="productsSelect[]" id="productsSelect" multiple="multiple" multiselect-search="true" multiselect-max-items="10">
                     @foreach ($products as $allProduct)
                         <option value="{{ $allProduct->id }}">{{ $allProduct->name }}</option>
                     @endforeach
                 </select>
             </div>
 
-            <div class="col-12 mt-2">
+            <div class="col-12 mt-4">
                 <label class="label" for="description">Decripción</label>
                 <textarea class="form-textarea" name="description" id="description" rows="5" placeholder="Descripción"></textarea>
             </div>
 
-            <div class="col-5 mt-2">
+            <div class="col-5 mt-2" id="materialDiv">
                 <label class="label" for="material">Material</label>
                 <input class="form-input" name="material" id="material" type="text" placeholder="Ej: MDF Laqueado de 20mm"/>
             </div>
 
-            <div class="col-4 mt-2">
+            <div class="col-4 mt-2" id="sizeDiv">
                 <label class="label" for="size">Medidas (cm.)</label>
                 <input class="form-input" name="size" id="size" type="text" placeholder="Ej: 24 x 32 x 50"/>
             </div>
 
-            <div class="col-3 mt-2">
+            <div class="col-3 mt-2" id="maxWeightDiv">
                 <label class="label" for="max_weight">Peso Máximo (Kg.)</label>
                 <input class="form-input" name="max_weight" id="max_weight" type="number" placeholder="Ej: 4.5"/>
             </div>
@@ -73,13 +75,13 @@
                 <label class="label" for="color_id">Color</label>
                 <select class="decorated form-input input-div" name="color_id" id="color_id">
                     @if ($categories->count() > 1)
-                        <option class="form-input" value="">Seleccioná un tipo de color</option>
+                        <option class="form-input" value="">Tipo de color</option>
                     @endif
                     @foreach ($colors as $color)
                         <option class="form-input" value="{{ $color->id }}">
                             {{ $color->color }}
                             @if ($color->id == 1)
-                                    <img src="{{ asset('admin/assets/colors/blue.svg') }}" alt="">
+                                    <img src="{{ asset('admin/assets/colors/blue.svg') }}" alt="" >
                             @else
 
                             @endif

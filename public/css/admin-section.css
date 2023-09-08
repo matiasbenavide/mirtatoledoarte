@@ -143,9 +143,12 @@
     justify-content: center;
 }
 
-.combo-product-select
+.multiselect-dropdown
 {
-    max-height: 100%;
+    width: 100% !important;
+    height: 100% !important;
+    border: 2px solid #154193 !important;
+    border-radius: 8px !important;
 }
 
 .button-filter

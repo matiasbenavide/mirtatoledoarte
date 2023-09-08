@@ -39,7 +39,9 @@
             @if ($products)
                 @foreach ($products as $product)
                     <div class="product">
-                        <img class="product-img" src="@if ($product['product']->main_image) {{ asset('images/main-images/' . $product['product']->main_image) }} @endif" alt="">
+                        <div class="img-container">
+                            <img class="product-img" src="@if ($product['product']->main_image) {{ asset('images/main-images/' . $product['product']->main_image) }} @endif" alt="">
+                        </div>
                         <div class="product-detail">
                             <p class="name">{{ $product['product']->name }}</p>
                             <div class="quantity-price">
@@ -55,18 +57,22 @@
                                     </div>
                                     <p class="quantity">(AR$ {{ $product['product']->price }})</p>
                                 </div>
-                                <p class="price">AR$ {{ $product['product']->price * $product['quantity'] }}</p>
+                                <div class="price-delete-container">
+                                    <p class="price">AR$ {{ $product['product']->price * $product['quantity'] }}</p>
+                                    <a class="delete" href="{{ url('eliminar-carrito/' . $product['product']->category_id . '/' . $product['product']->id) }}">Eliminar</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <a class="delete" href="{{ url('eliminar-carrito/' . $product['product']->category_id . '/' . $product['product']->id) }}">Eliminar</a>
                     <hr style="color: rgba(21, 65, 147, 0.25)">
                 @endforeach
             @endif
             @if ($combos)
                 @foreach ($combos as $product)
                     <div class="product">
-                        <img class="product-img" src="@if ($product['product']->main_image) {{ asset('images/main-images/' . $product['product']->main_image) }} @endif" alt="">
+                        <div class="img-container">
+                            <img class="product-img" src="@if ($product['product']->main_image) {{ asset('images/main-images/' . $product['product']->main_image) }} @endif" alt="">
+                        </div>
                         <div class="product-detail">
                             <p class="name">{{ $product['product']->name }}</p>
                             <div class="quantity-price">
@@ -82,11 +88,13 @@
                                     </div>
                                     <p class="quantity">(AR$ {{ $product['product']->price }})</p>
                                 </div>
-                                <p class="price">AR$ {{ $product['product']->price * $product['quantity'] }}</p>
+                                <div class="price-delete-container">
+                                    <p class="price">AR$ {{ $product['product']->price * $product['quantity'] }}</p>
+                                    <a class="delete" href="{{ url('eliminar-carrito/' . $product['product']->category_id . '/' . $product['product']->id) }}">Eliminar</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <a class="delete" href="{{ url('eliminar-carrito/' . $product['product']->category_id . '/' . $product['product']->id) }}">Eliminar</a>
                     <hr style="color: rgba(21, 65, 147, 0.25)">
                 @endforeach
             @endif

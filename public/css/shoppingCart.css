@@ -34,14 +34,25 @@ html, body
 
 .product
 {
+    padding: 1rem;
     display: flex;
     align-items: center;
 }
 
+.img-container
+{
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
 .product-img
 {
-    width: 100px;
-    height: 100px;
+    width: 100%;
     border-radius: 7px;
 }
 
@@ -83,6 +94,15 @@ html, body
     color: #404040;
 }
 
+.price-delete-container
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+
 .price
 {
     width: 100%;
@@ -97,12 +117,12 @@ html, body
 .delete
 {
     display: block;
-    width: 100%;
+    width: max-content;
     font-weight: 500;
     font-size: 12px;
     line-height: 16px;
     letter-spacing: 0.5px;
-    text-align: end;
+    /* text-align: end; */
     color: #404040;
 }
 
@@ -187,4 +207,9 @@ html, body
 @media(min-width: 768px)
 {
 
+}
+
+@media (min-width: 1280px)
+{
+    
 }

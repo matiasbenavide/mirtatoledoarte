@@ -8,6 +8,9 @@ export async function main(options) {
     let productsSelect = $('#productsSelect');
     let productsSelectDiv = $('#productsSelectDiv');
     let description = $('#description');
+    let materialDiv = $('#materialDiv');
+    let maxWeightDiv = $('#maxWeightDiv');
+    let sizeDiv = $('#sizeDiv');
     let material = $('#material');
     let size = $('#size');
     let max_weight = $('#max_weight');
@@ -67,9 +70,15 @@ export async function main(options) {
     function showProductsSelect() {
         if (category_id.val() == 2) {
             productsSelectDiv[0].hidden = false;
+            materialDiv[0].hidden = true;
+            sizeDiv[0].hidden = true;
+            maxWeightDiv[0].hidden = true;
         }
         else {
             productsSelectDiv[0].hidden = true;
+            materialDiv[0].hidden = false;
+            sizeDiv[0].hidden = false;
+            maxWeightDiv[0].hidden = false;
         }
     }
 }
