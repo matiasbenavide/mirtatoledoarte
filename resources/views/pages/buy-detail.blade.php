@@ -16,7 +16,7 @@
                         Ver detalle de compra
                         <img class="dropdown-arrow" src="{{ asset('admin/assets/icons/arrowDown.svg') }}" alt="">
                     </p>
-                    <p class="dropdown-price">AR$ {{ $cart->totalPrice }}</p>
+                    <p class="dropdown-price">AR$ {{ number_format($cart->totalPrice, 2, ',', '.') }}</p>
                 </div>
                 <div class="products active" id="shoppingDetail">
                     @if ($products)
@@ -29,7 +29,7 @@
                                     <div class="quantity-div">
                                         <p class="quantity">{{ $product['quantity'] }} @if ($product['quantity'] > 1) unidades @else unidad @endif</p>
                                     </div>
-                                    <p class="price">AR$ {{ $product['product']->price * $product['quantity'] }}</p>
+                                    <p class="price">AR$ {{ number_format($product['product']->price * $product['quantity'], 2, ',', '.') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                                     <div class="quantity-div">
                                         <p class="quantity">{{ $product['quantity'] }} @if ($product['quantity'] > 1) unidades @else unidad @endif</p>
                                     </div>
-                                    <p class="price">AR$ {{ $product['product']->price * $product['quantity'] }}</p>
+                                    <p class="price">AR$ {{ number_format($product['product']->price * $product['quantity'], 2, ',', '.') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -82,7 +82,7 @@
                         <label class="label" for="documentNumber">DNI - CUIT</label>
                         <input class="form-input" type="text" name="documentNumber" id="documentNumber" placeholder="Ingresá acá tu DNI o CUIT">
                     </div>
-                    <a class="button form-btn" onclick="next('container1', 'inputsDiv1', 'container2', 'inputsDiv2')">Continuar a envío</a>
+                    <a class="button form-btn" onclick="next('container1', 'inputsDiv1', 'container2', 'inputsDiv2', 'container3', 'inputsDiv3')">Continuar a envío</a>
                 </div>
             </div>
             <div class="inputs-container padding" id="container2">
@@ -112,7 +112,7 @@
                         <label class="label" for="zipCode">Código postal</label>
                         <input class="form-input" type="text" name="zipCode" id="zipCode" placeholder="Ingresá acá tu Código postal">
                     </div>
-                    <a class="button form-btn" onclick="next('container2', 'inputsDiv2', 'container3', 'inputsDiv3')">Continuar a pago</a>
+                    <a class="button form-btn" onclick="next('container2', 'inputsDiv2', 'container3', 'inputsDiv3', 'container1', 'inputsDiv1')">Continuar a pago</a>
                 </div>
             </div>
             <div class="inputs-container padding" id="container3">
@@ -172,6 +172,9 @@
 
     <script type="text/javascript">
 
+        let inputs = $('.inputs-container');
+        console.log(inputs);
+
         function toggle(clickId, id)
         {
             if (clickId != null) {
@@ -180,10 +183,27 @@
             document.getElementById(id).classList.toggle('active');
         }
 
-        function next(previousClickId, previousId, clickId, id)
+        function show(clickId, id)
         {
-            toggle(previousClickId, previousId);
-            toggle(clickId, id);
+            if (clickId != null) {
+                document.getElementById(clickId).classList.add('padding');
+            }
+            document.getElementById(id).classList.remove('active');
+        }
+
+        function hide(clickId, id)
+        {
+            if (clickId != null) {
+                document.getElementById(clickId).classList.remove('padding');
+            }
+            document.getElementById(id).classList.add('active');
+        }
+
+        function next(previousClickId, previousId, clickId, id, nextClickId, nextId)
+        {
+            hide(previousClickId, previousId);
+            hide(nextClickId, nextId);
+            show(clickId, id);
         }
     </script>
 @endsection

@@ -16,6 +16,7 @@ use App\Repositories\Admin\CombosRepository;
 use App\Repositories\Admin\ProductsRepository;
 use Illuminate\Validation\ValidationException;
 use App\Repositories\Admin\CategoriesRepository;
+use App\Repositories\Admin\ParametersRepository;
 use App\Repositories\Admin\ComboImagesRepository;
 use App\Repositories\Admin\ProductImagesRepository;
 use App\Repositories\Admin\ShippingOptionsRepository;
@@ -58,6 +59,11 @@ class ProductClientController extends Controller
     protected $salesRepository;
 
     /**
+     * @var ParametersRepository
+     */
+    protected $parametersRepository;
+
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -69,7 +75,8 @@ class ProductClientController extends Controller
         ProductImagesRepository $productImagesRepository,
         CombosRepository $combosRepository,
         ComboImagesRepository $comboImagesRepository,
-        SalesRepository $salesRepository
+        SalesRepository $salesRepository,
+        ParametersRepository $parametersRepository
     )
     {
         $this->categoriesRepository = $categoriesRepository;
@@ -79,6 +86,7 @@ class ProductClientController extends Controller
         $this->combosRepository = $combosRepository;
         $this->comboImagesRepository = $comboImagesRepository;
         $this->salesRepository = $salesRepository;
+        $this->parametersRepository = $parametersRepository;
     }
 
     /**
@@ -89,6 +97,7 @@ class ProductClientController extends Controller
 
     public function productList(Request $request)
     {
+        $vacations = $this->parametersRepository->first()->vacations;
         $newProduct = $this->getNewProduct();
 
         $combosAndProducts = $this->combosRepository->allCombosWithProducts($request)->paginate(20)->withQueryString();
@@ -103,6 +112,7 @@ class ProductClientController extends Controller
         }
 
         return view('pages.products-list')->with([
+            'vacations' => $vacations,
             'newProduct' => $newProduct,
             'title' => $title,
             'combosAndProducts' => $combosAndProducts,
@@ -117,6 +127,7 @@ class ProductClientController extends Controller
 
     public function productDetail(Request $request)
     {
+        $vacations = $this->parametersRepository->first()->vacations;
         $newProduct = $this->getNewProduct();
 
         if ($request->categoryId == Category::INDIVIDUAL) {
@@ -124,6 +135,7 @@ class ProductClientController extends Controller
             $images = $this->productImagesRepository->getProductImages($product->id);
 
             return view('pages.product-detail')->with([
+                'vacations' => $vacations,
                 'newProduct' => $newProduct,
                 'product' => $product,
                 'images' => $images
@@ -138,6 +150,7 @@ class ProductClientController extends Controller
             $images = $this->comboImagesRepository->getComboImages($combo->id);
 
             return view('pages.combo-detail')->with([
+                'vacations' => $vacations,
                 'newProduct' => $newProduct,
                 'combo' => $combo,
                 'products' => $products,
@@ -244,7 +257,6 @@ class ProductClientController extends Controller
         {
             return redirect()->back()->with('error', Constants::EMPTY_CART);
         }
-
         $newProduct = $this->getNewProduct();
 
         $oldCart = Session::get('cart');

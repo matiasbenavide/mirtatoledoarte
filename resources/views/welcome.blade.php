@@ -86,7 +86,7 @@
                         </div>
                     </div>
                     <p class="product-name">{{ $noted->name }}</p>
-                    <p class="product-price">AR$ {{ $noted->price }}</p>
+                    <p class="product-price">AR$ {{ number_format($noted->price, 2, ',', '.') }}</p>
                 </a>
             @endforeach
         </div>
@@ -105,7 +105,7 @@
     </div>
 
 
-    <div class="container about-us-section">
+    <div class="container about-us-section" id="aboutUs">
         <img class="about-us-img" src="{{ asset('admin/assets/images/HomeAboutImage.svg') }}" alt="">
         <div class="about-us-text-div">
             <p class="title main-text">Sobre Jugando Toy</p>

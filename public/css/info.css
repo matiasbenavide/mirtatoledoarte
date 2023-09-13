@@ -1,0 +1,100 @@
+.main-container
+{
+    padding-top: 5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.main-title
+{
+    font-family: 'Don José';
+    font-size: 48px;
+    line-height: 52px;
+    text-align: center;
+    color: #154193;
+}
+
+.text-container
+{
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.main-text
+{
+    margin-top: 1rem;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    color: #404040;
+}
+
+.question
+{
+    font-weight: bold;
+}
+
+.answer
+{
+    margin: 0;
+}
+
+@media (min-width: 768px)
+{
+    .main-container
+    {
+        padding-top: 8rem;
+    }
+}
+
+@media (min-width: 1025px)
+{
+    html, body
+    {
+        height: 100%;
+        margin: 0;
+    }
+
+    #main
+    {
+        display: contents;
+        height: 100%;
+    }
+
+    .main-container
+    {
+        height: 75.6%;
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+
+    .main-title
+    {
+        font-size: 72px;
+        text-align: start;
+    }
+
+    .text-container
+    {
+        margin-top: 3rem;
+        margin-bottom: 0;
+    }
+}
+
+@media (min-width: 1280px)
+{
+    .main-container
+    {
+        height: 72.7%;
+    }
+}
+
+@media (min-width: 1500px)
+{
+    .main-container
+    {
+        height: 71.8%;
+    }
+
+
+}

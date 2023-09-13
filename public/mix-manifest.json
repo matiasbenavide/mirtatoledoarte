@@ -10,6 +10,7 @@
     "/js/admin/navBar.js": "/js/admin/navBar.js",
     "/js/admin/product.js": "/js/admin/product.js",
     "/js/clientProductsList.js": "/js/clientProductsList.js",
+    "/js/comboDetail.js": "/js/comboDetail.js",
     "/js/shoppingCart.js": "/js/shoppingCart.js",
     "/js/shoppingDetail.js": "/js/shoppingDetail.js",
     "/js/module/sweetAlert.js": "/js/module/sweetAlert.js"

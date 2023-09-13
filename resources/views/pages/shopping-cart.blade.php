@@ -2,7 +2,6 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/shoppingCart.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
 @endsection
 
 @section('mainContent')
@@ -55,10 +54,10 @@
                                         <p class="quantity">{{ $product['quantity'] }} @if ($product['quantity'] > 1) unidades @else unidad @endif</p>
                                         <a class="quantity" style="margin-left: 0.5rem" href="{{ url('agregar-carrito/' . $product['product']->category_id . '/' . $product['product']->id) }}"> + </a>
                                     </div>
-                                    <p class="quantity">(AR$ {{ $product['product']->price }})</p>
+                                    <p class="quantity">(AR$ {{ number_format($product['product']->price, 2, ',', '.') }})</p>
                                 </div>
                                 <div class="price-delete-container">
-                                    <p class="price">AR$ {{ $product['product']->price * $product['quantity'] }}</p>
+                                    <p class="price">AR$ {{ number_format($product['product']->price * $product['quantity'], 2, ',', '.') }}</p>
                                     <a class="delete" href="{{ url('eliminar-carrito/' . $product['product']->category_id . '/' . $product['product']->id) }}">Eliminar</a>
                                 </div>
                             </div>
@@ -86,10 +85,10 @@
                                         <p class="quantity">{{ $product['quantity'] }} @if ($product['quantity'] > 1) unidades @else unidad @endif</p>
                                         <a class="quantity" style="margin-left: 0.5rem" href="{{ url('agregar-carrito/' . $product['product']->category_id . '/' . $product['product']->id) }}"> + </a>
                                     </div>
-                                    <p class="quantity">(AR$ {{ $product['product']->price }})</p>
+                                    <p class="quantity">(AR$ {{ number_format($product['product']->price, 2, ',', '.') }})</p>
                                 </div>
                                 <div class="price-delete-container">
-                                    <p class="price">AR$ {{ $product['product']->price * $product['quantity'] }}</p>
+                                    <p class="price">AR$ {{ number_format($product['product']->price * $product['quantity'], 2, ',', '.') }}</p>
                                     <a class="delete" href="{{ url('eliminar-carrito/' . $product['product']->category_id . '/' . $product['product']->id) }}">Eliminar</a>
                                 </div>
                             </div>

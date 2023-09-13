@@ -82,7 +82,7 @@
                                 </div>
                             </div>
                             <p class="product-name">{{ $product->name }}</p>
-                            <p class="product-price">AR$ {{ $product->price }}</p>
+                            <p class="product-price">AR$ {{ number_format($product->price, 2, ',', '.') }}</p>
                         </a>
                     @endforeach
                 </div>

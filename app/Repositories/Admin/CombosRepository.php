@@ -111,6 +111,24 @@ class CombosRepository extends BaseRepository
         return $combosAndProducts;
     }
 
+    public function allCombosWithProductsWithoutSearch()
+    {
+        $products = Product::select('products.id', 'products.name', 'products.price', DB::raw("NULL as products"), 'products.description', 'products.main_image', 'products.category_id', 'products.color_id', 'products.created_at', 'products.created_by', 'products.updated_at', 'products.updated_by', 'categories.name as category', 'colors.color as color')
+        ->leftJoin('categories', 'products.category_id', 'categories.id')
+        ->leftJoin('colors', 'products.color_id', 'colors.id');
+
+        $combos = Combo::select('combos.*', 'categories.name as category', 'colors.color as color')
+            ->leftJoin('categories', 'combos.category_id', 'categories.id')
+            ->leftJoin('colors', 'combos.color_id', 'colors.id');
+
+        $combosAndProducts = $combos
+            ->union($products)
+            ->orderBy('updated_at', 'DESC')
+            ->get();
+
+        return $combosAndProducts;
+    }
+
     public function latestProduct()
     {
         $products = Product::select('products.id', 'products.name', 'products.price', DB::raw("NULL as products"), 'products.description', 'products.main_image', 'products.category_id', 'products.color_id', 'products.created_at', 'products.created_by', 'products.updated_at', 'products.updated_by', 'categories.name as category', 'colors.color as color')

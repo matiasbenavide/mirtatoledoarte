@@ -14,5 +14,7 @@ export async function main(options) {
         totalPrice += combos[key].product.price * combos[key].quantity;
     }
 
-    totalPriceInput.val('AR$ ' + totalPrice);
+    let formattedPrice = new Intl.NumberFormat('es-AR', { style: 'decimal' }).format(totalPrice);
+
+    totalPriceInput.val('AR$ ' + formattedPrice);
 }

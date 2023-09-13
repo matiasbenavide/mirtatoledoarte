@@ -29,6 +29,10 @@ Route::get('/remover-carrito/{categoryId}/{productId}', [App\Http\Controllers\Pr
 Route::get('/eliminar-carrito/{categoryId}/{productId}', [App\Http\Controllers\ProductClientController::class, 'deleteFromCart']);
 Route::get('/carrito', [App\Http\Controllers\ProductClientController::class, 'shoppingCart']);
 
+Route::get('/politica-devoluciones', [App\Http\Controllers\HomeController::class, 'RefundPolicies']);
+Route::get('/preguntas-frecuentes', [App\Http\Controllers\HomeController::class, 'FrequentQuestions']);
+Route::get('/envios-garantias', [App\Http\Controllers\HomeController::class, 'ShippingGuarantee']);
+
 Route::get('/detalle-compra', [App\Http\Controllers\ProductClientController::class, 'buyDetail']);
 Route::post('/guardar-compra', [App\Http\Controllers\ProductClientController::class, 'saveShop']);
 
@@ -41,9 +45,11 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
         Route::get('/productos/listado', [App\Http\Controllers\Admin\ProductsController::class, 'showProducts'])->name('admin.home');
         Route::get('/productos/crear-editar/{category_id}/{id}', [App\Http\Controllers\Admin\ProductsController::class, 'showProductCreation']);
         Route::post('/productos/creacion-edicion', [App\Http\Controllers\Admin\ProductsController::class, 'saveData']);
+        Route::post('/productos/actualizar-precios', [App\Http\Controllers\Admin\ProductsController::class, 'updatePrices']);
 
         Route::get('/ventas', [App\Http\Controllers\Admin\SalesController::class, 'showSales']);
         Route::get('/vacaciones', [App\Http\Controllers\Admin\VacationsController::class, 'showVacations']);
+        Route::post('/vacaciones', [App\Http\Controllers\Admin\VacationsController::class, 'changeVacations']);
         Route::get('/configuracion', [App\Http\Controllers\Admin\ConfigurationController::class, 'showConfiguration']);
     });
 });

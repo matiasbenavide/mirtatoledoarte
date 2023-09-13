@@ -73,7 +73,7 @@
                                         @endif
                                     </p>
                                 </td class="table-content">
-                                <td class="table-content"><p class="table-product-info">$ {{ $combo->price }}</p></td>
+                                <td class="table-content"><p class="table-product-info">$ {{ number_format($combo->price, 2, ',', '.') }}</p></td>
                                 <td class="table-content"><p class="table-product-info" id="status">Habilitado</p></td>
                                 <td class="table-content">
                                     <p class="table-product-info">

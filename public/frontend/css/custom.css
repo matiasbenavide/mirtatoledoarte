@@ -12,6 +12,10 @@
     color: #404040;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 .default-bg
 {
     background-color: #F5F5F5;
@@ -33,6 +37,23 @@
 
 .light-blue-bg {
     background-color: #2488D5;
+}
+
+.vacations-container
+{
+    width: 100%;
+    background-color: #FF6252;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+
+}
+
+.vacations-text
+{
+    text-align: center;
+    font-size: 16px;
 }
 
 .navbar-distance

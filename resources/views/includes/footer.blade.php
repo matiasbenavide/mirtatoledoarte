@@ -26,8 +26,8 @@
                 </div>
                 <div id="aboutUsLinks" class="wrapper">
                     <div class="links-container links-vertical">
-                        <a class="shop-links" href="{{ url('about-us') }}">SOBRE JUGANDO TOY</a>
-                        <a class="shop-links" href="{{ url('our-values') }}">NUESTROS VALORES</a>
+                        <a class="shop-links" id="aboutUsLink">SOBRE JUGANDO TOY</a>
+                        <a class="shop-links" href="">NUESTROS VALORES</a>
                     </div>
                 </div>
             </div>
@@ -55,9 +55,9 @@
                 <button class="button contact-btn">Contacto</button>
             </div>
             <div class="footer-div questions-div">
-                <a class="general-questions" href="">POLÍTICA DE DEVOLUCIONES</a>
-                <a class="general-questions" href="">PREGUNTAS FRECUENTES</a>
-                <a class="general-questions" href="">ENVÍOS Y GARANTÍAS</a>
+                <a class="general-questions" href="{{ url('/politica-devoluciones') }}">POLÍTICA DE DEVOLUCIONES</a>
+                <a class="general-questions" href="{{ url('/preguntas-frecuentes') }}">PREGUNTAS FRECUENTES</a>
+                <a class="general-questions" href="{{ url('/envios-garantias') }}">ENVÍOS Y GARANTÍAS</a>
             </div>
         </div>
     </div>

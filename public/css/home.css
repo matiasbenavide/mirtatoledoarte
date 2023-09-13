@@ -374,8 +374,7 @@
 }
 
 .opinions-images {
-    width: 22.5rem;
-    height: 17.6rem;
+    width: 100%;
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
@@ -543,6 +542,11 @@
     {
         font-size: 48px;
         line-height: 56px;
+    }
+
+    .opinions-images
+    {
+        width: auto;
     }
 
     .opinions-fish
@@ -835,6 +839,12 @@
     {
         font-size: 32px;
         line-height: 64px;
+    }
+
+    .opinions-images
+    {
+        width: 22.5rem;
+        height: 17.6rem;
     }
 
     .opinions-fish

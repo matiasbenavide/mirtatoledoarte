@@ -13,6 +13,9 @@ class Constants extends Model
     const PRODUCT_UPDATE_SUCCESS = 'Producto actualizado con éxito';
     const COMBO_UPDATE_SUCCESS = 'Combo actualizado con éxito';
 
+    const VACATIONS_SUCCESS = '¡El modo vacaciones se ha actualizado!';
+    const PRICE_UPDATE_SUCCESS = '¡El aumento se ha aplicado exitosamente!';
+
     const EMPTY_CART = 'El carrito de compras se encuentra vacío';
     const SUCCESSFUL_BUY = 'La compra se ha realizado con éxito';
     const BUY_ERROR = 'No se ha podido completar la compra';

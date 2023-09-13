@@ -251,26 +251,58 @@ class ProductsController extends Controller
         return redirect('/administracion/productos/listado')->with('success', $message);
     }
 
-    // public function delete($id){
+    public function updatePrices(Request $request){
 
-    //     try {
-    //         $this->agreementTypeRepository->delete($id);
-    //     }
-    //     catch (\Illuminate\Database\QueryException $e) {
-    //         Log::error($e->getMessage());
-    //         if($e->getCode() == Constants::CODE_INTEGRITY_DATABASE){
-    //             $this->agreementTypeRepository->changeDeleteForStatusDisabled($id);
-    //             return redirect()->back()->with('warning', '¡ La operación no se puede realizar, se ha cambiado el estado a Deshabilitado !');
-    //         }
-    //         return redirect()->back()->with('error', Constants::ERROR);
-    //     }
-    //     catch (\Exception $e) {
-    //         Log::error($e->getMessage());
-    //         return redirect()->back()->with('error', Constants::ERROR);
-    //     }
+        try {
+            $this->validate($request, [
+                'priceUpdate' => 'required|string',
+            ]);
+        } catch (ValidationException $e) {
+            Log::error($e->getMessage(), $e->errors());
+            return redirect()->back()->with('error', Constants::ERROR);
+        }
 
-    //     return redirect()->back()->with('success', Constants::PRODUCT_SUCCESS);
-    // }
+        $products = $this->combosRepository->allCombosWithProductsWithoutSearch();
+
+        foreach ($products as $product) {
+            $priceToAdd = ($request->priceUpdate * $product->price)/100;
+
+            if ($product->category_id == Category::INDIVIDUAL) {
+                $product = $this->productsRepository->find($product->id);
+                $product->price += $priceToAdd;
+                $productMapped = [
+                    'name' => $product->name,
+                    'price' => $product->price,
+                    'description' => $product->description,
+                    'main_image' => $product->main_image,
+                    'material' => $product->material,
+                    'size' => $product->size,
+                    'max_weight' => $product->max_weight,
+                    'category_id' => $product->category_id,
+                    'color_id' => $product->color_id,
+                ];
+
+                $this->productsRepository->update($productMapped, $product->id);
+            }
+            else
+            {
+                $product->price += $priceToAdd;
+                $productMapped = [
+                    'name' => $product->name,
+                    'price' => $product->price,
+                    'products' => $product->products,
+                    'description' => $product->description,
+                    'main_image' => $product->main_image,
+                    'category_id' => $product->category_id,
+                    'color_id' => $product->color_id,
+                ];
+
+                $this->combosRepository->update($productMapped, $product->id);
+            }
+        }
+
+        return redirect()->back()->with('success', Constants::PRICE_UPDATE_SUCCESS);
+    }
 
     private function mapDataForProduct(Request $request)
     {

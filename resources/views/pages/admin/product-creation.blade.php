@@ -39,7 +39,7 @@
 
             <div class="col-2">
                 <label class="label" for="price">Precio</label>
-                <input class="form-input" name="price" id="price" type="number" placeholder="Precio"/>
+                <input class="form-input" name="price" id="price" type="number" placeholder="Precio" step=".01"/>
             </div>
 
             <div id="productsSelectDiv" class="col-12 mt-2" hidden>

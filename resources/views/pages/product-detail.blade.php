@@ -43,16 +43,7 @@
                         <p class="color-type-text">Arcoíris</p>
                     </div>
                 </div>
-                {{-- <div class="items-to-cart">
-                    <div id="remove-from-cart" class="add-or-remove">
-                        <p class="add-remove-text"> - </p>
-                    </div>
-                    <input id="hola" class="items-to-cart-input" type="number">
-                    <div id="add-to-cart" class="add-or-remove">
-                        <p class="add-remove-text"> + </p>
-                    </div>
-                </div> --}}
-                <p class="price">AR$ {{ $product->price }}</p>
+                <p class="price">AR$ {{ number_format($product->price, 2, ',', '.') }}</p>
                 <a class="anchor" href="">Ver medios de pago y promociones</a>
                 <div class="add-to-cart">
                     <a class="add-to-cart-link" href="{{ url('agregar-carrito/' . $product->category_id . '/' . $product->id) }}">

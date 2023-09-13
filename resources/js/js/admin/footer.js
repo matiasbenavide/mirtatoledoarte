@@ -6,6 +6,9 @@ export async function mainFooter() {
     let socialMediaDropdown = $('#socialMediaDropdown');
     let socialMediaLinks = $('#socialMediaLinks');
 
+    let aboutUs = $('#aboutUs');
+    let aboutUsLink = $('#aboutUsLink');
+
     shopDropdown.on("click", function() {
         shopDropdown[0].classList.toggle('open');
         shopLinks[0].classList.toggle('show');
@@ -18,5 +21,13 @@ export async function mainFooter() {
     socialMediaDropdown.on("click", function() {
         socialMediaDropdown[0].classList.toggle('open');
         socialMediaLinks[0].classList.toggle('show');
+    });
+
+    aboutUsLink.on('click', function() {
+        if (aboutUs[0]) {
+            aboutUs[0].scrollIntoView({
+                block: 'center',
+            });
+        }
     });
 }

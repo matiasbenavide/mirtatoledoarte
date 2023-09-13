@@ -76,6 +76,11 @@
     color: #FDF9F5;
 }
 
+.shop-links:hover
+{
+    color: #FDF9F5A6
+}
+
 .footer-div {
     display: flex;
     justify-content: center;
@@ -109,6 +114,11 @@
     line-height: 24px;
     letter-spacing: 1px;
     color: #FDF9F5A6;
+}
+
+.general-questions:hover
+{
+    color: #FDF9F5;
 }
 
 .footer-copyright {

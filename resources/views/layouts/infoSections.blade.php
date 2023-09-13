@@ -1,7 +1,7 @@
 @extends('layouts.default')
 @section('content')
 <div id="main">
-    @if ($vacations == 1)
+    @if ($vacations)
         @include('includes.vacations')
     @endif
     @include('includes.navbar')
