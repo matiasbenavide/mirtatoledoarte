@@ -29,6 +29,17 @@ export function showSuccess (m = ['¡ La operación fue realizada !'], functionP
     });
 }
 
+export function showWarnings(m,functionPostAction=null) {
+    customSweet1button.fire({
+        html: parseMessage(m),
+        icon: "warning",
+        // iconHtml: `<img src="{{ asset('') }}">`,
+    }).then((value) => {
+        if(functionPostAction)
+            functionPostAction();
+    });
+}
+
 export function showErrors (m = ['¡ La operación no pudo ser realizada !'], functionPostAction = null) {
     customSweet1button.fire({
         html: parseMessage(m),

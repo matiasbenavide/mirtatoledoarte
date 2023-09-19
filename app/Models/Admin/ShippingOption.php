@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class ShippingOption extends Model
 {
+    const SHIP = 1;
+    const WITHDRAW = 2;
 
     protected $fillable = [
         'name',

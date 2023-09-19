@@ -9,11 +9,13 @@ use App\Models\Admin\Category;
 use App\Models\Admin\Constants;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use App\Models\Admin\ShippingOption;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Repositories\Admin\SalesRepository;
 use App\Repositories\Admin\CombosRepository;
 use App\Repositories\Admin\ProductsRepository;
+use App\Repositories\Admin\ReceiptsRepository;
 use Illuminate\Validation\ValidationException;
 use App\Repositories\Admin\CategoriesRepository;
 use App\Repositories\Admin\ParametersRepository;
@@ -59,6 +61,11 @@ class ProductClientController extends Controller
     protected $salesRepository;
 
     /**
+     * @var ReceiptsRepository
+     */
+    protected $receiptsRepository;
+
+    /**
      * @var ParametersRepository
      */
     protected $parametersRepository;
@@ -76,6 +83,7 @@ class ProductClientController extends Controller
         CombosRepository $combosRepository,
         ComboImagesRepository $comboImagesRepository,
         SalesRepository $salesRepository,
+        ReceiptsRepository $receiptsRepository,
         ParametersRepository $parametersRepository
     )
     {
@@ -86,6 +94,7 @@ class ProductClientController extends Controller
         $this->combosRepository = $combosRepository;
         $this->comboImagesRepository = $comboImagesRepository;
         $this->salesRepository = $salesRepository;
+        $this->receiptsRepository = $receiptsRepository;
         $this->parametersRepository = $parametersRepository;
     }
 
@@ -286,25 +295,61 @@ class ProductClientController extends Controller
 
     public function saveShop(Request $request)
     {
-        try {
-            $this->validate($request, [
-                'name' => 'required|string',
-                'phoneNumber' => 'required|numeric',
-                'email' => 'required|string',
-                'documentNumber' => 'required|numeric',
-                'products' => 'required|string',
-                'totalAmount' => 'required|numeric',
-                'shippingSelect' => 'required|numeric',
-                'province' => 'nullable|string',
-                'locality' => 'nullable|string',
-                'zipCode' => 'nullable|numeric',
-                // 'receipt' => 'required|mimes:pdf,png,jpg,jpeg',
-                'referenceCode' => 'required|string',
-            ]);
-        } catch (ValidationException $e) {
-            Log::error($e->getMessage(), $e->errors());
-            return redirect()->back()->with('error', Constants::ERROR);
+        if ($request->shippingSelect == ShippingOption::SHIP) {
+            try {
+                $this->validate($request, [
+                    'name' => 'required|string',
+                    'phoneNumber' => 'required|numeric',
+                    'email' => 'required|string',
+                    'documentNumber' => 'required|numeric',
+                    'products' => 'required|string',
+                    'totalAmount' => 'required|numeric',
+                    'shippingSelect' => 'required|numeric',
+                    'direction' => 'required|string',
+                    'province' => 'required|string',
+                    'locality' => 'required|string',
+                    'zipCode' => 'required|numeric',
+                    'receipt' => 'required|file|mimes:pdf,png,jpg,jpeg',
+                    'referenceCode' => 'required|string',
+                ]);
+            } catch (ValidationException $e) {
+                Log::error($e->getMessage(), $e->errors());
+                return redirect()->back()->with('error', Constants::ERROR);
+            }
         }
+        else
+        {
+            try {
+                $this->validate($request, [
+                    'name' => 'required|string',
+                    'phoneNumber' => 'required|numeric',
+                    'email' => 'required|string',
+                    'documentNumber' => 'required|numeric',
+                    'products' => 'required|string',
+                    'totalAmount' => 'required|numeric',
+                    'shippingSelect' => 'required|numeric',
+                    'receipt' => 'required|mimes:pdf,png,jpg,jpeg',
+                    'referenceCode' => 'required|string',
+                ]);
+            } catch (ValidationException $e) {
+                Log::error($e->getMessage(), $e->errors());
+                return redirect()->back()->with('error', Constants::ERROR);
+            }
+        }
+
+        if ($request->products == '') {
+            return redirect()->back()->with('error', Constants::BUY_ERROR);
+        }
+
+        $newReceipt = collect();
+        $requestReceiptFile = $request->file('receipt');
+
+        $newReceipt[] = [
+            "file" => $requestReceiptFile->get(),
+            "file_name" => $requestReceiptFile->getClientOriginalName(),
+            "mime" => $requestReceiptFile->getMimeType(),
+            "hash" => sha1_file($requestReceiptFile),
+        ];
 
         try {
             DB::beginTransaction();
@@ -312,7 +357,10 @@ class ProductClientController extends Controller
             foreach (json_decode($request->products) as $product) {
                 $this->deleteFromCart($request, $product->product_category_id, $product->product_id);
             }
-            $this->salesRepository->create($this->mapDataForSale($request));
+
+            $sale = $this->salesRepository->create($this->mapDataForSale($request));
+            $this->receiptsRepository->create($this->mapDataForReceipt($sale->id, $newReceipt));
+
             $message = Constants::SUCCESSFUL_BUY;
 
             DB::commit();
@@ -335,11 +383,24 @@ class ProductClientController extends Controller
             'products' => $request->products,
             'total_amount' => $request->totalAmount,
             'shipping_option' => $request->shippingSelect,
-            'province' => $request->province,
-            'locality' => $request->locality,
-            'zip_code' => $request->zipCode,
-            // 'name' => $request->name,
+            'direction' => $request->direction ? $request->direction : null,
+            'province' => $request->province ? $request->province : null,
+            'locality' => $request->locality ? $request->locality : null,
+            'zip_code' => $request->zipCode ? $request->zipCode : null,
             'reference_code' => $request->referenceCode,
+        ];
+
+        return $dataMapped;
+    }
+
+    public function mapDataForReceipt($saleId, $file)
+    {
+        $dataMapped = [
+            'sale_id' => $saleId,
+            'file' => $file[0]["file"],
+            'file_name' => $file[0]["file_name"],
+            'mime' => $file[0]["mime"],
+            'hash' => $file[0]["hash"],
         ];
 
         return $dataMapped;

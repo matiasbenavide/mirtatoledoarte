@@ -56,41 +56,45 @@
                 </div>
             </div>
         </div>
-        <form class="form" action="{{ url('guardar-compra') }}" method="POST">
+        <form class="form" action="{{ url('guardar-compra') }}" method="POST" id="payForm" enctype="multipart/form-data">
             @csrf
             <input name="totalAmount" type="number" value="{{ $cart->totalPrice }}" hidden>
             <input name="products" id="products" hidden>
-            <div class="inputs-container padding" id="container1">
-                <div class="number-title" id="numberTitle1" onclick="toggle('container1', 'inputsDiv1')">
+            <div class="inputs-container" id="container1">
+                <div class="number-title" id="numberTitle0">
                     <p class="form-number">1</p>
                     <p class="form-title">Información del comprador</p>
                 </div>
-                <div class="inputs-div active" id="inputsDiv1">
+                <div class="inputs-div" id="inputsDiv0">
                     <div class="inputs">
                         <label class="label" for="name">Nombre y apellido</label>
                         <input class="form-input" type="text" name="name" id="name" placeholder="Ingresá acá tu nombre y apellido">
+                        <p class="input-error active"></p>
                     </div>
                     <div class="inputs">
                         <label class="label" for="phoneNumber">Número de teléfono</label>
                         <input class="form-input" type="text" name="phoneNumber" id="phoneNumber" placeholder="Ingresá acá tu teléfono">
+                        <p class="input-error active"></p>
                     </div>
                     <div class="inputs">
                         <label class="label" for="email">Dirección de e-mail</label>
                         <input class="form-input" type="text" name="email" id="email" placeholder="Ingresá acá tu e-mail">
+                        <p class="input-error active"></p>
                     </div>
                     <div class="inputs">
                         <label class="label" for="documentNumber">DNI - CUIT</label>
                         <input class="form-input" type="text" name="documentNumber" id="documentNumber" placeholder="Ingresá acá tu DNI o CUIT">
+                        <p class="input-error active"></p>
                     </div>
-                    <a class="button form-btn" onclick="next('container1', 'inputsDiv1', 'container2', 'inputsDiv2', 'container3', 'inputsDiv3')">Continuar a envío</a>
+                    <button type="button" id="firstForm" class="button form-btn">Continuar a envío</button>
                 </div>
             </div>
             <div class="inputs-container padding" id="container2">
-                <div class="number-title" id="numberTitle2" onclick="toggle('container2', 'inputsDiv2')">
+                <div class="number-title" id="numberTitle1">
                     <p class="form-number">2</p>
                     <p class="form-title">Información de envío</p>
                 </div>
-                <div class="inputs-div active" id="inputsDiv2">
+                <div class="inputs-div active" id="inputsDiv1">
                     <div class="inputs">
                         <label class="label" for="province">Forma de envío</label>
                         <select class="form-input" name="shippingSelect" id="shippingSelect">
@@ -99,28 +103,39 @@
                                 <option value="{{ $shippingOption->id }}">{{ $shippingOption->name }}</option>
                             @endforeach
                         </select>
+                        <p class="input-error active"></p>
                     </div>
-                    <div class="inputs">
-                        <label class="label" for="province">Provincia</label>
-                        <input class="form-input" type="text" name="province" id="province" placeholder="Ingresá acá tu provincia">
+                    <div id="shippingInfo" hidden>
+                        <div class="inputs">
+                            <label class="label" for="province">Dirección</label>
+                            <input class="form-input" type="text" name="dirección" id="dirección" placeholder="Ingresá acá tu dirección">
+                            <p class="input-error active"></p>
+                        </div>
+                        <div class="inputs">
+                            <label class="label" for="province">Provincia</label>
+                            <input class="form-input" type="text" name="province" id="province" placeholder="Ingresá acá tu provincia">
+                            <p class="input-error active"></p>
+                        </div>
+                        <div class="inputs">
+                            <label class="label" for="locality">Localidad</label>
+                            <input class="form-input" type="text" name="locality" id="locality" placeholder="Ingresá acá tu localidad">
+                            <p class="input-error active"></p>
+                        </div>
+                        <div class="inputs">
+                            <label class="label" for="zipCode">Código postal</label>
+                            <input class="form-input" type="text" name="zipCode" id="zipCode" placeholder="Ingresá acá tu Código postal">
+                            <p class="input-error active"></p>
+                        </div>
                     </div>
-                    <div class="inputs">
-                        <label class="label" for="locality">Localidad</label>
-                        <input class="form-input" type="text" name="locality" id="locality" placeholder="Ingresá acá tu localidad">
-                    </div>
-                    <div class="inputs">
-                        <label class="label" for="zipCode">Código postal</label>
-                        <input class="form-input" type="text" name="zipCode" id="zipCode" placeholder="Ingresá acá tu Código postal">
-                    </div>
-                    <a class="button form-btn" onclick="next('container2', 'inputsDiv2', 'container3', 'inputsDiv3', 'container1', 'inputsDiv1')">Continuar a pago</a>
+                    <button type="button" id="secondForm" class="button form-btn">Continuar a pago</button>
                 </div>
             </div>
             <div class="inputs-container padding" id="container3">
-                <div class="number-title" id="numberTitle3" onclick="toggle('container3', 'inputsDiv3')">
+                <div class="number-title" id="numberTitle2">
                     <p class="form-number">3</p>
                     <p class="form-title">Pago</p>
                 </div>
-                <div class="inputs-div active" id="inputsDiv3">
+                <div class="inputs-div active" id="inputsDiv2">
                     <div class="inputs">
                         <p>CBU</p>
                         <p>000000000000000</p>
@@ -130,50 +145,48 @@
                     <div class="inputs">
                         <label class="label" for="receipt">Comprobante</label>
                         <input class="file-input" type="file" name="receipt" id="receipt">
+                        <p class="input-error active"></p>
                     </div>
                     <div class="inputs">
                         <label class="label" for="referenceCode">Código de referencia</label>
                         <input class="form-input" type="text" name="referenceCode" id="referenceCode">
+                        <p class="input-error active"></p>
                     </div>
-                    <button type="submit" class="button form-btn">Enviar Pago</button>
+                    <button type="button" id="thirdForm" class="button form-btn">Enviar Pago</button>
                 </div>
             </div>
         </form>
     </div>
+
     <script type="module">
         let products = {!! json_encode($products) !!};
         let combos = {!! json_encode($combos) !!};
+        let withdraw = {!! json_encode(App\Models\Admin\ShippingOption::WITHDRAW) !!}
 
-        let productsInput = $('#products');
+        import { main } from "{{ asset(mix('js/payment.js')) }}"
 
-        let productsInfo = [];
-
-        for (const key in products) {
-            productsInfo.push({
-                'product_id': products[key].product.id,
-                'product_category_id': products[key].product.category_id,
-                'product_price': products[key].product.price,
-                'product_quantity': products[key].quantity,
-            })
-        }
-
-        for (const key in combos) {
-            productsInfo.push({
-                'product_id': combos[key].product.id,
-                'product_category_id': combos[key].product.category_id,
-                'product_price': combos[key].product.price,
-                'product_quantity': combos[key].quantity,
-            })
-        }
-
-        productsInput.val(JSON.stringify(productsInfo));
-
+        window.onload = function() {
+            main({
+                products: products,
+                combos: combos,
+                withdraw: withdraw,
+            });
+        };
     </script>
 
     <script type="text/javascript">
+        let shippingOption = $('#shippingSelect');
+        let shipingInfo = $('#shippingInfo');
 
-        let inputs = $('.inputs-container');
-        console.log(inputs);
+        shippingOption.on('change', function() {
+            console.log(shippingOption[0].value);
+            if (shippingOption[0].value == 1) {
+                shippingInfo.hidden = false;
+            }
+            else {
+                shippingInfo.hidden = true;
+            }
+        })
 
         function toggle(clickId, id)
         {
@@ -181,29 +194,6 @@
                 document.getElementById(clickId).classList.toggle('padding');
             }
             document.getElementById(id).classList.toggle('active');
-        }
-
-        function show(clickId, id)
-        {
-            if (clickId != null) {
-                document.getElementById(clickId).classList.add('padding');
-            }
-            document.getElementById(id).classList.remove('active');
-        }
-
-        function hide(clickId, id)
-        {
-            if (clickId != null) {
-                document.getElementById(clickId).classList.remove('padding');
-            }
-            document.getElementById(id).classList.add('active');
-        }
-
-        function next(previousClickId, previousId, clickId, id, nextClickId, nextId)
-        {
-            hide(previousClickId, previousId);
-            hide(nextClickId, nextId);
-            show(clickId, id);
         }
     </script>
 @endsection

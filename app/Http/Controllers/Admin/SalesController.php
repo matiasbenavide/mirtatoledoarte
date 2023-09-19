@@ -62,8 +62,10 @@ class SalesController extends Controller
         $task = 'sales';
 
         $sales = $this->salesRepository->getSales();
+        $allSales = $this->salesRepository->all();
+        $productsData = [];
 
-        foreach ($sales as $sale) {
+        foreach ($allSales as $sale) {
             foreach (json_decode($sale->products) as $product) {
                 if ($product->product_category_id == Category::INDIVIDUAL) {
                     $productsData[] = $this->productsRepository->find($product->product_id);
@@ -79,7 +81,8 @@ class SalesController extends Controller
 
         return view('pages.admin.sales')->with([
             'task' => $task,
-            'sales' => $sales
+            'sales' => $sales,
+            'allSales' => $allSales
         ]);
     }
 }

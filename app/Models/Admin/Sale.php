@@ -17,10 +17,16 @@ class Sale extends Model
         'combos',
         'total_amount',
         'shipping_option',
+        'direction',
         'province',
         'locality',
         'zip_code',
         'reference_code',
         'created_by',
     ];
+
+    public function files()
+    {
+        return $this->hasMany('App\Models\Operative\Receipt', 'sale_id', 'id')->select('id', 'sale_id', 'file_name');
+    }
 }

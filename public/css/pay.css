@@ -134,7 +134,7 @@
     margin: 0;
     position: relative;
     padding: 0.4rem 0.5rem 0.32rem 0.5rem;
-    left: -1.5rem;
+    left: -0.8rem;
     font-weight: 500;
     font-size: 20px;
     line-height: 16px;
@@ -181,6 +181,15 @@
     display: flex;
     flex-direction: column;
     margin-top: 1rem;
+}
+
+.input-error
+{
+    margin: 0;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 16px;
+    color: #CC0000;
 }
 
 .form-btn

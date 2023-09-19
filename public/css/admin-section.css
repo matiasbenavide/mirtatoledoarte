@@ -67,6 +67,7 @@
     padding: 5px;
     display: flex;
     justify-content: center;
+    text-align: center;
 }
 
 .products-table-item
@@ -231,6 +232,57 @@
     justify-content: center;
 }
 
+/* ************** */
+/* SALES */
+/* ************** */
+
+.table-product-detail
+{
+    background-color: rgba(255, 190, 6, 0.16);
+    cursor: pointer;
+}
+
+#popUp
+{
+    width: 40em;
+    height: 40em;
+    padding: 2rem;
+    border: 0 !important;
+    box-shadow: 0 0 1rem rgb(0, 0, 0);
+    border-radius: 8px;
+}
+
+#popUp[open]
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#popUp::backdrop
+{
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.popup-container
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.person-shipping
+{
+    flex-direction: row;
+}
+
+#close
+{
+    cursor: pointer;
+}
+
 @media (max-width: 1279px)
 {
     .admin-section
@@ -277,6 +329,7 @@
     {
         font-size: 12px;
         line-height: 16px;
+        text-align: center;
     }
 
     .table-product-detail

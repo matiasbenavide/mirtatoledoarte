@@ -20,8 +20,9 @@ class SalesRepository extends BaseRepository
 
     public function getSales()
     {
-        return $this->select('sales.*', 'shipping_options.name as shipping')
+        return $this->select('sales.*', 'shipping_options.name as shipping', 'receipts.file as file')
             ->leftJoin('shipping_options', 'sales.shipping_option', 'shipping_options.id')
+            ->leftJoin('receipts', 'sales.id', 'receipts.sale_id')
             ->orderBy('created_at', 'DESC')
             ->paginate(10);
     }
