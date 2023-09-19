@@ -27,6 +27,7 @@ export async function main(options)
 
     let secondFormInputs = [direction, province, locality, zipCode];
     let shippingSelectError = "* Seleccione un método de envío";
+    console.log(shippingSelectError);
     let secondFormInputsErrors = ["* Ingrese su dirección", "* Ingrese su provincia", "* Ingrese su localidad", "* Ingrese su código postal"];
 
     //****** THIRD FORM VARIABLES *****//
