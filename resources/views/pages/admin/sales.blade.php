@@ -67,6 +67,10 @@
                             <label class="label" for="email">Email</label>
                             <p id="email"></p>
                         </div>
+                        <div>
+                            <label class="label" for="referenceCode">Código de referencia</label>
+                            <p id="referenceCode"></p>
+                        </div>
                     </div>
                     <div class="shipping-data">
                         <div>
@@ -92,24 +96,18 @@
                     </div>
                 </div>
                 <div class="sale-products-container">
-                    <table class="products-table">
+                    <table class="products-table" id="saleTable">
                         <t-head>
                             <tr>
-                                <td class="table-content"></td>
-                                <td class="table-content"><p class="table-title">Nombre</p></td>
-                                <td class="table-content"><p class="table-title">Precio</p></td>
-                                <td class="table-content"><p class="table-title">Cantidad</p></td>
+                                <td class="table-content-sale"></td>
+                                <td class="table-content-sale"><p class="table-title">Nombre</p></td>
+                                <td class="table-content-sale"><p class="table-title">Precio</p></td>
+                                <td class="table-content-sale"><p class="table-title">Cantidad</p></td>
                             </tr>
                         </t-head>
                         <t-body>
-                            <tr class="products-table-item" id="productsContainer">
-                            </tr>
                         </t-body>
                     </table>
-                    <div>
-                        <label class="label" for="referenceCode">Código de referencia</label>
-                        <p id="referenceCode"></p>
-                    </div>
                 </div>
             </div>
             <a id="close">Volver</a>
@@ -126,6 +124,7 @@
             main({
                 url: url,
                 sales: sales,
+                ship: ship,
             })
         }
     </script>

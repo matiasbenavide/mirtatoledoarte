@@ -60,7 +60,7 @@
             @csrf
             <input name="totalAmount" type="number" value="{{ $cart->totalPrice }}" hidden>
             <input name="products" id="products" hidden>
-            <div class="inputs-container" id="container1">
+            <div class="inputs-container" id="container0">
                 <div class="number-title" id="numberTitle0">
                     <p class="form-number">1</p>
                     <p class="form-title">Información del comprador</p>
@@ -89,7 +89,7 @@
                     <button type="button" id="firstForm" class="button form-btn">Continuar a envío</button>
                 </div>
             </div>
-            <div class="inputs-container padding" id="container2">
+            <div class="inputs-container padding" id="container1">
                 <div class="number-title" id="numberTitle1">
                     <p class="form-number">2</p>
                     <p class="form-title">Información de envío</p>
@@ -107,8 +107,8 @@
                     </div>
                     <div id="shippingInfo" hidden>
                         <div class="inputs">
-                            <label class="label" for="province">Dirección</label>
-                            <input class="form-input" type="text" name="dirección" id="dirección" placeholder="Ingresá acá tu dirección">
+                            <label class="label" for="direction">Dirección</label>
+                            <input class="form-input" type="text" name="direction" id="direction" placeholder="Ingresá acá tu dirección">
                             <p class="input-error active"></p>
                         </div>
                         <div class="inputs">
@@ -130,7 +130,7 @@
                     <button type="button" id="secondForm" class="button form-btn">Continuar a pago</button>
                 </div>
             </div>
-            <div class="inputs-container padding" id="container3">
+            <div class="inputs-container padding" id="container2">
                 <div class="number-title" id="numberTitle2">
                     <p class="form-number">3</p>
                     <p class="form-title">Pago</p>
@@ -179,7 +179,6 @@
         let shipingInfo = $('#shippingInfo');
 
         shippingOption.on('change', function() {
-            console.log(shippingOption[0].value);
             if (shippingOption[0].value == 1) {
                 shippingInfo.hidden = false;
             }

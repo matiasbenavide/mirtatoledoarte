@@ -121,8 +121,7 @@ export async function main(options)
 
         if (isNull(formSelect.val()) || isEmpty(formSelect.val())) {
             errors.push(shippingSelectError);
-            let inputError = formSelect[0].parentElement.children[2];
-            console.log(inputError);
+            let inputError = formSelect[i][0].parentElement.children[2];
             inputError.classList.remove('active')
             inputError.innerHTML = shippingSelectError;
         }
@@ -132,6 +131,7 @@ export async function main(options)
                 for (let i = 0; i < formInputs.length; i++) {
                     if (isNull(formInputs[i].val()) || isEmpty(formInputs[i].val())) {
                         errors.push(formInputsErrors[i]);
+                        console.log(formInputs[i][0]);
                         let inputError = formInputs[i][0].parentElement.children[2];
                         inputError.classList.remove('active')
                         inputError.innerHTML = formInputsErrors[i];
@@ -158,13 +158,21 @@ export async function main(options)
         }
     }
 
-    function nextForm(id) {
-        for (let i = id; i < editableForms.length; i++) {
-            let toggleForm = $('#numberTitle'+(i));
+    authorizeEditions();
+
+    function authorizeEditions() {
+        $('#payForm [id^="container"]').each(function(index) {
+            let toggleForm = $(this).find('[id^="numberTitle"]');
+            let form = $(this).find('[id^="inputsDiv"]');
+
             toggleForm.on('click', function() {
-                $('#inputsDiv'+(i))[0].classList.toggle('active');
+                console.log('active');
+                form.toggleClass('active');
             });
-        }
+        });
+    }
+
+    function nextForm(id) {
         $('#inputsDiv'+(id))[0].classList.toggle('active');
         $('#inputsDiv'+(id+1))[0].classList.toggle('active');
     }
