@@ -611,9 +611,8 @@
 
     .main-image-container
     {
-        flex-basis: 73%;
-        width: 100%;
-        min-height: 480px;
+        width: 480px;
+        height: 480px;
         display: flex;
         flex-direction: column;
     }
@@ -813,4 +812,17 @@
         top: 7rem;
         left: 8rem;
     }
+}
+
+@media (min-width: 1280px)
+{
+    .main-image-container
+    {
+        width: 600px;
+        height: 600px;
+    }
+}
+
+@media (min-width: 1500px)
+{
 }
