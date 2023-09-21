@@ -102,15 +102,17 @@
             <img class="shine" src="{{ asset('admin/assets/images/HomeShineRight.svg') }}" alt="">
         </div>
         <div class="carousel">
-            <button class="carousel__button carousel__button--left">
+            <button class="carousel__button carousel__button--left active">
                 <img src="{{ asset('admin/assets/images/HomeShineLeft.svg') }}" alt="">
             </button>
             <div class="carousel__track-container">
                 <ul class="carousel__track">
                     @foreach ($products as $product)
-                        <li class="carousel__slide">
+                        <li class="carousel__slide @if ($product->id == reset($products)->id) current-slide @endif">
                             @if ($product->main_image)
-                                <img class="carousel__image" src="{{ asset('images/main-images/' . $product->main_image) }}" alt="">
+                                <div class="carousel__image carousel_image_container">
+                                    <img class="carousel__image" src="{{ asset('images/main-images/' . $product->main_image) }}" alt="">
+                                </div>
                             @else
                                 <img class="carousel__image" src="{{ asset('admin/assets/images/ImageNotFound.svg') }}" alt="">
                             @endif
