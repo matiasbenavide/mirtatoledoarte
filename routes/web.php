@@ -24,6 +24,8 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'welcome'])->name('home');
 Route::get('/productos', [App\Http\Controllers\ProductClientController::class, 'productList']);
 Route::get('/productos/detalle/{categoryId}/{id}', [App\Http\Controllers\ProductClientController::class, 'productDetail']);
+
+// CART LINKS //
 Route::get('/agregar-carrito/{categoryId}/{productId}', [App\Http\Controllers\ProductClientController::class, 'addToCart']);
 Route::get('/remover-carrito/{categoryId}/{productId}', [App\Http\Controllers\ProductClientController::class, 'removeFromCart']);
 Route::get('/eliminar-carrito/{categoryId}/{productId}', [App\Http\Controllers\ProductClientController::class, 'deleteFromCart']);

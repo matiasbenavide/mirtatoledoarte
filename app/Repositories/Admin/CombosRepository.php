@@ -58,6 +58,11 @@ class CombosRepository extends BaseRepository
         ->leftJoin('categories', 'products.category_id', 'categories.id')
         ->leftJoin('colors', 'products.color_id', 'colors.id')
         ->where(function($query) use ($searchData) {
+            if ($searchData->productName) {
+                $productName = preg_replace('/\s+/', '%' . '%', $searchData->productName);
+                $query->where('products.name', 'LIKE', '%' . $productName . '%');
+            }
+
             if ($searchData->categorySelector) {
                 $query->where('products.category_id', $searchData->categorySelector);
             }
@@ -83,6 +88,11 @@ class CombosRepository extends BaseRepository
             ->leftJoin('categories', 'combos.category_id', 'categories.id')
             ->leftJoin('colors', 'combos.color_id', 'colors.id')
             ->where(function($query) use ($searchData) {
+                if ($searchData->productName) {
+                    $productName = preg_replace('/\s+/', '%' . '%', $searchData->productName);
+                    $query->where('combos.name', 'LIKE', '%' . $productName . '%');
+                }
+
                 if ($searchData->categorySelector) {
                     $query->where('combos.category_id', $searchData->categorySelector);
                 }

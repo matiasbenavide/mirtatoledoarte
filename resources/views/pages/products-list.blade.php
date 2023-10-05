@@ -36,6 +36,10 @@
                     <form class="filter-form" action="{{ url('/productos') }}" method="GET">
                         <p class="filter-title">Filtrar resultados</p>
                         <div class="filter-divs">
+                            <p class="filters-sub-title">Nombre</p>
+                            <input class="form-input" name="productName" id="productName" type="text" placeholder="Buscar por nombre de producto">
+                        </div>
+                        <div class="filter-divs">
                             <p class="filters-sub-title">Categoría</p>
                             <select class="form-input" name="categorySelector" id="categorySelector" style="max-height: 100%">
                                 <option class="form-input" value="">Todos</option>
@@ -93,6 +97,7 @@
         </div>
     </div>
     <script type="module">
+        let productName = {!! json_encode($productName) !!};
         let categorySelector = {!! json_encode($categorySelector) !!};
         let lowerPrice = {!! json_encode($lowerPrice) !!};
         let highestPrice = {!! json_encode($highestPrice) !!};
@@ -106,6 +111,7 @@
 
         window.onload = function() {
             main({
+                productName: productName,
                 categorySelector: categorySelector,
                 lowerPrice: lowerPrice,
                 highestPrice: highestPrice,

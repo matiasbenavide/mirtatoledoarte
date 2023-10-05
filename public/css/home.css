@@ -365,6 +365,29 @@
     line-height: 25px;
 }
 
+.cloud-container
+{
+    width: 100%;
+    height: 34.5px;
+    max-height: 34.5px;
+}
+
+.cloud
+{
+    margin-top: -0.6rem;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1000;
+}
+
+.cloud-bottom
+{
+    margin-top: 0;
+    margin-bottom: -0.6rem;
+    transform: rotate(180deg);
+}
+
 .opinions-title {
     margin-top: 2rem;
     font-family: 'Don José';
@@ -771,12 +794,6 @@
         padding-bottom: 0;
     }
 
-    .know-what-img
-    {
-        width: 29rem;
-        height: 18rem;
-    }
-
     .know-what-title
     {
         font-size: 32px;
@@ -841,10 +858,15 @@
         line-height: 64px;
     }
 
-    .opinions-images
+    .opinions-container
     {
-        width: 22.5rem;
-        height: 17.6rem;
+        width: 100%;
+        margin-top: 2rem;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     .opinions-fish
@@ -863,25 +885,29 @@
 
     #homeOpinion1
     {
+        width: 18.2rem;
+        height: 11.4rem;
         margin-top: 0;
         margin-bottom: 0;
-        margin-left: 50%;
+        margin-left: 25rem;
     }
 
     #homeOpinion2
     {
-        width: 430px;
-        height: 270px;
-        margin-top: 0;
-        margin-bottom: 0;
-        margin-right: 40%;
+        width: 21.9rem;
+        height: 13.6rem;
+        margin-top: -5rem;
+        margin-bottom: -5rem;
+        margin-right: 25rem;
     }
 
     #homeOpinion3
     {
+        width: 18.2rem;
+        height: 11.4rem;
         margin-top: 0;
         margin-bottom: 0;
-        margin-left: 50%;
+        margin-left: 25rem;
     }
 }
 
@@ -948,12 +974,6 @@
         font-size: 24px;
     }
 
-    .know-what-img
-    {
-        width: 100%;
-        height: 100%;
-    }
-
     .know-what-title
     {
         font-size: 48px;
@@ -982,14 +1002,43 @@
         font-size: 48px;
         line-height: 72px;
     }
+
+    #homeOpinion1
+    {
+        width: 20.9375rem;
+        height: 13.125rem;
+        margin-left: 30rem;
+    }
+
+    #homeOpinion2
+    {
+        width: 26.9375rem;
+        height: 16.75rem;
+        margin-top: -6rem;
+        margin-bottom: -6rem;
+        margin-right: 30rem;
+    }
+
+    #homeOpinion3
+    {
+        width: 20.9375rem;
+        height: 13.125rem;
+        margin-left: 30rem;
+    }
 }
 
-@media (min-width: 1536px)
+@media (min-width: 1500px)
 {
-    .container
+    .categories-container
     {
-        padding-left: 3rem;
-        padding-right: 3rem;
+        max-width: 1021px;
+        padding: 0;
+    }
+
+    .noted-products-container
+    {
+        padding-left: 5rem;
+        padding-right: 5rem;
     }
 
     .new-product-title
@@ -1006,7 +1055,7 @@
     {
         width: 117px;
         height: 80px;
-        bottom: 2.7rem;
+        bottom: 3.5rem;
     }
 
     .title
@@ -1046,12 +1095,6 @@
         font-size: 28px;
     }
 
-    .know-what-img
-    {
-        width: 602px;
-        height: 378px;
-    }
-
     .know-what-title
     {
         font-size: 56px;
@@ -1078,5 +1121,29 @@
     .opinions-title
     {
         font-size: 56px;
+    }
+
+    .opinions-fish
+    {
+        top: 15rem;
+        left: 8rem;
+    }
+
+    #homeOpinion1
+    {
+        width: 19.8rem;
+        height: 12.5rem;
+    }
+
+    #homeOpinion2
+    {
+        width: 26.3rem;
+        height: 16.38rem;
+    }
+
+    #homeOpinion3
+    {
+        width: 19.8rem;
+        height: 12.5rem;
     }
 }

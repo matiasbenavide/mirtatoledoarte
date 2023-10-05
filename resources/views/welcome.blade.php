@@ -61,7 +61,7 @@
         <a href="{{ url('/productos') }}" class="anchor" id="categoriesAnchorMobile">Ver todos los productos</a>
     </div>
 
-    <div class="container">
+    <div class="container noted-products-container">
         <div class="title-div">
             <img class="shine" src="{{ asset('admin/assets/images/HomeShineLeft.svg') }}" alt="">
             <p class="title main-text">Productos Destacados</p>
@@ -117,14 +117,20 @@
     </div>
 
     <div class="container blue-bg images-overlap w-100" style="padding-left: 0; padding-right: 0;">
-        <img class="w-100" style="margin-top: -5px" src="{{ asset('admin/assets/images/HomeOpinionsCloudsTop.svg') }}" alt="">
+        <div class="cloud-container">
+            <img class="cloud" src="{{ asset('admin/assets/images/home-cloud-top.svg') }}" alt="">
+        </div>
         <img class="image-to-overlap opinions-fish" src="{{ asset('admin/assets/images/HomeOpinionsFish.svg') }}" alt="">
         <img class="image-to-overlap opinions-fish-bubbles" src="{{ asset('admin/assets/images/HomeOpinionsFishBubbles.svg') }}" alt="">
         <p class="opinions-title">Qué opinan nuestros compradores</p>
-        <img class="opinions-images" id="homeOpinion1" src="{{ asset('admin/assets/images/HomeOpinionsChat1.svg') }}" alt="">
-        <img class="opinions-images" id="homeOpinion2" src="{{ asset('admin/assets/images/HomeOpinionsChat2.svg') }}" alt="">
-        <img class="opinions-images" id="homeOpinion3" src="{{ asset('admin/assets/images/HomeOpinionsChat3.svg') }}" alt="">
-        <img class="w-100" style="margin-bottom: -7px" src="{{ asset('admin/assets/images/HomeOpinionsCloudsBottom.svg') }}" alt="">
+        <div class="opinions-container">
+            <img class="opinions-images" id="homeOpinion1" src="{{ asset('admin/assets/images/HomeOpinionsChat1.svg') }}" alt="">
+            <img class="opinions-images middle" id="homeOpinion2" src="{{ asset('admin/assets/images/HomeOpinionsChat2.svg') }}" alt="">
+            <img class="opinions-images" id="homeOpinion3" src="{{ asset('admin/assets/images/HomeOpinionsChat3.svg') }}" alt="">
+        </div>
+        <div class="cloud-container">
+            <img class="cloud cloud-bottom" src="{{ asset('admin/assets/images/home-cloud-top.svg') }}" alt="">
+        </div>
     </div>
 
     <div class="flyer-container" style="height: 72px">

@@ -125,6 +125,7 @@ class ProductClientController extends Controller
             'newProduct' => $newProduct,
             'title' => $title,
             'combosAndProducts' => $combosAndProducts,
+            'productName' => $request->productName ? $request->productName : null,
             'categorySelector' => $request->categorySelector ? $request->categorySelector : null,
             'lowerPrice' => $request->lowerPrice ? $request->lowerPrice : null,
             'highestPrice' => $request->highestPrice ? $request->highestPrice : null,

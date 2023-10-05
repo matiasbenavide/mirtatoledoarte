@@ -10,9 +10,7 @@
             <img class="nav-div logo" src="{{asset('admin/assets/icons/logo.svg')}}" alt="">
         </a>
         <div class="nav-div search-cart-container">
-            <a href="{{ url('productos') }}">
-                <img class="nav-icon" id="searchIcon" style="margin-right: 5px" src="{{ asset('admin/assets/icons/searchWhite.svg') }}" alt="">
-            </a>
+            <img class="nav-icon" id="searchIcon" style="margin-right: 5px" src="{{ asset('admin/assets/icons/searchWhite.svg') }}" alt="">
             <a class="cart-container" href="{{ url('/carrito') }}">
                 <img class="nav-icon" src="{{ asset('admin/assets/icons/cart.svg') }}" alt="">
                 @if (Session::has('cart') && Session::get('cart')->totalQuantity > 0)
@@ -23,14 +21,14 @@
     </div>
     <div id="searchSection" class="wrapper-navbar">
         <div class="search-section wrapper-navbar">
-            {{-- <div class="search-divs">
-                <form id="searchForm" class="input-div search-divs products" action="{{ url('/productos') }}" method="GET">
+            <div class="search-divs">
+                <form id="searchForm" class="input-div search-divs" action="{{ url('/productos') }}" method="GET">
                     <input id="productSearchInput" class="form-consult-search" type="text" name="productName" placeholder="Buscar Juegos y Plazas">
                     <span class="input-icon">
                         <img id="submitInput" class="input-img" src="{{ asset('admin/assets/icons/search.svg') }}" alt="">
                     </span>
                 </form>
-            </div> --}}
+            </div>
             <hr/>
             <div class="search-divs">
                 <p class="nav-title">Tienda</p>

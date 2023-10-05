@@ -1,30 +1,19 @@
 export async function mainNavbar() {
     let navBarToggle = $('#navBarToggle');
     let searchSection = $('#searchSection');
-
-    let searchForm = $('#inputForm');
-    let submitInput = $('#submitInput');
-
-    let productSearchInput = $('#productSearchInput');
     let searchIcon = $('#searchIcon');
 
-    // document.onclick = function(e) {
-    //     if (e.target.id !== 'searchSection') {
-    //         console.log(e.target.id);
-    //         searchSection[0].classList.remove('active');
-    //     }
-    // }
+    let searchForm = $('#searchForm');
+    let submitInput = $('#submitInput');
 
-    navBarToggle.on("click", function() {
-        searchSection[0].classList.toggle('show');
-    });
+    document.onclick = function(e) {
+        if (e.target.id === navBarToggle[0].id || e.target.id === searchIcon[0].id) {
+            searchSection[0].classList.toggle('show');
+        }
+    }
 
     submitInput.on("click", function() {
+        console.log('hola');
         searchForm.submit();
-    });
-
-    searchIcon.on("click", function() {
-        searchSection[0].hidden = false;
-        productSearchInput.focus();
     });
 }
