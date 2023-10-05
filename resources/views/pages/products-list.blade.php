@@ -109,6 +109,8 @@
         import { mainNavbar } from "{{ asset(mix('js/admin/navBar.js')) }}";
         import { mainFooter } from "{{ asset(mix('js/admin/footer.js')) }}";
 
+        let url = {!! json_encode(url('/productos')) !!};
+
         window.onload = function() {
             main({
                 productName: productName,
@@ -118,7 +120,9 @@
                 withColor: withColor,
                 withoutColor: withoutColor,
             })
-            mainNavbar()
+            mainNavbar({
+                url: url
+            })
             mainFooter()
         }
     </script>

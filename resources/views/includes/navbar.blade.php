@@ -10,7 +10,9 @@
             <img class="nav-div logo" src="{{asset('admin/assets/icons/logo.svg')}}" alt="">
         </a>
         <div class="nav-div search-cart-container">
-            <img class="nav-icon" id="searchIcon" style="margin-right: 5px" src="{{ asset('admin/assets/icons/searchWhite.svg') }}" alt="">
+            <a id="searchLink">
+                <img class="nav-icon" id="searchIcon" style="margin-right: 5px" src="{{ asset('admin/assets/icons/searchWhite.svg') }}" alt="">
+            </a>
             <a class="cart-container" href="{{ url('/carrito') }}">
                 <img class="nav-icon" src="{{ asset('admin/assets/icons/cart.svg') }}" alt="">
                 @if (Session::has('cart') && Session::get('cart')->totalQuantity > 0)
