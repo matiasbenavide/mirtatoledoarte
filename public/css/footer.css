@@ -219,10 +219,15 @@
     {
         width: 100%;
         margin-bottom: 0.5rem;
-        font-weight: 600;
+        font-weight: 400;
         font-size: 12px;
         line-height: 16px;
         letter-spacing: 1px;
+    }
+
+    .general-questions
+    {
+        font-weight: 400;
     }
 
     .contact-questions
@@ -244,6 +249,7 @@
         width: 100%;
         padding-left: 2rem;
         padding-right: 2rem;
+        font-size: 20px;
     }
 
     .questions-div
@@ -268,6 +274,11 @@
 
 @media (min-width: 1280px)
 {
+    .footer-container
+    {
+        padding: 2rem 3rem;
+    }
+
     .drop-down-title
     {
         font-size: 20px;
@@ -284,13 +295,30 @@
         font-size: 14px;
         line-height: 24px;
     }
+
+    .contact-btn
+    {
+        width: 70%;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
 }
 
 @media (min-width: 1536px)
 {
+    .footer-container
+    {
+        padding: 2rem 5rem;
+    }
+
     .drop-down-title
     {
         font-size: 24px;
+    }
+
+    .links
+    {
+        justify-content: space-evenly;
     }
 
     .shop-links
@@ -301,5 +329,10 @@
     .general-questions
     {
         font-size: 16px;
+    }
+
+    .contact-btn
+    {
+        font-size: 22px;
     }
 }
