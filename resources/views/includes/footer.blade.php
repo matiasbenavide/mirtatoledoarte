@@ -1,7 +1,7 @@
 <div class="footer">
-    <div id="footerMobile" class="footer-container blue-bg">
+    <div class="footer-container blue-bg">
         <div class="footer-div">
-            <img class="logo" src="{{asset('admin/assets/icons/logo.svg')}}" alt="">
+            <img src="{{asset('admin/assets/icons/logo.svg')}}" alt="">
         </div>
         <div class="links">
             <hr>

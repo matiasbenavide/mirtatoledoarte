@@ -8,7 +8,7 @@
 .footer-container
 {
     width: 100%;
-    padding: 10px;
+    padding: 0.5rem 1rem;
 }
 
 .footer-drop-down {
@@ -18,7 +18,7 @@
 }
 
 .drop-down-title {
-    font-weight: 700;
+    font-weight: 600;
     font-size: 20px;
     line-height: 28px;
     letter-spacing: 0.4px;
@@ -84,6 +84,7 @@
 .footer-div {
     display: flex;
     justify-content: center;
+    padding-top: 1rem;
 }
 
 #fb-icon
@@ -102,14 +103,13 @@
 .questions-div {
     flex-direction: column;
     align-items: center;
-    margin-top: 15px;
 }
 
 .general-questions {
     margin-top: 5px;
     margin-bottom: 5px;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 400;
     font-size: 14px;
     line-height: 24px;
     letter-spacing: 1px;
@@ -123,7 +123,6 @@
 
 .footer-copyright {
     width: 100%;
-    padding: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -167,9 +166,7 @@
 
     .footer-container
     {
-        padding: 0;
-        padding-top: 2rem;
-        padding-bottom: 2rem;
+        padding: 2rem;
         display: flex;
         justify-content: space-between;
     }
@@ -177,11 +174,6 @@
     .footer-div
     {
         justify-content: end;
-    }
-
-    .logo
-    {
-        margin-left: 2rem;
     }
 
     hr
@@ -196,9 +188,8 @@
 
     .links
     {
-        width: 70%;
-        padding-left: 2rem;
-        padding-right: 2rem;
+        width: 100%;
+        padding: 0 2rem;
         display: flex;
         justify-content: space-between;
     }
@@ -225,15 +216,9 @@
         letter-spacing: 1px;
     }
 
-    .general-questions
-    {
-        font-weight: 400;
-    }
-
     .contact-questions
     {
-        width: 30%;
-        margin-right: 2rem;
+        flex-basis: 33%;
         display: flex;
         flex-direction: column;
         align-items: end;
@@ -247,8 +232,7 @@
     .contact-btn
     {
         width: 100%;
-        padding-left: 2rem;
-        padding-right: 2rem;
+        padding: 0;
         font-size: 20px;
     }
 
@@ -269,6 +253,7 @@
     .footer-copyright
     {
         justify-content: flex-start;
+        padding-left: 5rem;
     }
 }
 
