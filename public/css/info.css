@@ -3,6 +3,7 @@
     padding-top: 5rem;
     padding-left: 1rem;
     padding-right: 1rem;
+    background-color: #FDF9F5;
 }
 
 .main-title
@@ -39,11 +40,68 @@
     margin: 0;
 }
 
+.email-phone-container
+{
+    width: 100%;
+}
+
+.contact-form
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input
+{
+    margin-bottom: 1rem;
+}
+
+.form-input
+{
+    max-height: 48px;
+}
+
+.info-container
+{
+    margin-top: 1rem;
+}
+
+.info-title
+{
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 24px;
+    letter-spacing: 1px;
+    color: #154193;
+}
+
+.info-text
+{
+    margin-bottom: 1rem;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 20px;
+    color: #404040;
+}
+
+.button
+{
+    width: 100%;
+}
+
 @media (min-width: 768px)
 {
     .main-container
     {
         padding-top: 8rem;
+    }
+
+    .info-container
+    {
+        display: flex;
+        justify-content: space-evenly;
     }
 }
 
@@ -68,9 +126,17 @@
         padding-right: 3rem;
     }
 
+    .contact-main
+    {
+        height: 74.6%;
+        padding-left: 5rem;
+        padding-right: 5rem;
+    }
+
     .main-title
     {
-        font-size: 72px;
+        font-size: 64px;
+        line-height: 72px;
         text-align: start;
     }
 
@@ -78,6 +144,51 @@
     {
         margin-top: 3rem;
         margin-bottom: 0;
+    }
+
+    .contact
+    {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .contact-form
+    {
+        flex-basis: 65%;
+    }
+
+    .email-phone-container
+    {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #email
+    {
+        flex-basis: 55%;
+    }
+
+    #phone
+    {
+        flex-basis: 40%;
+    }
+
+    .info-container
+    {
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .info-title
+    {
+        font-size: 14px;
+    }
+
+    .info-text
+    {
+        font-size: 16px;
     }
 }
 
@@ -96,5 +207,9 @@
         height: 71.8%;
     }
 
-
+    .contact-main
+    {
+        padding-left: 15%;
+        padding-right: 15%;
+    }
 }

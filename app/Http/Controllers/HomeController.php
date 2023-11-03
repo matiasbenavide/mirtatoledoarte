@@ -90,4 +90,12 @@ class HomeController extends Controller
             'vacations' => $vacations
         ]);
     }
+
+    public function Contact()
+    {
+        $vacations = $this->parametersRepository->first()->vacations;
+        return view('pages.contact')->with([
+            'vacations' => $vacations
+        ]);
+    }
 }

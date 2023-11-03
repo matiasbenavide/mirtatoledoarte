@@ -1,6 +1,6 @@
 <div class="footer">
     <div class="footer-container blue-bg">
-        <div class="footer-div">
+        <div id="footerLogo" class="footer-div">
             <img src="{{asset('admin/assets/icons/logo.svg')}}" alt="">
         </div>
         <div class="links">
@@ -52,7 +52,7 @@
         </div>
         <div class="contact-questions">
             <div class="footer-div contact-button-div">
-                <button class="button contact-btn">Contacto</button>
+                <button id="contactBtn" class="button contact-btn">Contacto</button>
             </div>
             <div class="footer-div questions-div">
                 <a class="general-questions" href="{{ url('/politica-devoluciones') }}">POLÍTICA DE DEVOLUCIONES</a>

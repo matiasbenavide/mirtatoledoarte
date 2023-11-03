@@ -25,16 +25,19 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'welcome'])->na
 Route::get('/productos', [App\Http\Controllers\ProductClientController::class, 'productList']);
 Route::get('/productos/detalle/{categoryId}/{id}', [App\Http\Controllers\ProductClientController::class, 'productDetail']);
 
-// CART LINKS //
+// CART //
 Route::get('/agregar-carrito/{categoryId}/{productId}', [App\Http\Controllers\ProductClientController::class, 'addToCart']);
 Route::get('/remover-carrito/{categoryId}/{productId}', [App\Http\Controllers\ProductClientController::class, 'removeFromCart']);
 Route::get('/eliminar-carrito/{categoryId}/{productId}', [App\Http\Controllers\ProductClientController::class, 'deleteFromCart']);
 Route::get('/carrito', [App\Http\Controllers\ProductClientController::class, 'shoppingCart']);
 
+// CONSULTS //
 Route::get('/politica-devoluciones', [App\Http\Controllers\HomeController::class, 'RefundPolicies']);
 Route::get('/preguntas-frecuentes', [App\Http\Controllers\HomeController::class, 'FrequentQuestions']);
 Route::get('/envios-garantias', [App\Http\Controllers\HomeController::class, 'ShippingGuarantee']);
+Route::get('/contacto', [App\Http\Controllers\HomeController::class, 'Contact']);
 
+// BUY //
 Route::get('/detalle-compra', [App\Http\Controllers\ProductClientController::class, 'buyDetail']);
 Route::post('/guardar-compra', [App\Http\Controllers\ProductClientController::class, 'saveShop']);
 

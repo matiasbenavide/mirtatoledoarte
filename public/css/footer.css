@@ -255,6 +255,11 @@
         justify-content: flex-start;
         padding-left: 5rem;
     }
+
+    #footerLogo
+    {
+        align-self: flex-start;
+    }
 }
 
 @media (min-width: 1280px)

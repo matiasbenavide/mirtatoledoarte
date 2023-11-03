@@ -616,7 +616,7 @@
 
     .home-boat
     {
-        bottom: 2.2rem;
+        bottom: 1.6rem;
         left: 15rem;
     }
 
@@ -1095,6 +1095,22 @@
         font-size: 28px;
     }
 
+    .know-what-div
+    {
+        padding: 0;
+        justify-content: space-around;
+    }
+
+    .know-what-img
+    {
+        width: 40%;
+    }
+
+    .know-what-text-div
+    {
+        flex-basis: 40%;
+    }
+
     .know-what-title
     {
         font-size: 56px;
@@ -1145,5 +1161,18 @@
     {
         width: 19.8rem;
         height: 12.5rem;
+    }
+}
+
+@media (min-width: 2560px)
+{
+    .new-product-image-div
+    {
+        padding: 0 30rem;
+    }
+
+    .home-boat
+    {
+        bottom: 5rem;
     }
 }
