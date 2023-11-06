@@ -110,7 +110,7 @@
         import { mainFooter } from "{{ asset(mix('js/admin/footer.js')) }}";
 
         let url = {!! json_encode(url('/productos')) !!};
-        let baseUrl = {!! json_encode(url('/') !!};
+        let baseUrl = {!! json_encode(url('/')) !!};
 
         window.onload = function() {
             main({
