@@ -44,7 +44,7 @@
 }
 
 .new-product-name {
-    font-family: 'Don José';
+    font-family: 'Don José' !important;
     font-size: 48px;
     line-height: 52px;
     text-align: center;
@@ -78,7 +78,7 @@
     width: 6rem;
     height: 4.2rem;
     left: 2rem;
-    bottom: 0.9rem;
+    bottom: 0.5rem;
 }
 
 .home-wave
@@ -306,7 +306,7 @@
 
 .know-what-title
 {
-    font-family: 'Don José';
+    font-family: 'Don José' !important;
     font-size: 36px;
     line-height: 53px;
 }
@@ -388,9 +388,14 @@
     transform: rotate(180deg);
 }
 
+.opinions-container
+{
+    padding: 0 1rem;
+}
+
 .opinions-title {
     margin-top: 2rem;
-    font-family: 'Don José';
+    font-family: 'Don José' !important;
     font-size: 29px;
     line-height: 36px;
     text-align: center;
@@ -412,8 +417,27 @@
 .opinions-fish-bubbles {
     width: 55px;
     height: 40px;
-    bottom: 30%;
+    bottom: 22rem;
     right: 0;
+}
+
+.reviews-link
+{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 0.5rem 1rem;
+    border: 2px solid #fff;
+    border-radius: 8px;
+    color: #fff;
+}
+
+.reviews-link:hover, .reviews-link:checked
+{
+    padding: 0.5rem 1rem;
+    background-color: #fff;
+    border: 2px solid #154193;
+    border-radius: 8px;
+    color: #154193;
 }
 
 .logo {
@@ -455,7 +479,7 @@
 
     .home-boat {
         left: 12rem;
-        bottom: 1.7rem;
+        bottom: 1.2rem;
     }
 
     .title

@@ -8,7 +8,7 @@
 
 .main-title
 {
-    font-family: 'Don José';
+    font-family: 'Don José' !important;
     font-size: 48px;
     line-height: 52px;
     text-align: center;

@@ -128,6 +128,7 @@
             <img class="opinions-images middle" id="homeOpinion2" src="{{ asset('admin/assets/images/HomeOpinionsChat2.svg') }}" alt="">
             <img class="opinions-images" id="homeOpinion3" src="{{ asset('admin/assets/images/HomeOpinionsChat3.svg') }}" alt="">
         </div>
+        <a class="reviews-link" href="https://search.google.com/local/reviews?placeid=ChIJ5dFdDXu4vJUR1qkMLngRwIM" target="_blank">Ver todas las reseñas</a>
         <div class="cloud-container">
             <img class="cloud cloud-bottom" src="{{ asset('admin/assets/images/home-cloud-top.svg') }}" alt="">
         </div>

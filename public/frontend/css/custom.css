@@ -195,6 +195,28 @@ hr {
     height: 2px !important;
 }
 
+.wpp-button
+{
+    position: fixed;
+    width: 62px;
+    height: 62px;
+    bottom: 2rem;
+    right: 2rem;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2bb741;
+    border-radius: 50%;
+    z-index: 100;
+}
+
+.wpp-icon
+{
+    width: 32px;
+    height: 32px;
+}
+
 @media (min-width: 1279px)
 {
     *

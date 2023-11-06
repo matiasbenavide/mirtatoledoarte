@@ -200,7 +200,7 @@ linear-gradient(0deg, #1747A0, #1747A0);
 
 .nav-bar-link
 {
-    font-family: 'Don José';
+    font-family: 'Don José' !important;
     font-size: 24px;
     line-height: 28px;
 }

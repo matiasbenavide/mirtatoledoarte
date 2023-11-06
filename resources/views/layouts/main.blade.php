@@ -6,6 +6,7 @@
     @endif
     @include('includes.navbar')
     @yield('mainContent')
+    @include('includes.wpp')
     @include('includes.footer')
     @include('includes.responseMessageAlert')
 </div>
