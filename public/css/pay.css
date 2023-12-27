@@ -46,6 +46,28 @@
     color: #000;
 }
 
+.shipping-warning
+{
+    padding: 0.5rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FF6252;
+    border-radius: 8px;
+}
+
+.shipping-warning-text
+{
+    margin: 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 1px;
+    text-align: left;
+    text-align: center;
+    color: #fff;
+}
+
 .products
 {
     background-color: #FDF9F5;
@@ -201,4 +223,20 @@
 .form-input
 {
     max-height: 100%;
+}
+
+@media(min-width: 1025px)
+{
+    .shipping-warning
+    {
+        /* width: 40%; */
+        padding: 0.5rem 0;
+    }
+
+    .shipping-warning-text
+    {
+        margin: 0;
+        text-align: center;
+        color: #fff;
+    }
 }

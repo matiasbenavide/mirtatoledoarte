@@ -218,6 +218,11 @@
     justify-content: center;
 }
 
+.basic-info-desktop
+{
+    display: none;
+}
+
 .info-div
 {
     display: flex;
@@ -421,6 +426,45 @@
     color: #154193;
 }
 
+.reviews-link
+{
+    margin: 2rem 0;
+    padding: 0.5rem 1rem;
+    border: 2px solid #154193;
+    border-radius: 8px;
+    color: #154193;
+    text-align: center;
+}
+
+.reviews-link:hover, .reviews-link:checked
+{
+    padding: 0.5rem 1rem;
+    background-color: #fff;
+    border: 2px solid #154193;
+    border-radius: 8px;
+    color: #154193;
+}
+
+.link-mobile
+{
+    display: block;
+}
+
+.link-desktop
+{
+    display: none;
+}
+
+.opinion-mobile
+{
+    display: block;
+}
+
+.opinion-desktop
+{
+    display: none;
+}
+
 @media(min-width: 768px)
 {
     .product-type-title
@@ -528,6 +572,12 @@
         line-height: 20px;
     }
 
+    .product-colors
+    {
+        margin-top: 2rem;
+        justify-content: flex-start;
+    }
+
     .about
     {
         padding-left: 20%;
@@ -566,9 +616,24 @@
         height: 24px;
     }
 
+    .product-opinion
+    {
+        padding: 4% 8%;
+    }
+
     .opinion-title
     {
+        margin: 2rem 0;
         font-size: 36px;
+    }
+
+    .reviews-link
+    {
+        padding: 0.5rem 1.5rem;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 27px;
+        letter-spacing: 0em;
     }
 }
 
@@ -599,14 +664,17 @@
 
     .main-img-images
     {
-        flex-basis: 68%;
-        width: 100%;
         min-height: 350px;
         display: flex;
         flex-wrap: wrap;
         flex-direction: row-reverse;
         justify-content: flex-end;
         align-items: flex-start;
+    }
+
+    .main-img-info-div
+    {
+        width: 480px;
     }
 
     .main-image-container
@@ -624,6 +692,7 @@
 
     .images
     {
+        margin-right: 0.5rem;
         height: 480px;
         flex-basis: auto;
         flex-direction: column;
@@ -632,9 +701,10 @@
 
     .img-div
     {
-        width: 5.15rem;
-        max-height: 5.15rem;
+        width: 72px;
+        max-height: 72px;
         flex-basis: 20%;
+        margin: 0.25rem;
         padding: 0;
     }
 
@@ -663,14 +733,15 @@
         width: 100%;
     }
 
-    .colors-details
-    {
-        flex-basis: 30%;
-    }
-
     .color-type-div
     {
         width: 94px;
+        height: 75px;
+    }
+
+    .type-div-right
+    {
+        margin-left: 2rem;
     }
 
     .without-color
@@ -687,6 +758,12 @@
 
     .basic-info
     {
+        display: none;
+    }
+
+    .basic-info-desktop
+    {
+        display: flex !important;
         margin-top: 2rem;
     }
 
@@ -716,21 +793,11 @@
     {
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: flex-start;
         padding: 2rem;
         padding-left: 3rem;
         padding-right: 3rem;
-    }
-
-    .about-title-description
-    {
-        flex-basis: 60%;
-    }
-
-    .about-img-container
-    {
-        flex-basis: 40%;
     }
 
     .desktop-plane
@@ -812,6 +879,50 @@
         top: 7rem;
         left: 8rem;
     }
+
+    .product-opinion
+    {
+        padding: 8% 4%;
+        flex-direction: row;
+    }
+
+    .title-reviews-div
+    {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .opinion-title
+    {
+        width: 90%;
+        text-align: start;
+    }
+
+    .reviews-link
+    {
+        width: 55%;
+        margin-bottom: 0;
+    }
+    .link-mobile
+    {
+        display: none;
+    }
+
+    .link-desktop
+    {
+        display: block;
+    }
+
+    .opinion-mobile
+    {
+        display: none;
+    }
+
+    .opinion-desktop
+    {
+        display: block;
+    }
 }
 
 @media (min-width: 1280px)
@@ -821,8 +932,64 @@
         width: 600px;
         height: 600px;
     }
+
+    .main-img-info-div
+    {
+        width: 600px;
+    }
+
+    .add-to-cart
+    {
+        width: 90%;
+    }
 }
 
 @media (min-width: 1500px)
 {
+    .product-name
+    {
+        font-size: 44px;
+    }
+
+    .images-color
+    {
+        justify-content: space-around;
+    }
+
+    .main-img-images
+    {
+        flex-basis: auto;
+        width: auto;
+    }
+
+    .add-to-cart
+    {
+        width: 100%;
+    }
+
+    .about-title-description
+    {
+        margin-top: 2rem;
+    }
+
+    .about-title
+    {
+        font-size: 44px;
+    }
+
+    .specs
+    {
+        padding-top: 4rem;
+    }
+
+    .shine
+    {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .specs-title
+    {
+        font-size: 44px;
+    }
 }

@@ -11,12 +11,37 @@
         <p class="product-name name-mobile">{{$product->name}}</p>
         <div class="images-color">
             <div class="main-img-images">
-                <div class="main-image-container">
-                    @if ($product->main_image)
-                        <img class="main-img" id="mainImage" src="{{ asset('images/main-images/' . $product->main_image) }}" alt="">
-                    @else
-                        <img class="main-img not-found" id="mainImage" src="{{ asset('admin/assets/images/ImageNotFound.svg') }}" alt="">
-                    @endif
+                <div class="main-img-info-div">
+                    <div class="main-image-container">
+                        @if ($product->main_image)
+                            <img class="main-img" id="mainImage" src="{{ asset('images/main-images/' . $product->main_image) }}" alt="">
+                        @else
+                            <img class="main-img not-found" id="mainImage" src="{{ asset('admin/assets/images/ImageNotFound.svg') }}" alt="">
+                        @endif
+                    </div>
+                    <div class="basic-info-desktop" hidden>
+                        <div class="info-div info-left">
+                            <div class="info-img">
+                                <img src="{{ asset('admin/assets/icons/product-detail/Hashtag.svg') }}" alt="">
+                            </div>
+                            <p class="info-title">{{ $product->id }}</p>
+                            <p class="info-text">Número de producto</p>
+                        </div>
+                        <div class="info-div info-middle">
+                            <div class="info-img">
+                                <img src="{{ asset('admin/assets/icons/product-detail/Eye.svg') }}" alt="">
+                            </div>
+                            <p class="info-title">Normativas</p>
+                            <p class="info-text">Utilizar bajo supervisión de un adulto</p>
+                        </div>
+                        <div class="info-div info-right">
+                            <div class="info-img">
+                                <img src="{{ asset('admin/assets/icons/product-detail/House.svg') }}" alt="">
+                            </div>
+                            <p class="info-title">Uso</p>
+                            <p class="info-text">Diseñado para interiores</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="images">
                     @if ($images && $product->main_image)
@@ -34,11 +59,11 @@
             <div class="colors-details">
                 <p class="product-name name-desktop">{{$product->name}}</p>
                 <div class="product-colors">
-                    <div class="color-type-div @if ($product->color_id == 2)selected @else not-selected @endif">
+                    <div class="color-type-div type-div-left @if ($product->color_id == 2)selected @else not-selected @endif">
                         <img class="without-color" src="{{ asset('admin/assets/images/product-detail/ProductDetailWithoutColor.svg') }}" alt="">
                         <p class="color-type-text">Sin Pintar</p>
                     </div>
-                    <div class="color-type-div @if ($product->color_id == 1)selected @else not-selected @endif">
+                    <div class="color-type-div type-div-right @if ($product->color_id == 1)selected @else not-selected @endif">
                         <img class="with-color" src="{{ asset('admin/assets/images/product-detail/ProductDetailWithColor.svg') }}" alt="">
                         <p class="color-type-text">Arcoíris</p>
                     </div>
@@ -130,8 +155,13 @@
     </div>
 
     <div class="product-opinion light-beige-bg">
-        <p class="opinion-title">QUÉ OPINAN NUESTROS CLIENTES</p>
-        <img src="{{ asset('admin/assets/images/product-detail/ProductOpinion.svg') }}" alt="">
+        <div class="title-reviews-div">
+            <p class="opinion-title">QUÉ OPINAN NUESTROS CLIENTES</p>
+            <a class="reviews-link link-desktop" href="https://search.google.com/local/reviews?placeid=ChIJ5dFdDXu4vJUR1qkMLngRwIM" target="_blank">Ver todas las reseñas</a>
+        </div>
+        <img class="opinion-mobile" src="{{ asset('admin/assets/images/product-detail/ProductOpinion.svg') }}" alt="">
+        <img class="opinion-desktop" src="{{ asset('admin/assets/images/product-detail/ProductOpinionDesktop.svg') }}" alt="">
+        <a class="reviews-link link-mobile" href="https://search.google.com/local/reviews?placeid=ChIJ5dFdDXu4vJUR1qkMLngRwIM" target="_blank">Ver todas las reseñas</a>
     </div>
 
     <script type="module">

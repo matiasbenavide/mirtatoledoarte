@@ -10,7 +10,10 @@
             <img class="nav-div logo" src="{{asset('admin/assets/icons/logo.svg')}}" alt="">
         </a>
         <div class="nav-div search-cart-container">
-            <a id="searchLink">
+            <a id="searchLink" class="search-cart-container">
+                <form id="desktopSearchForm" action="{{ url('/productos') }}" method="GET" hidden>
+                    <input class="nav-bar-search-input" type="text" name="productName" placeholder="Buscar juegos y plazas">
+                </form>
                 <img class="nav-icon" id="searchIcon" style="margin-right: 5px" src="{{ asset('admin/assets/icons/searchWhite.svg') }}" alt="">
             </a>
             <a class="cart-container" href="{{ url('/carrito') }}">

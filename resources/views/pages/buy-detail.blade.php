@@ -60,6 +60,9 @@
             @csrf
             <input name="totalAmount" type="number" value="{{ $cart->totalPrice }}" hidden>
             <input name="products" id="products" hidden>
+            <div class="shipping-warning">
+                <p class="shipping-warning-text">El costo de envío se encuentra bajo responsabilidad del comprador.</p>
+            </div>
             <div class="inputs-container" id="container0">
                 <div class="number-title" id="numberTitle0">
                     <p class="form-number">1</p>
