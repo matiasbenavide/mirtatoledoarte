@@ -49,11 +49,7 @@ class ProductsRepository extends BaseRepository
         return $this->select('products.*', 'categories.name as category', 'colors.color as color')
             ->leftJoin('categories', 'products.category_id', 'categories.id')
             ->leftJoin('colors', 'products.color_id', 'colors.id')
-            ->where('products.id', 1)
-            ->orWhere('products.id', 2)
-            ->orWhere('products.id', 3)
-            ->orWhere('products.id', 4)
-            ->get();
+            ->paginate(4);
     }
 
 }

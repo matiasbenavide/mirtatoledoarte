@@ -185,8 +185,7 @@
 
 .shine {
     margin-bottom: 2rem;
-    width: 13.5px;
-    height: 16px;
+    width: 1.2rem;
 }
 
 .product {
@@ -511,6 +510,10 @@
         left: 4%;
         font-size: 18px;
         line-height: 25px;
+    }
+
+    .shine {
+        width: 1.8rem;
     }
 
     .product
@@ -967,6 +970,11 @@
     {
         font-size: 40px;
         line-height: 80px;
+    }
+
+    .noted-products-container
+    {
+        margin-top: 15rem;
     }
 
     .shine {
