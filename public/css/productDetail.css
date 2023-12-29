@@ -15,6 +15,16 @@
     color: #404040;
 }
 
+.type-title-mobile
+{
+    display: block;
+}
+
+.type-title-desktop
+{
+    display: none;
+}
+
 .product-name
 {
     font-weight: 500;
@@ -412,6 +422,7 @@
 {
     padding: 8%;
     display: flex;
+    position: relative;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -463,6 +474,14 @@
 .opinion-desktop
 {
     display: none;
+}
+
+.bubble-fish {
+    position: absolute;
+    width: 3rem;
+    left: 0;
+    top: 6rem;
+    z-index: 100;
 }
 
 @media(min-width: 768px)
@@ -635,6 +654,11 @@
         line-height: 27px;
         letter-spacing: 0em;
     }
+
+    .bubble-fish {
+        left: 2rem;
+        top: 8rem;
+    }
 }
 
 @media (min-width: 1025px)
@@ -642,6 +666,16 @@
     .product-type-title
     {
         margin-top: 1rem;
+    }
+
+    .type-title-mobile
+    {
+        display: none;
+    }
+
+    .type-title-desktop
+    {
+        display: block;
     }
 
     .name-mobile
@@ -711,6 +745,11 @@
     .img-icon
     {
         width: 100%;
+    }
+
+    .colors-details
+    {
+        margin-top: 5rem;
     }
 
     .color-type-text
@@ -895,15 +934,19 @@
 
     .opinion-title
     {
-        width: 90%;
+        width: 70%;
         text-align: start;
     }
 
     .reviews-link
     {
-        width: 55%;
-        margin-bottom: 0;
+        font-size: 18px;
+        line-height: 24px;
+        width: 50%;
+        margin: 0;
+        padding: 0.75rem;
     }
+
     .link-mobile
     {
         display: none;
@@ -923,6 +966,12 @@
     {
         display: block;
     }
+
+    .bubble-fish {
+        width: 4rem;
+        left: 40%;
+        top: 18rem;
+    }
 }
 
 @media (min-width: 1280px)
@@ -938,9 +987,37 @@
         width: 600px;
     }
 
+    .colors-details
+    {
+        margin-top: 7rem;
+    }
+
     .add-to-cart
     {
         width: 90%;
+    }
+
+    .product-opinion
+    {
+        padding: 8%;
+    }
+
+    .opinion-title
+    {
+        width: 80%;
+        font-size: 48px;
+        line-height: 56px;
+    }
+
+    .reviews-link
+    {
+        width: 40%;
+    }
+
+    .bubble-fish
+    {
+        left: 38%;
+        top: 22rem;
     }
 }
 
@@ -960,6 +1037,12 @@
     {
         flex-basis: auto;
         width: auto;
+    }
+
+    .img-div
+    {
+        width: 88px;
+        max-height: 88px;
     }
 
     .add-to-cart
@@ -991,5 +1074,45 @@
     .specs-title
     {
         font-size: 44px;
+    }
+
+    .product-opinion
+    {
+        padding: 4%;
+    }
+
+    .opinion-title
+    {
+        width: 70%;
+        font-size: 56px;
+        line-height: 64px;
+    }
+
+    .reviews-link
+    {
+        width: 35%;
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .bubble-fish
+    {
+        left: 40%;
+        top: 18rem;
+    }
+
+    .plane
+    {
+        left: 15rem;
+    }
+
+    .right-cloud
+    {
+        right: 10rem;
+    }
+
+    .left-cloud
+    {
+        left: 5rem;
     }
 }

@@ -8,38 +8,67 @@
 
 @section('mainContent')
     <div class="light-bg navbar-distance main-div">
-        <p class="product-type-title">@if ($combo->category_id == App\Models\Admin\Category::INDIVIDUAL) JUEGOS INDIVIDUALES @else PLAZAS Y COMBOS @endif > {{$combo->name}}</p>
+        <p class="product-type-title type-title-mobile">@if ($combo->category_id == App\Models\Admin\Category::INDIVIDUAL) JUEGOS INDIVIDUALES @else PLAZAS Y COMBOS @endif > {{$combo->name}}</p>
         <p class="product-name name-mobile">{{$combo->name}}</p>
         <div class="images-color">
-            <div class="main-img-images">
-                <div class="main-image-container">
-                    @if ($combo->main_image)
-                        <img class="main-img" id="mainImage" src="{{ asset('images/main-images/' . $combo->main_image) }}" alt="">
-                    @else
-                        <img class="main-img not-found" id="mainImage" src="{{ asset('admin/assets/images/ImageNotFound.svg') }}" alt="">
-                    @endif
-                </div>
-                <div class="images">
-                    @if ($images && $combo->main_image)
-                        <div class="img-div">
-                            <img class="img-icon" id="mainIcon{{$combo->id}}" src="{{ asset('images/main-images/' . $combo->main_image) }}" alt="" onclick="changeMainImage('mainIcon{{$combo->id}}')">
+            <div>
+                <p class="product-type-title type-title-desktop">@if ($combo->category_id == App\Models\Admin\Category::INDIVIDUAL) JUEGOS INDIVIDUALES @else PLAZAS Y COMBOS @endif > {{$combo->name}}</p>
+                <div class="main-img-images">
+                    <div class="main-img-info-div">
+
+                        <div class="main-image-container">
+                            @if ($combo->main_image)
+                                <img class="main-img" id="mainImage" src="{{ asset('images/main-images/' . $combo->main_image) }}" alt="">
+                            @else
+                                <img class="main-img not-found" id="mainImage" src="{{ asset('admin/assets/images/ImageNotFound.svg') }}" alt="">
+                            @endif
                         </div>
-                    @endif
-                    @foreach ($images as $image)
-                        <div class="img-div">
-                            <img class="img-icon" id="icon{{$image->id}}" src="{{ asset('images/products-images/' . $image->image) }}" alt="" onclick="changeMainImage('icon{{$image->id}}')">
+                        <div class="basic-info-desktop">
+                            <div class="info-div info-left">
+                                <div class="info-img">
+                                    <img src="{{ asset('admin/assets/icons/product-detail/Hashtag.svg') }}" alt="">
+                                </div>
+                                <p class="info-title">{{ $combo->id }}</p>
+                                <p class="info-text">Número de combo</p>
+                            </div>
+                            <div class="info-div info-middle">
+                                <div class="info-img">
+                                    <img src="{{ asset('admin/assets/icons/product-detail/Eye.svg') }}" alt="">
+                                </div>
+                                <p class="info-title">Normativas</p>
+                                <p class="info-text">Utilizar bajo supervisión de un adulto</p>
+                            </div>
+                            <div class="info-div info-right">
+                                <div class="info-img">
+                                    <img src="{{ asset('admin/assets/icons/product-detail/House.svg') }}" alt="">
+                                </div>
+                                <p class="info-title">Uso</p>
+                                <p class="info-text">Diseñado para interiores</p>
+                            </div>
                         </div>
-                    @endforeach
+                    </div>
+                    <div class="images">
+                        @if ($images && $combo->main_image)
+                            <div class="img-div">
+                                <img class="img-icon" id="mainIcon{{$combo->id}}" src="{{ asset('images/main-images/' . $combo->main_image) }}" alt="" onclick="changeMainImage('mainIcon{{$combo->id}}')">
+                            </div>
+                        @endif
+                        @foreach ($images as $image)
+                            <div class="img-div">
+                                <img class="img-icon" id="icon{{$image->id}}" src="{{ asset('images/products-images/' . $image->image) }}" alt="" onclick="changeMainImage('icon{{$image->id}}')">
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
             <div class="colors-details">
                 <p class="product-name name-desktop">{{ $combo->name }}</p>
                 <div class="product-colors">
-                    <div class="color-type-div @if ($combo->color_id == 2)selected @else not-selected @endif">
+                    <div class="color-type-div type-div-left @if ($combo->color_id == 2)selected @else not-selected @endif">
                         <img class="without-color" src="{{ asset('admin/assets/images/product-detail/ProductDetailWithoutColor.svg') }}" alt="">
                         <p class="color-type-text">Sin Pintar</p>
                     </div>
-                    <div class="color-type-div @if ($combo->color_id == 1)selected @else not-selected @endif">
+                    <div class="color-type-div type-div-right @if ($combo->color_id == 1)selected @else not-selected @endif">
                         <img class="with-color" src="{{ asset('admin/assets/images/product-detail/ProductDetailWithColor.svg') }}" alt="">
                         <p class="color-type-text">Arcoíris</p>
                     </div>
@@ -47,7 +76,7 @@
                 <p class="price">AR$ {{ number_format($combo->price, 2, ',', '.') }}</p>
                 <a class="anchor" href="">Ver medios de pago y promociones</a>
                 <div class="add-to-cart">
-                    <a href="{{ url('agregar-carrito/' . $combo->category_id . '/' . $combo->id) }}">
+                    <a class="add-to-cart-link" href="{{ url('agregar-carrito/' . $combo->category_id . '/' . $combo->id) }}">
                         <button class="button">Agregar al Carrito</button>
                     </a>
                 </div>
@@ -87,19 +116,22 @@
             @if ($combo->main_image)
                 <img class="main-img about-img" src="{{ asset('images/main-images/' . $combo->main_image) }}" alt="">
                 <img class="main-img not-found" src="{{ asset('admin/assets/images/product-detail/AboutBG.svg') }}" alt="">
-                <img class="desktop-plane" src="{{ asset('admin/assets/images/product-detail/DetailPlane.svg') }}" alt="">
             @else
                 <img class="main-img about-img not-found" src="{{ asset('admin/assets/images/ImageNotFound.svg') }}" alt="">
             @endif
+            <img class="desktop-plane" src="{{ asset('admin/assets/images/product-detail/DetailPlane.svg') }}" alt="">
         </div>
         <p class="about-description description-mobile">{{ $combo->description }}</p>
     </div>
 
     <div class="specs light-bg main-div">
+        <img class="orange-icons left-cloud" src="{{ asset('admin/assets/images/product-detail/DetailOrangeLeftCloud.svg') }}" alt="">
+        <img class="orange-icons right-cloud" src="{{ asset('admin/assets/images/product-detail/DetailOrangeRightCloud.svg') }}" alt="">
+        <img class="orange-icons plane" src="{{ asset('admin/assets/images/product-detail/DetailOrangeRocket.svg') }}" alt="">
         <div class="specs-title-div">
-            <img class="shine" src="{{ asset('admin/assets/images/HomeShineLeft.svg') }}" alt="">
-            <p class="specs-title">Productos incluídos</p>
-            <img class="shine" src="{{ asset('admin/assets/images/HomeShineRight.svg') }}" alt="">
+        <img class="shine" src="{{ asset('admin/assets/images/HomeShineLeft.svg') }}" alt="">
+        <p class="specs-title">Productos incluídos</p>
+        <img class="shine" src="{{ asset('admin/assets/images/HomeShineRight.svg') }}" alt="">
         </div>
         <div class="carousel">
             <button class="carousel__button carousel__button--left active">
@@ -132,8 +164,14 @@
     </div>
 
     <div class="product-opinion light-beige-bg">
-        <p class="opinion-title">QUÉ OPINAN NUESTROS CLIENTES</p>
-        <img src="{{ asset('admin/assets/images/product-detail/ProductOpinion.svg') }}" alt="">
+        <div class="title-reviews-div">
+            <p class="opinion-title">QUÉ OPINAN NUESTROS CLIENTES</p>
+            <a class="reviews-link link-desktop" href="https://search.google.com/local/reviews?placeid=ChIJ5dFdDXu4vJUR1qkMLngRwIM" target="_blank">Ver todas las reseñas</a>
+        </div>
+        <img class="opinion-mobile" src="{{ asset('admin/assets/images/product-detail/ProductOpinion.svg') }}" alt="">
+        <img class="opinion-desktop" src="{{ asset('admin/assets/images/product-detail/ProductOpinionDesktop.svg') }}" alt="">
+        <a class="reviews-link link-mobile" href="https://search.google.com/local/reviews?placeid=ChIJ5dFdDXu4vJUR1qkMLngRwIM" target="_blank">Ver todas las reseñas</a>
+        <img class="bubble-fish" src="{{ asset('admin/assets/images/product-detail/ProductDetailBubbleFish.svg') }}" alt="">
     </div>
 
     <script type="module">

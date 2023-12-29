@@ -7,53 +7,56 @@
 
 @section('mainContent')
     <div class="light-bg navbar-distance main-div">
-        <p class="product-type-title">@if ($product->category_id == App\Models\Admin\Category::INDIVIDUAL) JUEGOS INDIVIDUALES @else PLAZAS Y COMBOS @endif > {{$product->name}}</p>
+        <p class="product-type-title type-title-mobile">@if ($product->category_id == App\Models\Admin\Category::INDIVIDUAL) JUEGOS INDIVIDUALES @else PLAZAS Y COMBOS @endif > {{$product->name}}</p>
         <p class="product-name name-mobile">{{$product->name}}</p>
         <div class="images-color">
-            <div class="main-img-images">
-                <div class="main-img-info-div">
-                    <div class="main-image-container">
-                        @if ($product->main_image)
-                            <img class="main-img" id="mainImage" src="{{ asset('images/main-images/' . $product->main_image) }}" alt="">
-                        @else
-                            <img class="main-img not-found" id="mainImage" src="{{ asset('admin/assets/images/ImageNotFound.svg') }}" alt="">
+            <div>
+                <p class="product-type-title type-title-desktop">@if ($product->category_id == App\Models\Admin\Category::INDIVIDUAL) JUEGOS INDIVIDUALES @else PLAZAS Y COMBOS @endif > {{$product->name}}</p>
+                <div class="main-img-images">
+                    <div class="main-img-info-div">
+                        <div class="main-image-container">
+                            @if ($product->main_image)
+                                <img class="main-img" id="mainImage" src="{{ asset('images/main-images/' . $product->main_image) }}" alt="">
+                            @else
+                                <img class="main-img not-found" id="mainImage" src="{{ asset('admin/assets/images/ImageNotFound.svg') }}" alt="">
+                            @endif
+                        </div>
+                        <div class="basic-info-desktop" hidden>
+                            <div class="info-div info-left">
+                                <div class="info-img">
+                                    <img src="{{ asset('admin/assets/icons/product-detail/Hashtag.svg') }}" alt="">
+                                </div>
+                                <p class="info-title">{{ $product->id }}</p>
+                                <p class="info-text">Número de producto</p>
+                            </div>
+                            <div class="info-div info-middle">
+                                <div class="info-img">
+                                    <img src="{{ asset('admin/assets/icons/product-detail/Eye.svg') }}" alt="">
+                                </div>
+                                <p class="info-title">Normativas</p>
+                                <p class="info-text">Utilizar bajo supervisión de un adulto</p>
+                            </div>
+                            <div class="info-div info-right">
+                                <div class="info-img">
+                                    <img src="{{ asset('admin/assets/icons/product-detail/House.svg') }}" alt="">
+                                </div>
+                                <p class="info-title">Uso</p>
+                                <p class="info-text">Diseñado para interiores</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="images">
+                        @if ($images && $product->main_image)
+                            <div class="img-div">
+                                <img class="img-icon" id="mainIcon{{$product->id}}" src="{{ asset('images/main-images/' . $product->main_image) }}" alt="" onclick="changeMainImage('mainIcon{{$product->id}}')">
+                            </div>
                         @endif
+                        @foreach ($images as $image)
+                            <div class="img-div">
+                                <img class="img-icon" id="icon{{$image->id}}" src="{{ asset('images/products-images/' . $image->image) }}" alt="" onclick="changeMainImage('icon{{$image->id}}')">
+                            </div>
+                        @endforeach
                     </div>
-                    <div class="basic-info-desktop" hidden>
-                        <div class="info-div info-left">
-                            <div class="info-img">
-                                <img src="{{ asset('admin/assets/icons/product-detail/Hashtag.svg') }}" alt="">
-                            </div>
-                            <p class="info-title">{{ $product->id }}</p>
-                            <p class="info-text">Número de producto</p>
-                        </div>
-                        <div class="info-div info-middle">
-                            <div class="info-img">
-                                <img src="{{ asset('admin/assets/icons/product-detail/Eye.svg') }}" alt="">
-                            </div>
-                            <p class="info-title">Normativas</p>
-                            <p class="info-text">Utilizar bajo supervisión de un adulto</p>
-                        </div>
-                        <div class="info-div info-right">
-                            <div class="info-img">
-                                <img src="{{ asset('admin/assets/icons/product-detail/House.svg') }}" alt="">
-                            </div>
-                            <p class="info-title">Uso</p>
-                            <p class="info-text">Diseñado para interiores</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="images">
-                    @if ($images && $product->main_image)
-                        <div class="img-div">
-                            <img class="img-icon" id="mainIcon{{$product->id}}" src="{{ asset('images/main-images/' . $product->main_image) }}" alt="" onclick="changeMainImage('mainIcon{{$product->id}}')">
-                        </div>
-                    @endif
-                    @foreach ($images as $image)
-                        <div class="img-div">
-                            <img class="img-icon" id="icon{{$image->id}}" src="{{ asset('images/products-images/' . $image->image) }}" alt="" onclick="changeMainImage('icon{{$image->id}}')">
-                        </div>
-                    @endforeach
                 </div>
             </div>
             <div class="colors-details">
@@ -111,12 +114,11 @@
             @if ($product->main_image)
                 <img class="main-img about-img" src="{{ asset('images/main-images/' . $product->main_image) }}" alt="">
                 <img class="main-img not-found" src="{{ asset('admin/assets/images/product-detail/AboutBG.svg') }}" alt="">
-                <img class="desktop-plane" src="{{ asset('admin/assets/images/product-detail/DetailPlane.svg') }}" alt="">
             @else
                 <img class="main-img about-img not-found" src="{{ asset('admin/assets/images/ImageNotFound.svg') }}" alt="">
-                <img class="desktop-plane" src="{{ asset('admin/assets/images/product-detail/DetailPlane.svg') }}" alt="">
             @endif
-            </div>
+                <img class="desktop-plane" src="{{ asset('admin/assets/images/product-detail/DetailPlane.svg') }}" alt="">
+        </div>
         <p class="about-description description-mobile">{{ $product->description }}</p>
     </div>
 
@@ -162,6 +164,7 @@
         <img class="opinion-mobile" src="{{ asset('admin/assets/images/product-detail/ProductOpinion.svg') }}" alt="">
         <img class="opinion-desktop" src="{{ asset('admin/assets/images/product-detail/ProductOpinionDesktop.svg') }}" alt="">
         <a class="reviews-link link-mobile" href="https://search.google.com/local/reviews?placeid=ChIJ5dFdDXu4vJUR1qkMLngRwIM" target="_blank">Ver todas las reseñas</a>
+        <img class="bubble-fish" src="{{ asset('admin/assets/images/product-detail/ProductDetailBubbleFish.svg') }}" alt="">
     </div>
 
     <script type="module">
