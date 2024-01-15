@@ -1,6 +1,6 @@
 .main-container
 {
-    padding-top: 5rem;
+    padding-top: 8rem;
     padding-left: 1rem;
     padding-right: 1rem;
     background-color: #FDF9F5;
@@ -128,7 +128,7 @@
 
     .contact-main
     {
-        height: 74.6%;
+        height: 100%;
         padding-left: 5rem;
         padding-right: 5rem;
     }
@@ -190,23 +190,17 @@
     {
         font-size: 16px;
     }
-}
 
-@media (min-width: 1280px)
-{
-    .main-container
+    .form-input
     {
-        height: 72.7%;
+        max-height: none;
+        margin-bottom: 2rem;
+        padding: 0.75rem !important;
     }
 }
 
 @media (min-width: 1500px)
 {
-    .main-container
-    {
-        height: 71.8%;
-    }
-
     .contact-main
     {
         padding-left: 15%;

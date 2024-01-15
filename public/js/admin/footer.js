@@ -1,10 +1,13 @@
 export async function mainFooter(options) {
     let shopDropdown = $('#shopDropdown');
     let shopLinks = $('#shopLinks');
+
     let aboutUsDropdown = $('#aboutUsDropdown');
     let aboutUsLinks = $('#aboutUsLinks');
+
     let socialMediaDropdown = $('#socialMediaDropdown');
     let socialMediaLinks = $('#socialMediaLinks');
+
     let contactBtn = $('#contactBtn');
 
     let aboutUs = $('#aboutUs');

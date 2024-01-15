@@ -6,7 +6,7 @@
         <div class="links">
             <hr>
             <div>
-                <div id="shop" class="footer-drop-down">
+                <div class="footer-drop-down">
                     <p class="drop-down-title">TIENDA</p>
                     <p id="shopDropdown" class="drop-down-cross">+</p>
                 </div>

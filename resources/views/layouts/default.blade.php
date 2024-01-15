@@ -7,7 +7,6 @@
     @yield('content')
 </body>
 <footer>
-    {{-- @include('components.footer') --}}
     @include('includes.scripts')
 </footer>
 </html>

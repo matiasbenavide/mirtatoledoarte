@@ -15,13 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function() {
-    return redirect()->route('home');
-});
+// Route::get('/', function() {
+//     return redirect()->route('home');
+// });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'welcome'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome'])->name('home');
 Route::get('/productos', [App\Http\Controllers\ProductClientController::class, 'productList']);
 Route::get('/productos/detalle/{categoryId}/{id}', [App\Http\Controllers\ProductClientController::class, 'productDetail']);
 

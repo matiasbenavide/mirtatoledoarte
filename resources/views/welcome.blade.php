@@ -11,7 +11,7 @@
         @auth
             @if($isAdmin)
                 <div class="fixed top-0 right-0 px-6 py-4 sm:block" style="background-color: #000">
-                    <a href="{{ url('/administracion') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Administracion</a>
+                    <a href="{{ url('/administracion') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Administracionz>
                     <form class="" action="{{ route('logout') }}" method="POST">
                         @csrf
                         <input type="submit" class="btn" value="Cerrar Sesión">

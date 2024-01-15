@@ -8,15 +8,17 @@
 <div class="main-container contact-main">
     <p class="main-title">Contactanos</p>
     <div class="text-container contact">
-        <form class="contact-form" action="">
-            <input class="form-input input" type="text" placeholder="Nombre">
-            <div class="email-phone-container">
-                <input class="form-input input" id="email" type="text" placeholder="Correo electrónico">
-                <input class="form-input input" id="phone" type="text" placeholder="Teléfono">
-            </div>
-            <textarea class="form-textarea input" name="" id="" cols="30" rows="4" placeholder="Mensaje"></textarea>
-            <button class="button input">ENVIAR</button>
-        </form>
+        <div class="contact-form">
+            {{-- <form class="contact-form" action=""> --}}
+                <input class="form-input input" type="text" placeholder="Nombre">
+                <div class="email-phone-container">
+                    <input class="form-input input" id="email" type="text" placeholder="Correo electrónico">
+                    <input class="form-input input" id="phone" type="text" placeholder="Teléfono">
+                </div>
+                <textarea class="form-textarea input" name="" id="" cols="30" rows="4" placeholder="Mensaje"></textarea>
+                <button class="button input">ENVIAR</button>
+            {{-- </form> --}}
+        </div>
 
         <div class="info-container">
             <div class="info-container-div">

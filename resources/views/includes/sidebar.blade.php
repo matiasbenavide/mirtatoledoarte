@@ -2,7 +2,7 @@
     <div class="sidebar-inner d-flex-column">
         <div class="m-6">
             <div class="logo">
-                <a class="navbar-brand" href="{{ url('/home') }}">
+                <a class="navbar-brand" href="{{ url('/') }}">
                     <span>
                         <img src="{{asset('admin/assets/icons/logo.svg')}}" alt="">
                     </span>

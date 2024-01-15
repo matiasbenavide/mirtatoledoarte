@@ -120,7 +120,6 @@
                 <img src="{{ asset('admin/assets/icons/Mastercard.svg') }}" alt="">
             </div>
         </div>
-        <hr class="bottom-line">
     </div>
 
     <script type="module">
