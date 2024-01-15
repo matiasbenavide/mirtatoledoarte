@@ -6,7 +6,7 @@
             <a href="{{ url('/nosotros') }}" class="nav-link">Nosotros</a>
             <a href="{{ url('/contacto') }}" class="nav-link">Contacto</a>
         </div>
-        <a href="{{ url('/') }}">
+        <a href="{{ url('/home') }}">
             <img class="nav-div logo" src="{{asset('admin/assets/icons/logo.svg')}}" alt="">
         </a>
         <div class="nav-div search-cart-container">

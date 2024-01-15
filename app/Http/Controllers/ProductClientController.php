@@ -371,7 +371,7 @@ class ProductClientController extends Controller
             return redirect()->back()->with('error', Constants::BUY_ERROR);
         }
 
-        return redirect('/')->with('success', $message);
+        return redirect('/home')->with('success', $message);
     }
 
     public function mapDataForSale(Request $request)

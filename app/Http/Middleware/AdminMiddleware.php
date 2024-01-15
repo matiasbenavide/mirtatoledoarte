@@ -23,12 +23,12 @@ class AdminMiddleware
             }
             else
             {
-                return redirect('/')->with('status', 'Acceso denegado, no tienes permisos de administrador');
+                return redirect('/home')->with('status', 'Acceso denegado, no tienes permisos de administrador');
             }
         }
         else
         {
-            return redirect('/')->with('status', 'Debes iniciar sesión para acceder');
+            return redirect('/home')->with('status', 'Debes iniciar sesión para acceder');
         }
     }
 }
