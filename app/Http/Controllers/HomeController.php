@@ -12,33 +12,13 @@ use App\Http\Controllers\ProductClientController;
 class HomeController extends Controller
 {
     /**
-     * @var ProductClientController
-     */
-    protected $productClientController;
-
-    /**
-     * @var ProductsRepository
-     */
-    protected $productsRepository;
-
-    /**
-     * @var ParametersRepository
-     */
-    protected $parametersRepository;
-    /**
      * Create a new controller instance.
      *
      * @return void
      */
     public function __construct(
-        ProductClientController $productClientController,
-        ProductsRepository $productsRepository,
-        ParametersRepository $parametersRepository
     )
     {
-        $this->productClientController = $productClientController;
-        $this->productsRepository = $productsRepository;
-        $this->parametersRepository = $parametersRepository;
     }
 
     /**
@@ -47,55 +27,17 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
-    public function welcome(Request $request)
+    public function home(Request $request)
     {
-        $vacations = $this->parametersRepository->first()->vacations;
-        $newProduct = $this->productClientController->getNewProduct();
-        $notedProducts = $this->productsRepository->getNoted();
         $isAdmin = false;
 
-        if($request->user() && $request->user()->role_as && $request->user()->role_as == 1)
+        if($request->user() && $request->user()->role_as && $request->user()->role_as == User::ID_USER_ADMIN)
         {
             $isAdmin = true;
         }
 
-        return view('welcome')->with([
-            'vacations' => $vacations,
+        return view('home')->with([
             'isAdmin' => $isAdmin,
-            'newProduct' => $newProduct,
-            'notedProducts' => $notedProducts
-        ]);
-    }
-
-    public function RefundPolicies()
-    {
-        $vacations = $this->parametersRepository->first()->vacations;
-        return view('pages.refund-policies')->with([
-            'vacations' => $vacations
-        ]);
-    }
-
-    public function FrequentQuestions()
-    {
-        $vacations = $this->parametersRepository->first()->vacations;
-        return view('pages.frequent-questions')->with([
-            'vacations' => $vacations
-        ]);
-    }
-
-    public function ShippingGuarantee()
-    {
-        $vacations = $this->parametersRepository->first()->vacations;
-        return view('pages.shipping-guarantee')->with([
-            'vacations' => $vacations
-        ]);
-    }
-
-    public function Contact()
-    {
-        $vacations = $this->parametersRepository->first()->vacations;
-        return view('pages.contact')->with([
-            'vacations' => $vacations
         ]);
     }
 }

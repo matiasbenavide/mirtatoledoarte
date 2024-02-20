@@ -46,8 +46,4 @@ class User extends Authenticatable
     const ID_USER_ADMIN = 1;
     const NAME_USER_ADMIN = 'gridmakers';
     const EMAIL_USER_ADMIN = 'matias.gridmakers@gmail.com';
-
-    const ID_USER_SYSTEM = 2;
-    const NAME_USER_SYSTEM = 'jugandotoy';
-    const EMAIL_USER_SYSTEM = 'letrasdepolyfan@gmail.com';
 }

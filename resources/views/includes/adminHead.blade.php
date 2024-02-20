@@ -18,7 +18,6 @@
 <link href="{{ asset(mix('css/adminApp.css')) }}" rel="stylesheet">
 <link href="{{ asset('frontend/css/bootstrap5.css') }}" rel="stylesheet">
 <link href="{{ asset('frontend/css/custom.css') }}" rel="stylesheet">
-<link href="{{ asset('css/sidebar.css') }}" rel="stylesheet">
 
 <link  rel="icon" href="{{asset('admin/assets/icons/favicon.svg')}}" />
 
