@@ -17,18 +17,19 @@
             z-index: 1000;
         }
 
-        .navbar-mobile-show {
-            display: block;
-        }
-
         .navbar-links-desktop {
             display: none;
         }
 
     }
 
-    .navbar-links-mobile {
+    .navbar-mobile-hide {
+        display: none;
+    }
+
+    .navbar-mobile-show {
         display: block;
+        transition: all erase-in-out 0.5ms;
     }
 
     .navbar-links {

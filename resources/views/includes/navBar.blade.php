@@ -20,7 +20,7 @@
     </div>
 
     {{-- links mobile --}}
-    <div class="navbar-links-mobile">
+    <div id="linksMobile" class="navbar-links-mobile navbar-mobile-hide">
         <a href="" class="navbar-links"><p>Work</p></a>
         <a href="" class="navbar-links"><p>Press</p></a>
         <a href="" class="navbar-links"><p>About</p></a>
