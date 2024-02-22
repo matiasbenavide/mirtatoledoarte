@@ -2,11 +2,11 @@
     font-family: 'Don José';
     src: url('../fonts/DonJose_Black.woff');
 }
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
 *
 {
     box-sizing: border-box;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     font-size: 18px;
     line-height: 32px;
     color: #404040;

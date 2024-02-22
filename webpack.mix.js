@@ -12,7 +12,7 @@ const mix = require('laravel-mix');
  */
 
 
-mix.sass('resources/sass/jugando-toy/adminApp.scss', 'public/css');
+mix.sass('resources/sass/mirta-toledo/adminApp.scss', 'public/css');
 
 mix.js('resources/js/app.js', 'public/js').vue()
     .js('resources/js/app-back.js', 'public/js')

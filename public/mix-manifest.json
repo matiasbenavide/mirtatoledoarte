@@ -5,6 +5,7 @@
     "/js/bootstrap.js": "/js/bootstrap.js",
     "/css/app.css": "/css/app.css",
     "/css/adminApp.css": "/css/adminApp.css",
+    "/js/navbar.js": "/js/navbar.js",
     "/js/module/sweetAlert.js": "/js/module/sweetAlert.js",
     "/js/module/utils.js": "/js/module/utils.js"
 }
