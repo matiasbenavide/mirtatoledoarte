@@ -23,20 +23,29 @@
 
     }
 
-    .navbar-mobile-hide {
-        display: none;
+    .navbar-links-mobile
+    {
+        display: grid;
+        grid-template-rows: 0fr;
+        overflow: hidden;
+        transition: grid-template-rows 500ms;
     }
 
-    .navbar-mobile-show {
-        display: block;
-        transition: all erase-in-out 0.5ms;
+    /* .navbar-mobile-hide {
+        display: none;
+    } */
+
+    .navbar-links-mobile.show {
+        grid-template-rows: 1fr;
+        justify-content: normal;
+        transition: grid-template-rows 500ms;
     }
 
     .navbar-links {
         text-decoration: none;
     }
 
-    .navbar-links p{
+    .navbar-links a{
         margin: 0;
         font-weight: 400;
         font-size: 14px;
