@@ -17,11 +17,11 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', function() {
-    return redirect()->route('home');
-});
+// Route::get('/', function() {
+//     return redirect()->route('home');
+// });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::prefix('/administracion')->group(function () {
